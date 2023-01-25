@@ -25,7 +25,7 @@ header .Content img{
     filter: blur(3px);
 }
 main{
-    height: 90vh;
+    height: 75vh;
 }
 .FirstLine{
     display: flex;
@@ -38,20 +38,28 @@ main{
     border-radius: 20px;
 }
 .MainContent{
-    height: 90%;
+    height: 70vh;
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 .MainContent button{
     height: 30vh;
-    width: 30vw;
-    /* max-width: 400px;
-    max-height: 300px; */
-    marf: 15px;
+    width: 35vw;
+    margin: 15px;
     border-radius: 20px;
+    transition: 550ms;
+    text-transform: uppercase;
+    font-family: 'Bosch Sans Black';
+}
+.MainContent button:hover{
+    filter: brightness(1.10);
+    cursor: pointer;
+    scale: 1.05;
+    box-shadow: -5px 5px 15px black;
 }
 
 
@@ -69,9 +77,10 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(20px);
     box-shadow: 0 0 30px black;
     font-family: 'Sofia Sans', sans-serif;
+    animation: Appear 500ms;
+    transition: all 500ms;
 }
 
 .conteudoOculto .Content{
@@ -101,6 +110,10 @@ main{
     background: linear-gradient( rgba(189,195,199,1) 0%, rgba(44,62,80,1) 100%);
     box-shadow: 0 0 5px black;
 }
+.conteudoOculto button:hover{
+    cursor: pointer;
+    filter: brightness(1.10);
+}
 
 
 
@@ -111,4 +124,16 @@ footer{
     width: 100vw;
     position: absolute;
     bottom: 0;
+}
+
+
+@keyframes Appear{
+    from{
+        scale: 0;
+        opacity: 0;
+    }
+    to{
+        scale: 1;
+        opacity: 1;
+    }
 }
