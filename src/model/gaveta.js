@@ -1,18 +1,11 @@
-CREATE TABLE Gavetas(
-    ID INT IDENTITY(1, 1) PRIMARY KEY,
-    NOME CHAR(1) NOT NULL,
-    CONTEUDO VARCHAR(30) NOT NULL,
-    ID_ARMARIO INT,
-    FOREIGN KEY(ID_ARMARIO) REFERENCES Armarios(ID)
-);
-
 // Importação
 const Sequelize = require('sequelize');
 const database = require('../config/db');
+const armario = require('./armario');
 
 // Criando a tabela Gavetas
 const gaveta = database.define('Gavetas', {
-    ID: {
+    IDGaveta: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
@@ -37,3 +30,8 @@ const gaveta = database.define('Gavetas', {
 });
 // Exportando essa tabela
 module.exports = gaveta;
+
+aluno.belongsTo(armario, {
+    constraint: true,
+    foreignKey: 'IDArmario'
+});

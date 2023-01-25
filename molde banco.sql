@@ -1,25 +1,35 @@
+--CREATE DATABASE ARMARIOSTESTE
+
+--USE ARMARIOSTESTE
+
 CREATE TABLE Armarios(
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    ID INT IDENTITY(1,1) PRIMARY KEY,
     TIPO VARCHAR(10) NOT NULL,  -- GAVETAS OU PORTAS
     DIVISOES INT NOT NULL,
     NUMERO INT NOT NULL,
 );
 CREATE TABLE Gavetas(
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    ID INT IDENTITY(1,1) PRIMARY KEY,
     NOME CHAR(1) NOT NULL,
     CONTEUDO VARCHAR(30) NOT NULL,
     ID_ARMARIO INT,
-    FOREIGN KEY (ID_ARMARIO) REFERENCES Armarios(id)
+    FOREIGN KEY (ID_ARMARIO) REFERENCES Armarios(ID)
 );
 CREATE TABLE Compartimentos(
     ID INT IDENTITY(1,1) PRIMARY KEY,
     NUMERO int,
     ID_GAVETA INT,
-    FOREIGN KEY (ID_GAVETA) REFERENCES Gavetas(id)
+    FOREIGN KEY (ID_GAVETA) REFERENCES Gavetas(ID)
 );
 CREATE TABLE Tipos_de_ferramentas(
     ID INT IDENTITY(1,1) PRIMARY KEY,
     NOME VARCHAR(30)
+);
+CREATE TABLE Subtipos(
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    NOME VARCHAR(30),
+	ID_TIPO INT,
+	FOREIGN KEY (ID_TIPO) REFERENCES Tipos_de_ferramentas(ID)
 );
 CREATE TABLE Ferramentas(
     ID INT IDENTITY(1,1) PRIMARY KEY,
@@ -27,10 +37,12 @@ CREATE TABLE Ferramentas(
     OBS VARCHAR(70) NOT NULL,
     STATUS VARCHAR(30) NOT NULL,
     ID_TIPO INT NOT NULL,
+	ID_SUBTIPO INT NOT NULL,
     ID_COMPARTIMENTO INT NOT NULL,
     ID_GAVETA INT NOT NULL,
     ID_ARMARIO INT NOT NULL,
     FOREIGN KEY (ID_TIPO) REFERENCES Tipos_de_ferramentas(ID),
+	FOREIGN KEY (ID_SUBTIPO) REFERENCES Subtipos(ID),
     FOREIGN KEY (ID_COMPARTIMENTO) REFERENCES Compartimentos(ID),
     FOREIGN KEY (ID_GAVETA) REFERENCES Gavetas(ID),
     FOREIGN KEY (ID_ARMARIO) REFERENCES Armarios(ID),
@@ -41,11 +53,43 @@ CREATE TABLE Ferramentas(
 -- DROP TABLE Tipos_de_ferramentas
 -- DROP TABLE Ferramentas
 
-select * from Armarios
-select * from Gavetas
-SELECT * from Compartimentos
-SELECT * FROM Tipos_de_ferramentas
-SELECT * FROM Ferramentas
-INSERT Ferramentas VALUES ('BROCA 10mm', 'NOVA','DISPONIVEL', 1, 1, 1, 1)
+INSERT Tipos_de_ferramentas VALUES
+('Broca'),
+('Fresa'),
+('Escareador'),
+('Chanfrador'),
+('Rebaixador'),
+('Alargador'),
+('Barra de Usinagem'),
+('Cabeçote'),
+('Ponta'),
+('Cossinete'),
+('Macho'),
+('Pastilha');
 
-SELECT COUNT(*) FROM Ferramentas WHERE  (NOME = 'BROCA 10mm')
+INSERT Subtipos VALUES
+('Brocas de Centro', 1),
+('Brocas de Aço Rápido', 1),
+('Brocas de Metal Duro', 1),
+('Fresa Topo Aço Rápido', 2),
+('Fresa Topo Metal Duro', 2),
+('Fresa Esférica', 2),
+('Alargador Aço Rápido', 6),
+('Alargador Metal Duro', 6),
+('Pastilhas Cabeçote', 12),
+('Pastilhas Torno C', 12),
+('Pastilhas Torno D', 12),
+('Pastilhas Torno V', 12),
+('Pastilhas Torno W', 12),
+('Pastilhas Torno S', 12),
+('Pastilhas Torno P', 12),
+('Pastilhas Torno Rosca', 12),
+('Pastilhas Torno Bedame', 12),
+('Pastilhas Torno T-MAX', 12);
+
+SELECT * FROM Armarios
+SELECT * FROM Gavetas
+SELECT * FROM Compartimentos
+SELECT * FROM Tipos_de_ferramentas
+SELECT * FROM Subtipos
+SELECT * FROM Ferramentas

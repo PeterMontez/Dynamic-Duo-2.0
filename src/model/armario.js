@@ -4,7 +4,7 @@ const database = require('../config/db');
 
 // Criando a tabela Armario
 const armario = database.define('Armario', {
-    ID: {
+    IDArmario: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
