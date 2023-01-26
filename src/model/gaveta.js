@@ -22,11 +22,6 @@ const gaveta = database.define('Gavetas', {
         allowNull: true
     },
 
-    ID_ARMARIO: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-
 });
 // Exportando essa tabela
 module.exports = gaveta;
