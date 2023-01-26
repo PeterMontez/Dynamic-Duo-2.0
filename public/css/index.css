@@ -24,10 +24,13 @@ header .Content img{
 .Blur{
     filter: blur(3px);
 }
+
 main{
+    display: flex;
+    flex-direction: column;
     height: 75vh;
 }
-.FirstLine{
+/* .FirstLine{
     display: flex;
     justify-content: end;
 }
@@ -36,7 +39,7 @@ main{
     min-height: 50px;
     min-width: 100px;
     border-radius: 20px;
-}
+} */
 .MainContent{
     height: 70vh;
     width: 100vw;

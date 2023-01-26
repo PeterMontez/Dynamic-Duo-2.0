@@ -5,8 +5,26 @@
     padding: 0;
     border: 0;
 }
+.RegistrationArea{
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+}
+.RegistrationArea button{
+    background: linear-gradient(45deg, rgba(84,190,235,1) 0%, rgb(84, 195, 242) 50%, rgb(73, 166, 205) 100%);
+    margin: 15px;
+    min-height: 50px;
+    min-width: 100px;
+    border-radius: 20px;
+}
+.RegistrationArea button:hover{
+    cursor: pointer;
+    filter: brightness(1.05);
+    scale: 1.02;
+    box-shadow: 0 0 5px black;
+}
+
 main{
-    /* background-color: aquamarine; */
     align-items: center;
     display: flex;
     justify-content: center;
