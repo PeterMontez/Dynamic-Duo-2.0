@@ -19,7 +19,7 @@ const gaveta = database.define('Gavetas', {
 
     CONTEUDO: {
         type: Sequelize.STRING(30),
-        allowNull: false
+        allowNull: true
     },
 
     ID_ARMARIO: {
@@ -31,7 +31,7 @@ const gaveta = database.define('Gavetas', {
 // Exportando essa tabela
 module.exports = gaveta;
 
-aluno.belongsTo(armario, {
+gaveta.belongsTo(armario, {
     constraint: true,
     foreignKey: 'IDArmario'
 });

@@ -5,7 +5,7 @@ const tipo = require('./tipo');
 
 // Criando a tabela Subtipos
 const subtipo = database.define('Subtipos', {
-    IDCompartimento: {
+    IDSubtipo: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
@@ -22,7 +22,7 @@ const subtipo = database.define('Subtipos', {
 // Exportando essa tabela
 module.exports = subtipo;
 
-aluno.belongsTo(tipo, {
+subtipo.belongsTo(tipo, {
     constraint: true,
     foreignKey: 'IDTipo'
 });

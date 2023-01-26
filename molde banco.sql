@@ -2,6 +2,13 @@
 
 --USE ARMARIOSTESTE
 
+DROP TABLE Ferramentas
+DROP TABLE Subtipos
+DROP TABLE Tipos_de_ferramentas
+DROP TABLE Compartimentos
+DROP TABLE Gavetas
+DROP TABLE Armarios
+
 CREATE TABLE Armarios(
     ID INT IDENTITY(1,1) PRIMARY KEY,
     TIPO VARCHAR(10) NOT NULL,  -- GAVETAS OU PORTAS

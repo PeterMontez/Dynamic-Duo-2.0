@@ -22,7 +22,7 @@ const compartimento = database.define('Compartimentos', {
 // Exportando essa tabela
 module.exports = compartimento;
 
-aluno.belongsTo(gaveta, {
+compartimento.belongsTo(gaveta, {
     constraint: true,
     foreignKey: 'IDGaveta'
 });

@@ -23,12 +23,17 @@ const ferramenta = database.define('Ferramentas', {
 
     OBS: {
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: true
     },
 
     STATUS: {
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: true
+    },
+
+    EDV: {
+        type: Sequelize.INTEGER,
+        allowNull: true
     },
 
 });
