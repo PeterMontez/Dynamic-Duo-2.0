@@ -6,6 +6,8 @@ const route = express.Router();
 const home = require('./src/controllers/home');
 const porarm = require('./src/controllers/porarm');
 const porfer = require('./src/controllers/porfer');
+const mover = require('./src/controllers/mover');
+const cadastro = require('./src/controllers/cadastro');
 
 // Iniciando as rotas
 route.get('/', home.pagInicialGet);
