@@ -9,6 +9,8 @@ const porfer = require('./src/controllers/porfer');
 
 // Iniciando as rotas
 route.get('/', home.pagInicialGet);
+route.post('/pushDevolver', home.openDevolver)
+route.post('/pushRetirar', home.openRetirar)
 
 //Retirar por armário
 route.get('/armarios/:EDV', porarm.armarios);
