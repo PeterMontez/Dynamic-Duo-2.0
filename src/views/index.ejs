@@ -30,6 +30,11 @@
     </header>
 
     <main id="Main">
+        <div class="RegistrationArea">
+            <button>
+                <h3>Cadastro</h3>
+            </button>
+        </div>
         <div class="MainContent">
             <form action="/pushRetirar" method="post">
                 <button
@@ -61,28 +66,30 @@
                 <h2>Enviar</h2>
             </button>
         </form>
+        <form action="/" method="get">
             <button onclick="ClearDisplay()">
                 <h2>Fechar</h2>
             </button>
+        </form>
     </div>
     <div class="conteudoOculto" id="Retirar" style="<%= retirar && !devolver ? 'display: flex;' : 'display: none' %>">
-        <form class="Content" action="">
+        <form class="Content" action="/retirar" method="post">
             <div class="Title">
                 <h1>Retirar</h1>
             </div>
             <div class="Content">
                 <h2>EDV:</h2>
-                <input type="text" maxlength="8" placeholder="EDV">
+                <input type="text" maxlength="8" placeholder="EDV" name="edv" required>
             </div>
-            <a href="retirar.html">
-                <button>
-                    <h2>Enviar</h2>
-                </button>
-            </a>
+            <button type="submit">
+                <h2>Enviar</h2>
+            </button>
         </form>
+        <form action="/" method="get">
             <button onclick="ClearDisplay()">
                 <h2>Fechar</h2>
             </button>
+        </form>
     </div>
 
 

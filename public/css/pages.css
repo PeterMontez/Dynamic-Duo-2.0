@@ -51,14 +51,6 @@ main {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
-/* 
-.card_info-hover {
-    position: absolute;
-    padding: 16px;
-    width: 100%;
-    opacity: 0;
-    top: 0;
-} */
 
 .card_img--hover {
     transition: 0.2s all ease-out;

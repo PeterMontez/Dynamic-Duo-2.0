@@ -5,25 +5,6 @@
     padding: 0;
     border: 0;
 }
-.RegistrationArea{
-    width: 90%;
-    display: flex;
-    justify-content: flex-end;
-}
-.RegistrationArea button{
-    background: linear-gradient(45deg, rgba(84,190,235,1) 0%, rgb(84, 195, 242) 50%, rgb(73, 166, 205) 100%);
-    margin: 15px;
-    min-height: 50px;
-    min-width: 100px;
-    border-radius: 20px;
-}
-.RegistrationArea button:hover{
-    cursor: pointer;
-    filter: brightness(1.05);
-    scale: 1.02;
-    box-shadow: 0 0 5px black;
-}
-
 main{
     align-items: center;
     display: flex;
@@ -47,12 +28,17 @@ main{
     gap: 20px;
 }
 .Card{
+    margin: 0;
+    border: 0;
     background-color: #a6b4b4;
     max-width: 250px;
     height: 300px;
+    /* display: flex;
+    justify-content: start; */
     border-radius: 25px;
     overflow: hidden;
     box-shadow: -8px 8px 15px #616161;
+    display: flex;
 }
 .Cards .img{
     transition: all 750ms;
@@ -60,11 +46,15 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 250px;
     height: 200px;
     border-radius: 25px 25px 0 25px;
     background-color: #00CED1;
     z-index: 3;
     box-shadow: 0 1px 10px black;
+}
+/* .Card:hover{
+    cursor: pointer;
 }
 .Card:hover .img{
     height: 300px;
@@ -75,11 +65,17 @@ main{
     position: relative;
     top: -100px;
     z-index: 5;
+} */
+
+.Content {
+    width: 100%;
 }
+
 .Description{
     padding: 10px;
     word-wrap: break-word;
     text-align: center;
+    text-overflow: ellipsis;
     z-index: 1;
 }
 .Cards .img h1{

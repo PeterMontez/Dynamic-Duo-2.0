@@ -15,7 +15,7 @@ module.exports = {
                 attributes: ['IDArmario', 'NUMERO']
             });
         const item = "Armários"
-        res.render('../views/index', {item, SelectItem, EDV});
+        res.render('../views/armarios', {item, SelectItem, EDV});
     },
 
     async gavetas(req, res) {
@@ -27,7 +27,7 @@ module.exports = {
                 where: { IDArmario: id }
             });
         const item = "Gavetas"
-        res.render('../views/index', {item, SelectItem, EDV});
+        res.render('../views/armarios', {item, SelectItem, EDV});
     },
 
     async compartimentos(req, res) {
@@ -39,7 +39,7 @@ module.exports = {
                 where: { IDGaveta: id }
             });
         const item = "Compartimentos"
-        res.render('../views/index', {item, SelectItem, EDV});
+        res.render('../views/armarios', {item, SelectItem, EDV});
     },
 
     async ferramentas(req, res) {
@@ -51,7 +51,7 @@ module.exports = {
                 where: { IDCompartimento: id }
             });
         const item = "Ferramentas"
-        res.render('../views/index', {item, SelectItem, EDV});
+        res.render('../views/armarios', {item, SelectItem, EDV});
     },
 
 }

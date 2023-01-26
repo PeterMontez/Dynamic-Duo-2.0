@@ -4,6 +4,7 @@ const route = express.Router();
 
 // Importando os Controllers
 const home = require('./src/controllers/home');
+const retirar = require('./src/controllers/retirar')
 const porarm = require('./src/controllers/porarm');
 const porfer = require('./src/controllers/porfer');
 
@@ -11,6 +12,8 @@ const porfer = require('./src/controllers/porfer');
 route.get('/', home.pagInicialGet);
 route.post('/pushDevolver', home.openDevolver)
 route.post('/pushRetirar', home.openRetirar)
+route.post('/retirar', retirar.pagRetirarGet)
+
 
 //Retirar por armário
 route.get('/armarios/:EDV', porarm.armarios);
