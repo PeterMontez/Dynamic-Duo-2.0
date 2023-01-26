@@ -31,35 +31,46 @@
 
     <main id="Main">
         <div class="MainContent">
-            <button style="background: linear-gradient(320deg, rgba(144,35,55,1) 0%, rgba(218,34,40,1) 50%, rgba(175,43,66,1) 100%);" 
-                onclick="ClearDisplay();ViewDisplay('Retirar'); ">
-                <h1>Retirar</h1>
-            </button>
-            <button style="background: linear-gradient(45deg, rgba(3,167,106,1) 0%, rgba(127,190,119,1) 50%, rgba(53,147,75,1) 100%);"
-                 onclick=" ClearDisplay(); ViewDisplay('Devolver');">
-                <h1>Devolver</h1>
-            </button>
+            <form action="/pushRetirar" method="post">
+                <button
+                    style="background: linear-gradient(320deg, rgba(144,35,55,1) 0%, rgba(218,34,40,1) 50%, rgba(175,43,66,1) 100%);"
+                    onclick="ClearDisplay();ViewDisplay('Retirar');" type="submit">
+                    <h1>Retirar</h1>
+                </button>
+            </form>
+            <form action="/pushDevolver" method="post">
+
+                <button
+                    style="background: linear-gradient(45deg, rgba(3,167,106,1) 0%, rgba(127,190,119,1) 50%, rgba(53,147,75,1) 100%);"
+                    onclick=" ClearDisplay(); ViewDisplay('Devolver');" type="submit">
+                    <h1>Devolver</h1>
+                </button>
+            </form>
         </div>
     </main>
 
-<!-- TODO: LIGAR COM FUNÇOES PARA -->
+    <!-- TODO: LIGAR COM FUNÇOES PARA -->
 
-    <div class="conteudoOculto" id="Devolver">
+    <div class="conteudoOculto" id="Devolver" style="<%= !retirar && devolver ? 'display: flex;' : 'display: none' %>">
         <form class="Content" action="">
             <div class="Content">
                 <h2>EDV:</h2>
                 <input type="text" maxlength="8" placeholder="EDV">
             </div>
-            
+
             <button type="submit">
                 <h2>Enviar</h2>
             </button>
-            <button onclick="ClearDisplay()"><h2>Fechar</h2></button>
+            <button onclick="ClearDisplay()">
+                <h2>Fechar</h2>
+            </button>
         </form>
     </div>
-    <div class="conteudoOculto" id="Retirar">
+    <div class="conteudoOculto" id="Retirar" style="<%= retirar && !devolver ? 'display: flex;' : 'display: none' %> ">
         <form class="Content" action="">
-            <div class="Title"><h1>Retirar</h1></div>
+            <div class="Title">
+                <h1>Retirar</h1>
+            </div>
             <div class="Content">
                 <h2>EDV:</h2>
                 <input type="text" maxlength="8" placeholder="EDV">
@@ -69,7 +80,9 @@
                     <h2>Enviar</h2>
                 </button>
             </a>
-            <button onclick="ClearDisplay()"><h2>Fechar</h2></button>
+            <button onclick="ClearDisplay()">
+                <h2>Fechar</h2>
+            </button>
         </form>
     </div>
 

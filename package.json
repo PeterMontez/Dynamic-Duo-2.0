@@ -4,13 +4,8 @@
   "description": "*Dynamic Duo 2.0*",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
-=======
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> 1abbef0342e7c6b64ef7921a02175f056d7f5804
   },
   "repository": {
     "type": "git",
