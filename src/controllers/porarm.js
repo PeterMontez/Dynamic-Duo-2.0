@@ -23,7 +23,8 @@ module.exports = {
         const id = req.params.armario;
         const SelectItem = await gaveta.findAll({
                 raw: true,
-                attributes: ['IDGaveta', 'NOME', 'CONTEUDO']
+                attributes: ['IDGaveta', 'NOME', 'CONTEUDO'],
+                where: { IDArmario: id }
             });
         const item = "Gavetas"
         res.render('../views/index', {item, SelectItem, EDV});
@@ -34,7 +35,8 @@ module.exports = {
         const id = req.params.gaveta;
         const SelectItem = await compartimento.findAll({
                 raw: true,
-                attributes: ['IDCompartimento', 'NUMERO']
+                attributes: ['IDCompartimento', 'NUMERO'],
+                where: { IDGaveta: id }
             });
         const item = "Compartimentos"
         res.render('../views/index', {item, SelectItem, EDV});
@@ -43,10 +45,10 @@ module.exports = {
     async ferramentas(req, res) {
         const EDV = req.params.EDV;
         const id = req.params.compartimento;
-        const SelectArmarios = await ferramenta.findAll({
+        const SelectItem = await ferramenta.findAll({
                 raw: true,
                 attributes: ['IDFerramenta', 'NOME', 'OBS', 'STATUS'],
-                where: {}
+                where: { IDCompartimento: id }
             });
         const item = "Ferramentas"
         res.render('../views/index', {item, SelectItem, EDV});
