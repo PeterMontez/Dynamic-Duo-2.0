@@ -37,7 +37,7 @@ module.exports = {
 
         const retiradas = await ferramenta.findAll({
             raw: true,
-            attributes: ['IDFerramenta', 'NOME'],
+            attributes: ['IDFerramenta', 'IDENTIFICACAO'],
             where: { EDV: EDV }
         });
 

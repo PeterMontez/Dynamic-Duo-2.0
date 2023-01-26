@@ -68,7 +68,7 @@ INSERT Tipos_de_ferramentas VALUES
 ('Rebaixador'),
 ('Alargador'),
 ('Barra de Usinagem'),
-('Cabeçote'),
+('Cabeï¿½ote'),
 ('Ponta'),
 ('Cossinete'),
 ('Macho'),
@@ -76,14 +76,14 @@ INSERT Tipos_de_ferramentas VALUES
 
 INSERT Subtipos VALUES
 ('Brocas de Centro', 1),
-('Brocas de Aço Rápido', 1),
+('Brocas de Aï¿½o Rï¿½pido', 1),
 ('Brocas de Metal Duro', 1),
-('Fresa Topo Aço Rápido', 2),
+('Fresa Topo Aï¿½o Rï¿½pido', 2),
 ('Fresa Topo Metal Duro', 2),
-('Fresa Esférica', 2),
-('Alargador Aço Rápido', 6),
+('Fresa Esfï¿½rica', 2),
+('Alargador Aï¿½o Rï¿½pido', 6),
 ('Alargador Metal Duro', 6),
-('Pastilhas Cabeçote', 12),
+('Pastilhas Cabeï¿½ote', 12),
 ('Pastilhas Torno C', 12),
 ('Pastilhas Torno D', 12),
 ('Pastilhas Torno V', 12),
@@ -93,6 +93,7 @@ INSERT Subtipos VALUES
 ('Pastilhas Torno Rosca', 12),
 ('Pastilhas Torno Bedame', 12),
 ('Pastilhas Torno T-MAX', 12);
+
 
 SELECT * FROM Armarios
 SELECT * FROM Gavetas

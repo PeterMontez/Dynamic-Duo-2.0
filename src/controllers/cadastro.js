@@ -11,7 +11,7 @@ module.exports = {
         const dados = req.body;
 
         await ferramenta.create({
-            NOME: dados.nome,
+            IDENTIFICACAO: dados.identificacao,
             OBS: dados.obs,
             IDTipo: dados.tipo,
             IDSubstipo: dados.subtipo,
@@ -30,7 +30,7 @@ module.exports = {
         await armario.create({
             TIPO: dados.tipo,
             DIVISOES: dados.divisoes,
-            NUMERO: dados.numero
+            IDENTIFICACAO: dados.identificacao
             
         });
 
@@ -41,7 +41,7 @@ module.exports = {
         const dados = req.body;
 
         await gaveta.create({
-            NOME: dados.nome,
+            IDENTIFICACAO: dados.identificacao,
             CONTEUDO: dados.conteudo,
             IDArmario: dados.armario
             
@@ -54,7 +54,7 @@ module.exports = {
         const dados = req.body;
 
         await compartimento.create({
-            NUMERO: dados.numero,
+            IDENTIFICACAO: dados.identificacao,
             IDGaveta: dados.gaveta
             
         });
@@ -66,7 +66,7 @@ module.exports = {
         const dados = req.body;
 
         await tipo.create({
-            NOME: dados.nome
+            IDENTIFICACAO: dados.identificacao
             
         });
 
@@ -77,7 +77,7 @@ module.exports = {
         const dados = req.body;
 
         await subtipo.create({
-            NOME: dados.nome,
+            IDENTIFICACAO: dados.identificacao,
             IDTipo: dados.tipo
 
         });

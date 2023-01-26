@@ -16,7 +16,7 @@ const ferramenta = database.define('Ferramentas', {
         primaryKey: true
     },
 
-    NOME: {
+    IDENTIFICACAO: {
         type: Sequelize.STRING(50),
         allowNull: false
     },

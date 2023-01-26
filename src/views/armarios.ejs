@@ -32,44 +32,27 @@
     <main>
         <div class="Main">
             <div class="Title">
-                <h2>Title</h2>
+                <h2><%= item %></h2>
             </div>
             <div class="Cards">
-                <form action="/" method="post" >
+                <% for(let i = 0; i < SelectItem.length; i++){ %> 
+                <form action="<%= item == 'Armários' ? '/gavetas/'+EDV+'/'+SelectItem[i].IDArmario : 
+                                    item == 'Gavetas' ? '/compartimentos/'+EDV+'/'+SelectItem[i].IDGaveta  : 
+                                    item == 'Compartimentos' ? '/pa-ferramentas/'+EDV+'/'+SelectItem[i].IDCompartimento : 
+                                    item == 'Ferramentas' ? '' : '' %> " method="get" >
                     <button class="Card" onclick="this.form.submit()">
                         <div class="Content">
                             <div class="img">
-                                <h1>45</h1>
-                                <h2>Armario</h2>
+                                <h2><%= item%></h2>
+                                <h1><%= SelectItem[i].IDENTIFICACAO %></h1>
                             </div>
                             <div class="Description">
-                                <p>DescriptionDescriptionDescriptionDescription</p>
+                                <p><% SelectItem[i].CONTEUDO != null ? SelectItem[i].CONTEUDO : '' %> </p>
                             </div>
                         </div>
                     </button>
                 </form>
-                <div class="Card">
-                    <div class="Content">
-                        <div class="img">
-                            <h1>1</h1>
-                            <h2>Armario</h2>
-                        </div>
-                        <div class="Description">
-                            <p>DescriptionDescriptionDescriptionDescription</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="Card">
-                    <div class="Content">
-                        <div class="img">
-                            <h1>1</h1>
-                            <h2>Armario</h2>
-                        </div>
-                        <div class="Description">
-                            <p>DescriptionDescriptionDescriptionDescription</p>
-                        </div>
-                    </div>
-                </div>
+                <% } %> 
             </div>
         </div>
     </main>

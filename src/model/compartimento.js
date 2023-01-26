@@ -12,8 +12,8 @@ const compartimento = database.define('Compartimentos', {
         primaryKey: true
     },
 
-    NUMERO: {
-        type: Sequelize.INTEGER,
+    IDENTIFICACAO: {
+        type: Sequelize.STRING(3),
         allowNull: false
     },
 

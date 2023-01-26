@@ -49,16 +49,6 @@ main{
     flex-direction: column;
     height: 75vh;
 }
-/* .FirstLine{
-    display: flex;
-    justify-content: end;
-}
-.FirstLine button{
-    margin: 15px;
-    min-height: 50px;
-    min-width: 100px;
-    border-radius: 20px;
-} */
 .MainContent{
     height: 70vh;
     width: 100vw;
@@ -95,7 +85,7 @@ main{
     min-height: 550px;
     position: fixed;
     border-radius: 10px;
-    display: none;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -136,6 +126,28 @@ main{
     cursor: pointer;
     filter: brightness(1.10);
 }
+
+.CadastrarContent{
+    width: 75%;
+    height: 10%;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.formulario{
+    font-family: 'Bosch Sans Black';
+}
+.formulario input{
+    height: 3vh;
+    width: 10vw;
+    border-radius: 10px;
+    background-color: #696a6a;
+    color: white;
+}
+
+
 
 
 

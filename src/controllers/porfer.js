@@ -9,7 +9,7 @@ module.exports = {
         const EDV = req.params.EDV;
         const SelectItem = await tipo.findAll({
                 raw: true,
-                attributes: ['IDTipo', 'NOME']
+                attributes: ['IDTipo', 'IDENTIFICACAO']
             });
         const item = "Tipos de Ferramenta"
         res.render('../views/index', {item, SelectItem, EDV});
@@ -20,7 +20,7 @@ module.exports = {
         const id = req.params.tipo;
         const SelectItem = await subtipo.findAll({
                 raw: true,
-                attributes: ['IDSubtipo', 'NOME'],
+                attributes: ['IDSubtipo', 'IDENTIFICACAO'],
                 where: { IDTipo: id }
             });
         const item = "Subtipos"
@@ -33,7 +33,7 @@ module.exports = {
         const idsubtipo = req.params.subtipo;
         const SelectItem = await ferramenta.findAll({
                 raw: true,
-                attributes: ['IDFerramenta', 'NOME', 'OBS', 'STATUS'],
+                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'OBS', 'STATUS'],
                 where: { IDTipo: idtipo, IDSubtipo : idsubtipo}
             });
         const item = "Ferramentas"

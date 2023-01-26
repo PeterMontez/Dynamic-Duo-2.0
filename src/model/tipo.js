@@ -11,7 +11,7 @@ const tipo = database.define('Tipos_de_ferramentas', {
         primaryKey: true
     },
 
-    NOME: {
+    IDENTIFICACAO: {
         type: Sequelize.STRING(30),
         allowNull: false
     },

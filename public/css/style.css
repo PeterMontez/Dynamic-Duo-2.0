@@ -53,7 +53,7 @@ main{
     z-index: 3;
     box-shadow: 0 1px 10px black;
 }
-/* .Card:hover{
+.Card:hover{
     cursor: pointer;
 }
 .Card:hover .img{
@@ -65,7 +65,7 @@ main{
     position: relative;
     top: -100px;
     z-index: 5;
-} */
+}
 
 .Content {
     width: 100%;

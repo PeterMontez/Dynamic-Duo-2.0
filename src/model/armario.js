@@ -21,8 +21,8 @@ const armario = database.define('Armario', {
         allowNull: false
     },
 
-    NUMERO: {
-        type: Sequelize.INTEGER,
+    IDENTIFICACAO: {
+        type: Sequelize.STRING(3),
         allowNull: false
     },
 

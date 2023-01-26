@@ -14,6 +14,7 @@ const cadastro = require('./src/controllers/cadastro');
 route.get('/', home.pagInicialGet);
 route.post('/pushDevolver', home.openDevolver)
 route.post('/pushRetirar', home.openRetirar)
+route.post('/pushCadastro', home.openCadastro)
 route.post('/retirar', retirar.pagRetirarGet)
 
 
@@ -32,5 +33,9 @@ route.get('/devolver/:EDV', mover.exibir);
 route.post('/devolver/:EDV/:ferramenta', mover.devolver);
 route.post('/retirar/:EDV/:ferramenta', mover.retirar);
 
+// TODO
+//Cadastrar Armario 
+//Cadastrar Gavetas
+//Cadastrar Ferramenta
 
 module.exports = route;

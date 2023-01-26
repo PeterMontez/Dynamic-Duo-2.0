@@ -12,7 +12,7 @@ const subtipo = database.define('Subtipos', {
         primaryKey: true
     },
 
-    NOME: {
+    IDENTIFICACAO: {
         type: Sequelize.STRING(30),
         allowNull: false
     },

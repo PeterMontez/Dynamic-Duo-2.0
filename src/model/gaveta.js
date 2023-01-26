@@ -12,8 +12,8 @@ const gaveta = database.define('Gavetas', {
         primaryKey: true
     },
 
-    NOME: {
-        type: Sequelize.STRING(1),
+    IDENTIFICACAO: {
+        type: Sequelize.STRING(3),
         allowNull: false
     },
 
