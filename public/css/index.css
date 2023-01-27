@@ -85,7 +85,6 @@ main{
     min-height: 550px;
     position: fixed;
     border-radius: 10px;
-    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -130,16 +129,41 @@ main{
 .CadastrarContent{
     width: 75%;
     height: 10%;
-    background-color: aquamarine;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.CadastrarContent select{
+    height: 3vh;
+    width: 10vw;
+    border-radius: 5px;
+    background-color: #2d2d2d;
+    color: white;
+    border: 1px;
+    border-style: groove;
+    font-family: 'Bosch Sans Black';
+}
 .formulario{
     font-family: 'Bosch Sans Black';
 }
+.formulario select{
+    height: 3vh;
+    width: 10vw;
+    border-radius: 5px;
+    background-color: #2d2d2d;
+    color: white;
+    border: 1px;
+    border-style: groove;
+    font-family: 'Bosch Sans Black';
+}
+.formulario form{
+    font-family: 'Bosch Sans Black';
+    display: flex;
+    flex-direction: column;
+}
 .formulario input{
+    font-family: 'Bosch Sans Black';
     height: 3vh;
     width: 10vw;
     border-radius: 5px;

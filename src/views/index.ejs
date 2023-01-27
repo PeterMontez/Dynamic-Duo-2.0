@@ -106,19 +106,20 @@
                 <h4>Nome:</h4>
                 <input type="text" required name="indentificacao">
                 <h4>Observações</h4>
-                <input type="text" name="obs" >
+                <input type="text" name="obs"  required>
                 <h4>status</h4>
-                <input type="text" name="status">
+                <input type="text" name="status" required>
                 <h4>Tipo</h4>
-                <select name="idtipo" id=""></select>
+                <select name="idtipo" id="" required></select>
                 <h4>Subtipo</h4>
-                <select name="idsubtipo" id=""></select>
+                <select name="idsubtipo" id="" required></select>
                 <h4>Armario</h4>
-                <select name="idarmario" id=""></select>
+                <select name="idarmario" id="" required></select>
                 <h4>Gaveta</h4>
-                <select name="idgaveta" id=""></select>
+                <select name="idgaveta" id="" required></select>
                 <h4>Compartimento</h4>
-                <select name="idcompartimento" id=""></select>
+                <select name="idcompartimento" id="" required></select>
+                <button type="submit">Enviar</button>
             </form>
             <form action="/" method="get">
                 <button onclick="ClearDisplay()">
@@ -130,41 +131,46 @@
             <form action="" method="post">
                 <h4>Tipo:</h4>
                 <!-- TODO: Aqui tem um For para a quantidade de tipos -->
-                <select name="tipo" id=""></select>
+                <select name="tipo" id="" required></select>
                 <h4>Divisões:</h4>
-                <input type="number" name="divisoes" id="">
+                <input type="number" name="divisoes" id="" required>
                 <h4>Nome / numero:</h4>
-                <input type="text" name="identificacao">
+                <input type="text" name="identificacao" required>
+                <button type="submit">Enviar</button>
             </form>
         </div>
         <div class="formulario" style="display: none;" id="Gavetas">
             <form action="" method="post">
                 <h4>identificação</h4>
-                <input type="text" name="identificacao">
+                <input type="text" name="identificacao" required>
                 <h4>Conteudo</h4>
-                <input type="text" name="conteudo">
+                <input type="text" name="conteudo" required>
                 <h4>Armario</h4>
-                <select name="armario" id="">
+                <select name="armario" id="" required>
                     <!-- TODO: Aqui vai um for para a quantidade de armarios -->
                 </select>
                 <h4>Compartimentos</h4>
-                <!-- TODO: Aqui tem um For para inserir a quantidade de compartimentos -->
+                <input type="number" required>
+                    <!-- TODO: Aqui tem um For para inserir a quantidade de compartimentos -->
+                <button type="submit">Enviar</button>
             </form>
         </div>
         <div class="formulario" style="display: none;" id="TipoFerramenta">
             <form action="">
                 <h4>Nome:</h4>
-                <input type="text" name="identificacao">
+                <input type="text" name="identificacao"required>
+                <button type="submit">Enviar</button>
             </form>
         </div>
         <div class="formulario" style="display: none;" id="SubtipoFerramenta">
             <form action="">
                 <h4>Nome:</h4>
-                <input type="text" name="identificacao">
+                <input type="text" name="identificacao" required>
                 <h4>Tipo</h4>
-                <select name="tipo" id="">
+                <select name="tipo" id="" required>
                     <!-- TODO: Aqui vai um FOR nos tipos de ferramentas -->
                 </select>
+                <button type="submit">Enviar</button>
             </form>
         </div>
     </div>
