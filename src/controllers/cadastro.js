@@ -36,7 +36,7 @@ module.exports = {
 
         res.redirect('/');
     },
-
+// TODO: Cadastrar compartimentos juntos em um FOR
     async cadastragaveta(req, res) {
         const dados = req.body;
 
