@@ -81,7 +81,6 @@ module.exports = {
             TIPO: dados.tipo,
             DIVISOES: dados.divisoes,
             IDENTIFICACAO: dados.identificacao
-
         });
 
         res.redirect('/');
@@ -90,7 +89,6 @@ module.exports = {
     async cadastragaveta(req, res) {
         const dados = req.body;
 
-        qtdcompartimentos
 
         const gavetinha = await gaveta.create({
             IDENTIFICACAO: dados.identificacao,
@@ -101,9 +99,8 @@ module.exports = {
 
         for (let i = 0; i < dados.qtdcompartimentos; i++) {
             await compartimento.create({
-                IDENTIFICACAO: i,
+                IDENTIFICACAO: i+1,
                 IDGaveta: gavetinha.IDGaveta
-
             });
 
         }

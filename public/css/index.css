@@ -12,6 +12,12 @@ header .Content{
     display: flex;
     justify-content: center;
 }
+header button{
+    background-color: transparent;
+}
+header button:hover{
+    cursor: pointer;
+}
 header .Content img{
     margin: 5px;
 }

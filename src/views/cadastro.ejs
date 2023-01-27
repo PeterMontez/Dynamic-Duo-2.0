@@ -20,7 +20,9 @@
             alt="" class="BoschGradient">
         <form action="/" method="get">
             <div class="Content">
-                <img src="/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended">
+                <button>
+                    <img src="/img/Bosch-Logo-Extended.png" style="height: 50px; cursor: pointer;" alt="Bosch-Logo-Extended">
+                </button>
             </div>
         </form>
     </header>
@@ -110,10 +112,14 @@
 
             </div>
             <div class="formulario" style="display:none;" id='Armario'>
-                <form action="" method="post">
+                <form action="/cadastrar/armario" method="post">
                     <h4>Tipo:</h4>
                     <!-- TODO: Aqui tem um For para a quantidade de tipos -->
-                    <select name="tipo" id="" required></select>
+                    <select name="tipo" id="" required>
+                        <option value="" selected disabled>Selecione</option>
+                        <option value="Gavetas">Gavetas</option>
+                        <option value="Portas">Portas</option>
+                    </select>
                     <h4>Divisões:</h4>
                     <input type="number" name="divisoes" id="" required>
                     <h4>Nome / numero:</h4>
@@ -122,30 +128,31 @@
                 </form>
             </div>
             <div class="formulario" style="display: none;" id="Gavetas">
-                <form action="" method="post">
+                <form action="/cadastrar/gaveta" method="post">
                     <h4>identificação</h4>
                     <input type="text" name="identificacao" required>
                     <h4>Conteudo</h4>
                     <input type="text" name="conteudo" required>
                     <h4>Armario</h4>
-                    <select name="armario" id="" required>
-                        <!-- TODO: Aqui vai um for para a quantidade de armarios -->
+                    <select name="armario" id="SlctArmario" required>
+                        <% for(let i = 0; i < armarios.length; i++){ %> 
+                            <option value="<%= armarios[i].IDArmario %> "><%= armarios[i].IDENTIFICACAO %> </option>
+                        <% } %> 
                     </select>
                     <h4>Compartimentos</h4>
-                    <input type="number" required>
-                    <!-- TODO: Aqui tem um For para inserir a quantidade de compartimentos -->
+                    <input type="number" name="qtdcompartimentos" required>
                     <button type="submit" class="submitButton">Enviar</button>
                 </form>
             </div>
             <div class="formulario" style="display: none;" id="TipoFerramenta">
-                <form action="">
+                <form action="/cadastra/tipo" method="post">
                     <h4>Nome:</h4>
                     <input type="text" name="identificacao" required>
                     <button type="submit" class="submitButton">Enviar</button>
                 </form>
             </div>
             <div class="formulario" style="display: none;" id="SubtipoFerramenta">
-                <form action="">
+                <form action="/cadastra/subtipo" method="post">
                     <h4>Nome:</h4>
                     <input type="text" name="identificacao" required>
                     <h4>Tipo</h4>
