@@ -60,6 +60,7 @@ main{
 }
 .MainContent button{
     height: 30vh;
+    min-width: 300px;
     width: 35vw;
     margin: 15px;
     border-radius: 20px;
@@ -93,8 +94,14 @@ main{
     animation: Appear 500ms;
     transition: all 500ms;
 }
-
-.conteudoOculto .Content{
+.sendReceive{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+/* .conteudoOculto .Content{
     width: 75%;
     height: 75%;
     display: flex;
@@ -102,8 +109,8 @@ main{
     justify-content: center;
     align-items: center;
     gap: 15px;
-}
-.conteudoOculto .Content input{
+} */
+/* .conteudoOculto .Content input{
     background-color: aqua;
     height: 60px;
     width: 75%;
@@ -111,20 +118,7 @@ main{
     text-align: center;
     box-shadow: 0 0 10px black;
 
-}
-.conteudoOculto button{
-    margin: 15px;
-    min-height: 50px;
-    min-width: 100px;
-    border-radius: 20px;
-    background: rgb(189,195,199);
-    background: linear-gradient( rgba(189,195,199,1) 0%, rgba(44,62,80,1) 100%);
-    box-shadow: 0 0 5px black;
-}
-.conteudoOculto button:hover{
-    cursor: pointer;
-    filter: brightness(1.10);
-}
+} */
 
 .CadastrarContent{
     width: 75%;
@@ -135,7 +129,7 @@ main{
     align-items: center;
 }
 .CadastrarContent select{
-    height: 3vh;
+    height: 32px;
     width: 10vw;
     border-radius: 5px;
     background-color: #2d2d2d;
@@ -147,50 +141,48 @@ main{
 .formulario{
     font-family: 'Bosch Sans Black';
 }
-.formulario select{
-    height: 3vh;
+.formulario input, select{
+    min-width: 100px;
+    font-family: 'Bosch Sans Black';
+    height: 30px;
     width: 10vw;
     border-radius: 5px;
     background-color: #2d2d2d;
     color: white;
     border: 1px;
     border-style: groove;
-    font-family: 'Bosch Sans Black';
+}
+.formulario select{
+    height: 32px;
 }
 .formulario form{
     font-family: 'Bosch Sans Black';
     display: flex;
     flex-direction: column;
 }
-.formulario input{
-    font-family: 'Bosch Sans Black';
-    height: 3vh;
-    width: 10vw;
-    border-radius: 5px;
-    background-color: #2d2d2d;
-    color: white;
-    border: 1px;
-    border-style: groove;
+#SeparacaoConteudo{
+    display: flex;
+    gap: 15px;
 }
 
 .submitButton{
-    float: right;
     padding: 7px 35px;
+    margin: 15px;
     border-radius: 60px;
     display: inline-block;
     background-color: #4b8cfb;
     color: white;
     font-size: 18px;
     cursor: pointer;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
-              0 2px 10px 0 rgba(0,0,0,0.07);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1),
+              0 2px 10px 0 rgba(0,0,0,0.09);
     -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
 }
 .submitButton:hover {
     transform: translateY(1px);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
-              0 1px 1px 0 rgba(0,0,0,0.09);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2),
+              0 1px 1px 0 rgba(0,0,0,0.15);
 }
 
 

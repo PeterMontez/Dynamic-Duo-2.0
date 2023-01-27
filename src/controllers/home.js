@@ -25,7 +25,7 @@ module.exports = {
 
         const subtipos = await subtipo.findAll({
             raw: true,
-            attributes: ['IDSubipo', 'IDENTIFICACAO', 'IDTipo']
+            attributes: ['IDSubtipo', 'IDENTIFICACAO', 'IDTipo']
         });
 
         const armarios = await armario.findAll({
