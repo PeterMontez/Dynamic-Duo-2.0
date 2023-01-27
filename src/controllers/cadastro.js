@@ -7,21 +7,71 @@ const gaveta = require('../model/gaveta');
 const compartimento = require('../model/compartimento');
 
 module.exports = {
+    async sla(req, res) {
+
+    },
     async cadastraferramenta(req, res) {
-        const dados = req.body;
-
-        await ferramenta.create({
-            IDENTIFICACAO: dados.identificacao,
-            OBS: dados.obs,
-            IDTipo: dados.tipo,
-            IDSubstipo: dados.subtipo,
-            IDCompartimento: dados.compartimento,
-            IDGaveta: dados.gaveta,
-            IDArmario: dados.armario
-
+        const ferramentas = await ferramenta.findAll({
+            raw: true,
+            attributes: ['IDFerramenta', 'IDENTIFICACAO', 'OBS', 'STATUS', 'EDV']
         });
 
-        res.redirect('/');
+        const tipos = await tipo.findAll({
+            raw: true,
+            attributes: ['IDTipo', 'IDENTIFICACAO']
+        });
+
+        const subtipos = await subtipo.findAll({
+            raw: true,
+            attributes: ['IDSubtipo', 'IDENTIFICACAO', 'IDTipo']
+        });
+
+        const armarios = await armario.findAll({
+            raw: true,
+            attributes: ['IDArmario', 'IDENTIFICACAO', 'TIPO', 'DIVISOES']
+        });
+
+        const gavetas = await gaveta.findAll({
+            raw: true,
+            attributes: ['IDGaveta', 'IDENTIFICACAO', 'CONTEUDO', 'IDArmario']
+        });
+
+        const compartimentos = await compartimento.findAll({
+            raw: true,
+            attributes: ['IDCompartimento', 'IDENTIFICACAO', 'IDGaveta']
+        });
+
+        
+        
+        const dados = req.body;
+
+        const subtipoSelected = dados.subtipo;
+        const armarioSelected = dados.armario;
+        const gavetaSelected = dados.gaveta;
+        const compartimentoSelected = dados.compartimento;
+
+        if (armarioSelected==undefined || gavetaSelected==undefined || compartimentoSelected==undefined) {
+            res.render('cadastro', {tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
+                SelectedTipo: dados.tipo, SelectedSubtipo:dados.subtipo, SelectedArmario:dados.armario, SelectedGaveta:dados.gaveta,SelectedCompartimento:dados.compartimento,
+                SelectedIdentificacao: dados.identificacao,SelectedObs: dados.obs,SelectedStatus: dados.status
+            });
+        }
+        else{
+            console.log('passou');
+            console.log(subtipoSelected);
+            await ferramenta.create({
+                IDENTIFICACAO: dados.identificacao,
+                OBS: dados.obs,
+                IDTipo: dados.tipo,
+                IDSubstipo: dados.subtipo,
+                IDCompartimento: dados.compartimento,
+                IDGaveta: dados.gaveta,
+                IDArmario: dados.armario
+    
+            });
+    
+            res.redirect('/');
+        }
     },
 
     async cadastraarmario(req, res) {
@@ -31,7 +81,7 @@ module.exports = {
             TIPO: dados.tipo,
             DIVISOES: dados.divisoes,
             IDENTIFICACAO: dados.identificacao
-            
+
         });
 
         res.redirect('/');
@@ -46,16 +96,16 @@ module.exports = {
             IDENTIFICACAO: dados.identificacao,
             CONTEUDO: dados.conteudo,
             IDArmario: dados.armario
-            
+
         });
 
         for (let i = 0; i < dados.qtdcompartimentos; i++) {
             await compartimento.create({
                 IDENTIFICACAO: i,
                 IDGaveta: gavetinha.IDGaveta
-                
+
             });
-            
+
         }
 
         res.redirect('/');
@@ -66,7 +116,7 @@ module.exports = {
 
         await tipo.create({
             IDENTIFICACAO: dados.identificacao
-            
+
         });
 
         res.redirect('/');

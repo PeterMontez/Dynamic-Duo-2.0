@@ -7,7 +7,7 @@ const compartimento = require('../model/compartimento');
 
 module.exports = {
     async pagInicialGet(req, res) {
-        res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
+        res.render('../views/index', {retirar:false, devolver:false});
     },
     async pagInicialPost(req, res){
         
@@ -43,7 +43,11 @@ module.exports = {
             attributes: ['IDCompartimento', 'IDENTIFICACAO', 'IDGaveta']
         });
 
-        res.render('../views/index', {retirar:false, devolver:false, cadastrar:true, tipos, subtipos, armarios, gavetas, compartimentos, ferramentas})
+        res.render('../views/cadastro', {tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
+            SelectedTipo:'', SelectedSubtipo:'', SelectedArmario:'', SelectedGaveta:'',SelectedCompartimento:'',
+            SelectedIdentificacao:'',
+            SelectedObs:'',
+            SelectedStatus:''})
     },
     
     async openDevolver(req, res){

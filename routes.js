@@ -34,7 +34,7 @@ route.post('/retirar/:EDV/:ferramenta', mover.retirar);
 
 route.get('/cadastrar/armario', cadastro.cadastraarmario);
 route.get('/cadastrar/gaveta', cadastro.cadastragaveta);
-route.get('/cadastrar/ferramenta', cadastro.cadastraferramenta);
+route.post('/cadastrar/ferramenta', cadastro.cadastraferramenta);
 route.get('/cadastra/tipo', cadastro.cadastratipo);
 route.get('/cadastra/subtipo', cadastro.cadastrasubtipo);
 
