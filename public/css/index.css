@@ -43,7 +43,9 @@ header .Content img{
 .Blur{
     filter: blur(3px);
 }
-
+h1{
+    font-family: 'Bosch Sans Black';
+}
 main{
     display: flex;
     flex-direction: column;
@@ -99,27 +101,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50%;
 }
-/* .conteudoOculto .Content{
-    width: 75%;
-    height: 75%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-} */
-/* .conteudoOculto .Content input{
-    background-color: aqua;
-    height: 60px;
-    width: 75%;
-    border-radius: 50px;
-    text-align: center;
-    box-shadow: 0 0 10px black;
-
-} */
-
 .CadastrarContent{
     width: 75%;
     height: 10%;
@@ -140,6 +122,10 @@ main{
 }
 .formulario{
     font-family: 'Bosch Sans Black';
+    min-height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 .formulario input, select{
     min-width: 100px;
