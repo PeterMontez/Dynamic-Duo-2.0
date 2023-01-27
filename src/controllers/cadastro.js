@@ -36,28 +36,27 @@ module.exports = {
 
         res.redirect('/');
     },
-// TODO: Cadastrar compartimentos juntos em um FOR
+
     async cadastragaveta(req, res) {
         const dados = req.body;
 
-        await gaveta.create({
+        qtdcompartimentos
+
+        const gavetinha = await gaveta.create({
             IDENTIFICACAO: dados.identificacao,
             CONTEUDO: dados.conteudo,
             IDArmario: dados.armario
             
         });
 
-        res.redirect('/');
-    },
-
-    async cadastracompartimento(req, res) {
-        const dados = req.body;
-
-        await compartimento.create({
-            IDENTIFICACAO: dados.identificacao,
-            IDGaveta: dados.gaveta
+        for (let i = 0; i < dados.qtdcompartimentos; i++) {
+            await compartimento.create({
+                IDENTIFICACAO: i,
+                IDGaveta: gavetinha.IDGaveta
+                
+            });
             
-        });
+        }
 
         res.redirect('/');
     },
