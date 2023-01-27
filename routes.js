@@ -17,7 +17,6 @@ route.post('/pushRetirar', home.openRetirar)
 route.post('/pushCadastro', home.openCadastro)
 route.post('/retirar', retirar.pagRetirarGet)
 
-
 //Retirar por armário
 route.get('/armarios/:EDV', porarm.armarios);
 route.get('/gavetas/:EDV/:armario', porarm.gavetas);
@@ -32,6 +31,12 @@ route.get('/pf-ferramentas/:EDV/:tipo/:subtipo', porfer.ferramentas);
 route.get('/devolver/:EDV', mover.exibir);
 route.post('/devolver/:EDV/:ferramenta', mover.devolver);
 route.post('/retirar/:EDV/:ferramenta', mover.retirar);
+
+route.get('/cadastrar/armario', cadastro.cadastraarmario);
+route.get('/cadastrar/gaveta', cadastro.cadastragaveta);
+route.get('/cadastrar/ferramenta', cadastro.cadastraferramenta);
+route.get('/cadastra/tipo', cadastro.cadastratipo);
+route.get('/cadastra/subtipo', cadastro.cadastrasubtipo);
 
 // TODO
 //Cadastrar Armario 
