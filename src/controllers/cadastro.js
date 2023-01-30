@@ -47,29 +47,33 @@ module.exports = {
 
         // TODO: implementar opção do usuario colocar foto;
         let foto = 'upload_foto.jpg'
-
-        const subtipoSelected = dados.subtipo;
+        
         const armarioSelected = dados.armario;
         const gavetaSelected = dados.gaveta;
         const compartimentoSelected = dados.compartimento;
+        const condicao = dados.send
 
-        if (armarioSelected==undefined || gavetaSelected==undefined || compartimentoSelected==undefined) {
+        if ((armarioSelected==undefined || gavetaSelected==undefined || compartimentoSelected==undefined) || !condicao) {
+            console.log('a');
+            console.log(dados.subtipo);
             res.render('cadastro', {tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
                 SelectedTipo: dados.tipo, SelectedSubtipo:dados.subtipo, SelectedArmario:dados.armario, SelectedGaveta:dados.gaveta,SelectedCompartimento:dados.compartimento,
-                SelectedIdentificacao: dados.identificacao,SelectedObs: dados.obs,SelectedStatus: dados.status
+                SelectedIdentificacao: dados.identificacao,SelectedObs: dados.obs,SelectedStatus: dados.status, condicao:false
             });
         }
         else{
-            await ferramenta.create({
-                IDENTIFICACAO: dados.identificacao,
-                OBS: dados.obs,
-                IDTipo: dados.tipo,
-                IDSubstipo: dados.subtipo,
-                IDCompartimento: dados.compartimento,
-                IDGaveta: dados.gaveta,
-                IDArmario: dados.armario
+            console.log('b');
+            console.log(condicao);
+            // await ferramenta.create({
+            //     IDENTIFICACAO: dados.identificacao,
+            //     DESCRICAO: dados.descricao,
+            //     IDTipo: dados.tipo,
+            //     IDSubstipo: dados.subtipo,
+            //     IDCompartimento: dados.compartimento,
+            //     IDGaveta: dados.gaveta,
+            //     IDArmario: dados.armario
     
-            });
+            // });
     
             res.redirect('/');
         }

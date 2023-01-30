@@ -47,7 +47,7 @@ module.exports = {
             SelectedTipo:'', SelectedSubtipo:'', SelectedArmario:'', SelectedGaveta:'',SelectedCompartimento:'',
             SelectedIdentificacao:'',
             SelectedObs:'',
-            SelectedStatus:''})
+            SelectedStatus:'', send:false})
     },
     
     async openDevolver(req, res){
