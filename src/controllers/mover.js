@@ -6,6 +6,8 @@ module.exports = {
         const EDV = req.params.EDV;
         const id = req.params.ferramenta;
 
+        console.log(EDV)
+
         await ferramenta.update({
             EDV: EDV,
             STATUS: 'Retirada',
@@ -13,6 +15,7 @@ module.exports = {
         {
             where: { IDFerramenta: id }
         });
+
 
         res.redirect('../views/index', {retirar:false, devolver:false});
     },
