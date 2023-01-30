@@ -46,7 +46,7 @@ module.exports = {
         res.render('../views/cadastro', {tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
             SelectedTipo:'', SelectedSubtipo:'', SelectedArmario:'', SelectedGaveta:'',SelectedCompartimento:'',
             SelectedIdentificacao:'',
-            SelectedObs:'',
+            SelectedDescricao:'',
             SelectedStatus:'', send:false})
     },
     

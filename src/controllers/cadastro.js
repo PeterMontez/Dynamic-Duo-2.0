@@ -56,7 +56,7 @@ module.exports = {
         if ((armarioSelected==undefined || gavetaSelected==undefined || compartimentoSelected==undefined) || !condicao) {
             res.render('cadastro', {tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
                 SelectedTipo: dados.tipo, SelectedSubtipo:dados.subtipo, SelectedArmario:dados.armario, SelectedGaveta:dados.gaveta,SelectedCompartimento:dados.compartimento,
-                SelectedIdentificacao: dados.identificacao,SelectedObs: dados.obs,SelectedStatus: dados.status, condicao:false
+                SelectedIdentificacao: dados.identificacao,SelectedDescricao: dados.descricao,SelectedStatus: dados.status, condicao:false
             });
         }
         else{
