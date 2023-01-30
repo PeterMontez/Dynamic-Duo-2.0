@@ -54,14 +54,15 @@
 
         <% for (let i=0; i<ferramentas.length; i++) { %>
           <tr>
-            <td><strong>Ferramenta bem importante de teste</strong></td>
-            <td>Usada de forma importante em alguma peça ou usinagem importante</td>
-            <td>Atualmente sendo importante</td>
-            <td>Importante</td>
-            <td>Bastante importante</td>
-            <td>Um deles</td>
-            <td>Uma delas</td>
-            <td>O do lado daquele</td>
+            <td><strong><%= ferramentas[i].IDENTIFICACAO %></strong></td>
+            <td><%= ferramentas[i].OBS %></td>
+            <td><%= ferramentas[i].STATUS %></td>
+            <td><%= ferramentas[i].IDTipo %></td>
+
+            <td><%= ferramentas[i].IDSubtipo %></td>
+            <td><%= ferramentas[i].IDArmario %></td>
+            <td><%= ferramentas[i].IDGaveta %></td>
+            <td><%= ferramentas[i].IDCompartimento %></td>
           </tr>
         <% } %>
 

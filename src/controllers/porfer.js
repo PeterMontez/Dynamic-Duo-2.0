@@ -33,7 +33,7 @@ module.exports = {
         const idsubtipo = req.params.subtipo;
         const SelectItem = await ferramenta.findAll({
                 raw: true,
-                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'OBS', 'STATUS'],
+                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
                 where: { IDTipo: idtipo, IDSubtipo : idsubtipo}
             });
         const item = "Ferramentas"

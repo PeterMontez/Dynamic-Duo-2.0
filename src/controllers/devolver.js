@@ -1,4 +1,9 @@
 const ferramenta = require('../model/ferramenta');
+const armario = require('../model/armario');
+const gaveta = require('../model/gaveta');
+const compartimento = require('../model/compartimento');
+const tipo = require('../model/tipo');
+const subtipo = require('../model/subtipo');
 
 module.exports = {
     async pagDevolverGet(req, res){
@@ -7,12 +12,9 @@ module.exports = {
 
         const ferramentas = await ferramenta.findAll({
             raw: true,
-            where: {
-                EDV: EDV
-            }
-        })
-
-        console.log(ferramentas);
+            attributes: ['IDFerramenta', 'IDENTIFICACAO', 'IDTipo'],
+            where: { EDV: EDV }
+        });
 
         res.render('../views/devolver', {EDV, ferramentas});
     },
