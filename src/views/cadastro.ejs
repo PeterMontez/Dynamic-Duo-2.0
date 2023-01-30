@@ -27,7 +27,6 @@
         </form>
     </header>
 
-    <!-- TODO: ARRUMAR SUBTIPO NO CADASTRO -->
 
     <main>
         <div class="cadastro" id="Cadastrar" style="display: flex;">
@@ -46,7 +45,7 @@
                         <input type="text" name="identificacao" value="<%= SelectedIdentificacao %>" >
                         <h4>Descrição</h4>
                         <input type="text" name="descricao" value="<%= SelectedObs %> ">
-                        <h4>status</h4>
+                        <h4>Status</h4>
                         <input type="text" name="status" value="<%= SelectedStatus %> " >
                         <h4>Tipo</h4>
                         <select name="tipo" id="tipoSelect"  onchange="this.form.submit()">
@@ -119,7 +118,6 @@
             <div class="formulario" style="display:none;" id='Armario'>
                 <form action="/cadastrar/armario" method="post">
                     <h4>Tipo:</h4>
-                    <!-- TODO: Aqui tem um For para a quantidade de tipos -->
                     <select name="tipo" id="" required>
                         <option value="" selected disabled>Selecione</option>
                         <option value="Gavetas">Gavetas</option>
@@ -162,7 +160,10 @@
                     <input type="text" name="identificacao" required>
                     <h4>Tipo</h4>
                     <select name="tipo" id="" required>
-                        <!-- TODO: Aqui vai um FOR nos tipos de ferramentas -->
+                        <option value="" disabled selected>Selecione</option>
+                        <% for(let i = 0; i < tipos.length; i++ ) {%>
+                            <option value="<%= tipos[i].IDTipo %>"><%= tipos[i].IDENTIFICACAO %></option>
+                        <% } %> 
                     </select>
                     <button type="submit" class="submitButton">Enviar</button>
                 </form>

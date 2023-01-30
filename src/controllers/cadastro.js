@@ -54,26 +54,22 @@ module.exports = {
         const condicao = dados.send
 
         if ((armarioSelected==undefined || gavetaSelected==undefined || compartimentoSelected==undefined) || !condicao) {
-            console.log('a');
-            console.log(dados.subtipo);
             res.render('cadastro', {tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
                 SelectedTipo: dados.tipo, SelectedSubtipo:dados.subtipo, SelectedArmario:dados.armario, SelectedGaveta:dados.gaveta,SelectedCompartimento:dados.compartimento,
                 SelectedIdentificacao: dados.identificacao,SelectedObs: dados.obs,SelectedStatus: dados.status, condicao:false
             });
         }
         else{
-            console.log('b');
-            console.log(condicao);
-            // await ferramenta.create({
-            //     IDENTIFICACAO: dados.identificacao,
-            //     DESCRICAO: dados.descricao,
-            //     IDTipo: dados.tipo,
-            //     IDSubstipo: dados.subtipo,
-            //     IDCompartimento: dados.compartimento,
-            //     IDGaveta: dados.gaveta,
-            //     IDArmario: dados.armario
-    
-            // });
+            await ferramenta.create({
+                IDENTIFICACAO: dados.identificacao,
+                DESCRICAO: dados.descricao,
+                IDTipo: dados.tipo,
+                IDSubtipo: dados.subtipo,
+                IDCompartimento: dados.compartimento,
+                IDGaveta: dados.gaveta,
+                IDArmario: dados.armario,
+                STATUS: dados.status
+            });
     
             res.redirect('/');
         }

@@ -12,7 +12,7 @@ module.exports = {
                 attributes: ['IDTipo', 'IDENTIFICACAO']
             });
         const item = "Tipos de Ferramenta"
-        res.render('../views/armarios', {item, SelectItem, EDV});
+        res.render('../views/ferramentas', {item, SelectItem, EDV});
     },
 
     async subtipos(req, res) {
@@ -20,14 +20,15 @@ module.exports = {
         const id = req.params.tipo;
         const SelectItem = await subtipo.findAll({
                 raw: true,
-                attributes: ['IDSubtipo', 'IDENTIFICACAO'],
+                attributes: ['IDSubtipo', 'IDENTIFICACAO', 'IDTipo'],
                 where: { IDTipo: id }
             });
         const item = "Subtipos"
-        res.render('../views/armarios', {item, SelectItem, EDV});
+        res.render('../views/ferramentas', {item, SelectItem, EDV});
     },
 
     async ferramentas(req, res) {
+
         const EDV = req.params.EDV;
         const idtipo = req.params.tipo;
         const idsubtipo = req.params.subtipo;
@@ -37,7 +38,7 @@ module.exports = {
                 where: { IDTipo: idtipo, IDSubtipo : idsubtipo}
             });
         const item = "Ferramentas"
-        res.render('../views/armarios', {item, SelectItem, EDV});
+        res.render('../views/ferramentas', {item, SelectItem, EDV});
     },
 
 }
