@@ -45,6 +45,9 @@ module.exports = {
         
         const dados = req.body;
 
+        // TODO: implementar opção do usuario colocar foto;
+        let foto = 'upload_foto.jpg'
+
         const subtipoSelected = dados.subtipo;
         const armarioSelected = dados.armario;
         const gavetaSelected = dados.gaveta;
@@ -57,8 +60,6 @@ module.exports = {
             });
         }
         else{
-            console.log('passou');
-            console.log(subtipoSelected);
             await ferramenta.create({
                 IDENTIFICACAO: dados.identificacao,
                 OBS: dados.obs,

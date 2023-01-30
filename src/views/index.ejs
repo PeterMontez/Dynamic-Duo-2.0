@@ -60,7 +60,7 @@
         <form class="Content formulario" action="/devolver" method="post">
             <div class="Content sendReceive">
                 <h2>EDV:</h2>
-                <input type="text" maxlength="8" name="edv" placeholder="EDV">
+                <input type="text" maxlength="8" minlength="8" name="edv" placeholder="EDV">
             </div>
 
             <button type="submit" class="submitButton">Enviar</button>
@@ -76,7 +76,7 @@
         <form class="Content formulario" action="/retirar" method="post">
             <div class="Content sendReceive">
                 <h2>EDV:</h2>
-                <input type="text" maxlength="8" placeholder="EDV" name="edv" required>
+                <input type="text" maxlength="8" minlength="8" placeholder="EDV" name="edv" required>
             </div>
             <button type="submit" class="submitButton">Enviar</button>
         </form>

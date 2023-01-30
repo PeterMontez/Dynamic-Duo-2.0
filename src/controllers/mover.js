@@ -43,5 +43,4 @@ module.exports = {
 
         res.render('../views/index', {retiradas});
     },
-
 }

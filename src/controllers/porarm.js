@@ -47,7 +47,7 @@ module.exports = {
         const id = req.params.compartimento;
         const SelectItem = await ferramenta.findAll({
                 raw: true,
-                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'OBS', 'STATUS'],
+                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
                 where: { IDCompartimento: id }
             });
         const item = "Ferramentas"

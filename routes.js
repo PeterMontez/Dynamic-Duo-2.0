@@ -30,10 +30,12 @@ route.get('/tipo/:EDV', porfer.tipos);
 route.get('/subtipo/:EDV/:tipo', porfer.subtipos);
 route.get('/pf-ferramentas/:EDV/:tipo/:subtipo', porfer.ferramentas);
 
+//Geral
 route.get('/mover/:EDV', mover.exibir);
 route.post('/devolver/:EDV/:ferramenta', mover.devolver);
 route.post('/retirar/:EDV/:ferramenta', mover.retirar);
 
+//Cadastro
 route.post('/cadastrar/armario', cadastro.cadastraarmario);
 route.post('/cadastrar/gaveta', cadastro.cadastragaveta);
 route.post('/cadastrar/ferramenta', cadastro.cadastraferramenta);

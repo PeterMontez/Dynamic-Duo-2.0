@@ -52,7 +52,8 @@
                                 <h1><%= SelectItem[i].IDENTIFICACAO %></h1>
                             </div>
                             <div class="Description">
-                                <p><% SelectItem[i].CONTEUDO != null ? SelectItem[i].CONTEUDO : '' %> </p>
+                                <p><h4><%= SelectItem[i].CONTEUDO != null ? SelectItem[i].CONTEUDO : 
+                                       SelectItem[i].DESCRICAO != null ? SelectItem[i].DESCRICAO : '' %> </H5></p>
                             </div>
                         </div>
                     </button>

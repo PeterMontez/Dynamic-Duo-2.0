@@ -21,7 +21,7 @@ const ferramenta = database.define('Ferramentas', {
         allowNull: false
     },
 
-    OBS: {
+    DESCRICAO: {
         type: Sequelize.STRING(50),
         allowNull: true
     },
@@ -35,7 +35,13 @@ const ferramenta = database.define('Ferramentas', {
         type: Sequelize.INTEGER,
         allowNull: true
     },
+    
 
+    // TODO: Implementar opção do usuario colocar foto
+    // Foto:{
+    //     type: Sequelize.STRING(50),
+    //     allowNull: false
+    // }
 });
 
 // Exportando essa tabela
