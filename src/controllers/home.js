@@ -15,7 +15,7 @@ module.exports = {
     async openCadastro(req, res){
         const ferramentas = await ferramenta.findAll({
             raw: true,
-            attributes: ['IDFerramenta', 'IDENTIFICACAO', 'OBS', 'STATUS', 'EDV']
+            attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
         });
 
         const tipos = await tipo.findAll({
@@ -47,7 +47,7 @@ module.exports = {
             SelectedTipo:'', SelectedSubtipo:'', SelectedArmario:'', SelectedGaveta:'',SelectedCompartimento:'',
             SelectedIdentificacao:'',
             SelectedObs:'',
-            SelectedStatus:''})
+            SelectedStatus:'', send:false})
     },
     
     async openDevolver(req, res){

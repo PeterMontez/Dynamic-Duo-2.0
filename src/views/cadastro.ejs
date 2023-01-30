@@ -29,7 +29,7 @@
 
 
     <main>
-        <div class="conteudoOculto" id="Cadastrar" style="display: flex;">
+        <div class="cadastro" id="Cadastrar" style="display: flex;">
             <select name="cadastroItem" id="itemCadastro" onchange="MudarFormulario()">
                 <option value="Ferramentas" selected>Ferramentas</option>
                 <option value="Armario">Armario</option>
@@ -43,8 +43,8 @@
                     <div>
                         <h4>Nome:</h4>
                         <input type="text" name="identificacao" value="<%= SelectedIdentificacao %>" >
-                        <h4>Observações</h4>
-                        <input type="text" name="obs" value="<%= SelectedObs %> ">
+                        <h4>Descrição</h4>
+                        <input type="text" name="descricao" value="<%= SelectedObs %> ">
                         <h4>status</h4>
                         <input type="text" name="status" value="<%= SelectedStatus %> " >
                         <h4>Tipo</h4>
@@ -64,7 +64,11 @@
                             <option value="" selected>Selecione</option>
                             <% for(let i=0; i < subtipos.length; i++){ %>
                                 <% if(subtipos[i].IDTipo == SelectedTipo) {%> 
-                                <option value="<%= subtipos[i].IDSubtipo %> "><%= subtipos[i].IDENTIFICACAO %></option>
+                                    <% if(subtipos[i].IDSubtipo == SelectedSubtipo){ %> 
+                                        <option value="<%= subtipos[i].IDSubtipo %> " selected><%= subtipos[i].IDENTIFICACAO %></option>
+                                    <% } else{ %>
+                                        <option value="<%= subtipos[i].IDSubtipo %> "><%= subtipos[i].IDENTIFICACAO %></option>
+                                    <% } %>
                                 <% } %>
                             <% } %>
                         </select>
@@ -107,7 +111,7 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="submitButton">Enviar</button>
+                <button name="send" class="submitButton" value="false" onclick="this.value = 'true'; this.form.submit()">Enviar</button>
                 </form>
 
             </div>
