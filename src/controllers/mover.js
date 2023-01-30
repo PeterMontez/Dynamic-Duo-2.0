@@ -37,7 +37,7 @@ module.exports = {
             where: { IDFerramenta: id }
         });
 
-        res.redirect('../views/index', {retirar:false, devolver:false});
+        res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
     },
 
     async exibir(req, res) {

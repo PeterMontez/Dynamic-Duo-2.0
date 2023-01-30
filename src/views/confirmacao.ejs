@@ -42,9 +42,9 @@
 
       <div class="detalhes">
 
-        <h1>NOME DA FERRAMENTA</h1>
+        <h1><%= ferramentas[0].IDENTIFICACAO %></h1>
 
-        <p class="information">As informações básicas da ferramenta aqui</p>
+        <p class="information"><%=ferramentas[0].DESCRICAO%></p>
 
         <div class="local">
           <p class="information2">Armario: <%= armarios %></p>
@@ -53,9 +53,11 @@
         </div>
 
         <div class="control">
-          <button class="btn">
-            <span>CONFIRMAR</span>
-          </button>
+          <form action="/devolver/<%= EDV %>/<%= ferramentas[0].IDFerramenta %>" method="post">
+            <button class="btn" type="submit">
+              <span>CONFIRMAR</span>
+            </button>
+          </form>
 
         </div>
       </div>

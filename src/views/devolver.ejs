@@ -48,20 +48,24 @@
           <th>Armário</th>
           <th>Gaveta</th>
           <th>Compartimento</th>
+          <th>Devolver</th>
         </tr>
       </thead>
       <tbody>
 
         <% for (let i=0; i<ferramentas.length; i++) { %>
           <tr>
-            <td><strong><%= ferramentas[i].IDENTIFICACAO %></strong></td>
-            <td><%= ferramentas[i].OBS %></td>
-            <td><%= ferramentas[i].STATUS %></td>
-            <td><%= tipos[i] %></td>
-            <td><%= subtipos[i] %></td>
-            <td><%= armarios[i] %></td>
-            <td><%= gavetas[i] %></td>
-            <td><%= compartimentos[i] %></td>
+            <form action="/confirmadevolucao/<%= EDV %>/<%= ferramentas[i].IDFerramenta %>" method="get">
+              <td><strong><%= ferramentas[i].IDENTIFICACAO %></strong></td>
+              <td><%= ferramentas[i].OBS %></td>
+              <td><%= ferramentas[i].STATUS %></td>
+              <td><%= tipos[i] %></td>
+              <td><%= subtipos[i] %></td>
+              <td><%= armarios[i] %></td>
+              <td><%= gavetas[i] %></td>
+              <td><%= compartimentos[i] %></td>
+              <td><button>Devolver</button></td>
+            </form>
           </tr>
         <% } %>
 
