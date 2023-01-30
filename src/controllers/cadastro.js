@@ -1,3 +1,4 @@
+const colaboradores = require('../model/colaborador');
 // Importando as tabelas do DB
 const ferramenta = require('../model/ferramenta');
 const tipo = require('../model/tipo');
@@ -5,11 +6,10 @@ const subtipo = require('../model/subtipo');
 const armario = require('../model/armario');
 const gaveta = require('../model/gaveta');
 const compartimento = require('../model/compartimento');
+const colaborador = require('../model/colaborador');
 
 module.exports = {
-    async sla(req, res) {
 
-    },
     async cadastraferramenta(req, res) {
         const ferramentas = await ferramenta.findAll({
             raw: true,
@@ -40,8 +40,16 @@ module.exports = {
             raw: true,
             attributes: ['IDCompartimento', 'IDENTIFICACAO', 'IDGaveta']
         });
-
-        
+        const colaboradores = await colaborador.findAll({
+            raw: true,
+            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN']
+        });
+        let edv = req.body.edv;
+        const pessoa = await colaborador.findAll({
+            raw: true,
+            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
+            where: {EDV: edv}
+        });
         
         const dados = req.body;
 
@@ -54,7 +62,7 @@ module.exports = {
         const condicao = dados.send
 
         if ((armarioSelected==undefined || gavetaSelected==undefined || compartimentoSelected==undefined) || !condicao) {
-            res.render('cadastro', {tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
+            res.render('cadastro', {colaboradores,pessoa,tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
                 SelectedTipo: dados.tipo, SelectedSubtipo:dados.subtipo, SelectedArmario:dados.armario, SelectedGaveta:dados.gaveta,SelectedCompartimento:dados.compartimento,
                 SelectedIdentificacao: dados.identificacao,SelectedDescricao: dados.descricao,SelectedStatus: dados.status, condicao:false
             });
@@ -131,5 +139,18 @@ module.exports = {
 
         res.redirect('/');
     },
+
+    async cadastracolaborador(req, res){
+        const dados = req.body;
+        
+        await colaborador.create({
+            EDV: dados.edv,
+            IDENTIFICACAO: dados.identificacao,
+            CARTAO: dados.cartao,
+            ADMIN: 0
+        });
+        
+        res.redirect('/')
+    }
 
 }
