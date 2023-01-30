@@ -34,6 +34,7 @@ route.get('/pf-ferramentas/:EDV/:tipo/:subtipo', porfer.ferramentas);
 route.get('/mover/:EDV', mover.exibir);
 route.post('/devolver/:EDV/:ferramenta', mover.devolver);
 route.get('/retirar/:EDV/:ferramenta', mover.retirar);
+route.get('/confirmadevolucao/:EDV/:ferramenta', mover.confirmadevolucao)
 
 //Cadastro
 route.post('/cadastrar/armario', cadastro.cadastraarmario);
