@@ -1,4 +1,3 @@
-const colaboradores = require('../model/colaborador');
 // Importando as tabelas do DB
 const ferramenta = require('../model/ferramenta');
 const tipo = require('../model/tipo');
