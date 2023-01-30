@@ -85,6 +85,22 @@
         </form>
     </div>
 
+    <div class="conteudoOculto" id="Retirar" style="<%= cadastrar ? 'display: flex;' : 'display: none' %>">
+        <div class="Title">
+            <h1>Cadastrar</h1>
+        </div>
+        <form class="Content formulario" action="/Cadastro" method="post">
+            <div class="Content sendReceive">
+                <h2>EDV:</h2>
+                <input type="text" maxlength="8" minlength="8" placeholder="EDV" name="edv" required>
+            </div>
+            <button type="submit" class="submitButton">Enviar</button>
+        </form>
+        <form action="/" method="get">
+            <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
+        </form>
+    </div>
+
     
 
     <footer>

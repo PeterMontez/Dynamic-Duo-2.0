@@ -16,6 +16,7 @@ route.get('/', home.pagInicialGet);
 route.post('/pushDevolver', home.openDevolver)
 route.post('/pushRetirar', home.openRetirar)
 route.post('/pushCadastro', home.openCadastro)
+route.post('/Cadastro', home.pagCadastroGet)
 route.post('/retirar', retirar.pagRetirarGet)
 route.post('/devolver', devolver.pagDevolverGet)
 
@@ -42,6 +43,9 @@ route.post('/cadastrar/gaveta', cadastro.cadastragaveta);
 route.post('/cadastrar/ferramenta', cadastro.cadastraferramenta);
 route.post('/cadastra/tipo', cadastro.cadastratipo);
 route.post('/cadastra/subtipo', cadastro.cadastrasubtipo);
+
+// Cadastro de colaborador
+route.post('/cadastra/colaborador', cadastro.cadastracolaborador);
 
 // TODO
 //Cadastrar Armario 

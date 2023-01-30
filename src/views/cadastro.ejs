@@ -36,6 +36,9 @@
                 <option value="Gavetas">Gavetas</option>
                 <option value="TipoFerramenta">Tipo de Ferramenta</option>
                 <option value="SubtipoFerramenta">Subtipo de Ferramenta</option>
+                <% if (pessoa[0].ADMIN) {%>
+                    <option value="Colaborador">Colaborador</option>
+                <% } %> 
             </select>
             <div class="formulario" id="Ferramentas" onchange="MudarFormulario()">
                 <form action="/cadastrar/ferramenta" method="post">
@@ -165,6 +168,17 @@
                             <option value="<%= tipos[i].IDTipo %>"><%= tipos[i].IDENTIFICACAO %></option>
                         <% } %> 
                     </select>
+                    <button type="submit" class="submitButton">Enviar</button>
+                </form>
+            </div>
+            <div class="formulario" style="display: none;" id="Colaborador">
+                <form action="/cadastra/colaborador" method="post">
+                    <h4>Nome:</h4>
+                    <input type="text" name="identificacao" required>
+                    <h4>EDV:</h4>
+                    <input type="text" name="edv" required>
+                    <h4>Cartao:</h4>
+                    <input type="text" name="cartao" required>
                     <button type="submit" class="submitButton">Enviar</button>
                 </form>
             </div>
