@@ -40,15 +40,11 @@
             </div>
             <div class="Cards">
                 <% for(let i = 0; i < SelectItem.length; i++){ %> 
-                <form action="<%= item == 'Armários' ? '/gavetas/'+EDV+'/'+SelectItem[i].IDArmario : 
-                                    item == 'Gavetas' ? '/compartimentos/'+EDV+'/'+SelectItem[i].IDGaveta  : 
-                                    item == 'Compartimentos' ? '/pa-ferramentas/'+EDV+'/'+SelectItem[i].IDCompartimento : 
-                                    item == 'Ferramentas' ? '/retirar/'+EDV+'/'+SelectItem[i].IDFerramenta : '' %> " method="get" > 
-                                    <!-- TODO: implementar condição de ferramentas -->
+                <form action="<%= item == 'Tipos de Ferramenta' ? '/subtipo/'+EDV+'/'+SelectItem[i].IDTipo : 
+                                  item == 'Subtipos' ? '/pf-ferramentas/'+ EDV +'/'+ SelectItem[i].IDTipo +'/'+ SelectItem[i].IDSubtipo : '/' %> " method="get" > 
                     <button class="Card" onclick="this.form.submit()">
                         <div class="Content">
                             <div class="img">
-                                <!-- <h2><%= item%></h2> -->
                                 <h1><%= SelectItem[i].IDENTIFICACAO %></h1>
                             </div>
                             <div class="Description">
