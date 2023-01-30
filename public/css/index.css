@@ -141,6 +141,12 @@ main{
     border-style: groove;
     font-family: 'Bosch Sans Black';
 }
+
+#EDV{
+    /* display: none; */
+}
+
+
 .formulario{
     font-family: 'Bosch Sans Black';
     min-height: 50%;

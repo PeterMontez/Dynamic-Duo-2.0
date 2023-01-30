@@ -15,6 +15,7 @@ module.exports = {
     },
     async pagCadastroGet(req, res){
         let edv = req.body.edv;
+        let cartao = req.body.cartao;
 
         const colaboradores = await colaborador.findAll({
             raw: true,
@@ -23,7 +24,7 @@ module.exports = {
         const pessoa = await colaborador.findAll({
             raw: true,
             attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
-            where: {EDV: edv}
+            where: {CARTAO: cartao}
         });
 
         const ferramentas = await ferramenta.findAll({
