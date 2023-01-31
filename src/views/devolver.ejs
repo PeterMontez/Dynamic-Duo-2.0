@@ -55,7 +55,7 @@
 
         <% for (let i=0; i<ferramentas.length; i++) { %>
           <tr>
-            <form action="/confirmadevolucao/<%= EDV %>/<%= ferramentas[i].IDFerramenta %>" method="get">
+            <form action="/confirmadevolucao/<%= pessoa[0].EDV %>/<%= ferramentas[i].IDFerramenta %>" method="get">
               <td><strong><%= ferramentas[i].IDENTIFICACAO %></strong></td>
               <td><%= ferramentas[i].OBS %></td>
               <td><%= ferramentas[i].STATUS %></td>

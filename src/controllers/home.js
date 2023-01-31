@@ -10,12 +10,10 @@ module.exports = {
     async pagInicialGet(req, res) {
         res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
     },
-    async pagInicialPost(req, res){
-        
-    },
     async pagCadastroGet(req, res){
-        let edv = req.body.edv;
-        let cartao = req.body.cartao;
+        
+        const cartao = req.body.cartao;
+        console.log(cartao);
 
         const colaboradores = await colaborador.findAll({
             raw: true,
@@ -57,7 +55,9 @@ module.exports = {
             attributes: ['IDCompartimento', 'IDENTIFICACAO', 'IDGaveta']
         });
 
-        res.render('../views/cadastro', {edv,colaboradores, pessoa, tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
+        let edv = pessoa[0].EDV;
+
+        res.render('../views/cadastro', {edv,colaboradores,cartao, pessoa, tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
             SelectedTipo:'', SelectedSubtipo:'', SelectedArmario:'', SelectedGaveta:'',SelectedCompartimento:'',
             SelectedIdentificacao:'',
             SelectedDescricao:'',

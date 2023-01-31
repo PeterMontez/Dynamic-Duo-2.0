@@ -54,11 +54,6 @@ CREATE TABLE Ferramentas(
     FOREIGN KEY (ID_GAVETA) REFERENCES Gavetas(ID),
     FOREIGN KEY (ID_ARMARIO) REFERENCES Armarios(ID),
 );
--- DROP TABLE Armarios
--- DROP TABLE Gavetas
--- DROP TABLE Compartimentos
--- DROP TABLE Tipos_de_ferramentas
--- DROP TABLE Ferramentas
 
 INSERT Tipos_de_ferramentas VALUES
 ('Broca'),
@@ -94,10 +89,11 @@ INSERT Subtipos VALUES
 ('Pastilhas Torno Bedame', 12),
 ('Pastilhas Torno T-MAX', 12);
 
-
+delete from Ferramentas where (IDENTIFICACAO='')
 SELECT * FROM Armarios
 SELECT * FROM Gavetas
 SELECT * FROM Compartimentos
 SELECT * FROM Tipos_de_ferramentas
 SELECT * FROM Subtipos
 SELECT * FROM Ferramentas
+SELECT * FROM Colaboradores

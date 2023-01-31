@@ -4,15 +4,22 @@ const gaveta = require('../model/gaveta');
 const compartimento = require('../model/compartimento');
 const tipo = require('../model/tipo');
 const subtipo = require('../model/subtipo');
+const colaborador = require('../model/colaborador');
 
 module.exports = {
     async pagDevolverGet(req, res){
         const EDV = req.body.edv
+        const cartao = req.body.cartao
+        const pessoa = await colaborador.findAll({
+            raw: true,
+            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
+            where: {CARTAO: cartao},
+        });
 
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'IDTipo', 'IDSubtipo', 'IDArmario', 'IDGaveta', 'IDCompartimento'],
-            where: { EDV: EDV }
+            where: { EDV: pessoa[0].EDV },
         });
 
         const tipos = [];
@@ -65,7 +72,7 @@ module.exports = {
 
         }
 
-        res.render('../views/devolver', {EDV, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos});
+        res.render('../views/devolver', {EDV, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, pessoa});
     },
 
 }
