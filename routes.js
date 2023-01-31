@@ -10,6 +10,7 @@ const porarm = require('./src/controllers/porarm');
 const porfer = require('./src/controllers/porfer');
 const mover = require('./src/controllers/mover');
 const cadastro = require('./src/controllers/cadastro');
+const update = require('./src/controllers/update');
 
 // Iniciando as rotas
 route.get('/', home.pagInicialGet);
@@ -47,6 +48,14 @@ route.post('/cadastra/subtipo', cadastro.cadastrasubtipo);
 
 // Cadastro de colaborador
 route.post('/cadastra/colaborador', cadastro.cadastracolaborador);
+
+//editar objetos
+route.post('/editar/ferramenta/:id', update.ferramenta)
+route.post('/editar/armario/:id', update.armario)
+route.post('/editar/gaveta/:id', update.gaveta)
+route.post('/editar/compartimento/:id', update.compartimento)
+route.post('/editar/tipo/:id', update.tipo)
+route.post('/editar/subtipo/:id', update.subtipo)
 
 // TODO
 //Cadastrar Armario 
