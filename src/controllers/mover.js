@@ -22,7 +22,7 @@ module.exports = {
         });
 
 
-        res.redirect('../views/index', {retirar:false, devolver:false});
+        res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
     },
 
     async devolver(req, res) {
@@ -99,7 +99,60 @@ module.exports = {
             where: { IDCompartimento: ferramentas[0].IDCompartimento }
         }))[0].IDENTIFICACAO;
 
+        const acao = 1;
 
-        res.render('../views/confirmacao', {ferramentas, EDV, tipos, subtipos, armarios, gavetas, compartimentos})
+        res.render('../views/confirmacao', {ferramentas, EDV, tipos, subtipos, armarios, gavetas, compartimentos, acao})
+    },
+
+    async confirmaretirada(req, res) {
+        const EDV = req.params.EDV;
+        const id = req.params.ferramenta;
+
+        const ferramentas = await ferramenta.findAll({
+            raw: true,
+            attributes: ['IDFerramenta', 'IDENTIFICACAO', 'IDTipo', 'IDSubtipo', 'IDArmario', 'IDGaveta', 'IDCompartimento'],
+            where: { IDFerramenta: id }
+        });
+        
+        const tipos = (await tipo.findAll({
+            raw: true,
+            attributes: ['IDENTIFICACAO'],
+            where: { IDTipo: ferramentas[0].IDTipo }
+        }))[0].IDENTIFICACAO;
+
+        var subtipos = (await subtipo.findAll({
+            raw: true,
+            attributes: ['IDENTIFICACAO'],
+            where: { IDSubtipo: ferramentas[0].IDSubtipo }
+        }))
+
+        if (subtipos.length == 0) {
+            subtipos = ' -----';
+        }
+        else {
+            subtipos = subtipos[0].IDENTIFICACAO;
+        }
+
+        const armarios = (await armario.findAll({
+            raw: true,
+            attributes: ['IDENTIFICACAO'],
+            where: { IDArmario: ferramentas[0].IDArmario }
+        }))[0].IDENTIFICACAO;
+
+        const gavetas = (await gaveta.findAll({
+            raw: true,
+            attributes: ['IDENTIFICACAO'],
+            where: { IDGaveta: ferramentas[0].IDGaveta }
+        }))[0].IDENTIFICACAO;
+
+        const compartimentos = (await compartimento.findAll({
+            raw: true,
+            attributes: ['IDENTIFICACAO'],
+            where: { IDCompartimento: ferramentas[0].IDCompartimento }
+        }))[0].IDENTIFICACAO;
+
+        const acao = 0;
+
+        res.render('../views/confirmacao', {ferramentas, EDV, tipos, subtipos, armarios, gavetas, compartimentos, acao})
     }
 }

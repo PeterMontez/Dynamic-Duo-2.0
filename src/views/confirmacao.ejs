@@ -35,54 +35,84 @@
 
 
   <main>
-    <h2>Devolver</h2>
+    <h2>
+      <%= acao==1 ? 'DEVOLVER' : 'RETIRAR' %>
+    </h2>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <div id="container">
 
-      <div class="detalhes">
+    <% if (acao==1) { %>
+      <style>
+        body {
+          background: #daf3d4;
+        }
+      </style>
+    <%} else {%>
+      <style>
+        body {
+          background: #f3d4d4;
+        }
+      </style>
+    <% } %>
 
-        <h1><%= ferramentas[0].IDENTIFICACAO %></h1>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <div id="container">
 
-        <p class="information"><%=ferramentas[0].DESCRICAO%></p>
+        <div class="detalhes">
 
-        <div class="local">
-          <p class="information2">Armario: <%= armarios %></p>
-          <p class="information2">Gaveta: <%= gavetas %></p>
-          <p class="information2">Compartimento: <%= compartimentos %></p>
-        </div>
+          <h1>
+            <%= ferramentas[0].IDENTIFICACAO %>
+          </h1>
 
-        <div class="control">
-          <form action="/devolver/<%= EDV %>/<%= ferramentas[0].IDFerramenta %>" method="post">
-            <button class="btn" type="submit">
-              <span>CONFIRMAR</span>
-            </button>
-          </form>
+          <p class="information">
+            <%=ferramentas[0].DESCRICAO%>
+          </p>
 
-        </div>
-      </div>
-
-      <div class="imagezinha">
-
-        <img
-          src="https://a-static.mlcdn.com.br/800x560/caixa-ferramenta-completa-27-pcs-dias-dos-pais-western/simaocomercial/6033298633/8f2bd20d7fbd55987622407ad984d9be.jpg"
-          alt="">
-        <div class="info">
-          <div class="textoright2">
-            <h2>Detalhes</h2>
+          <div class="local">
+            <p class="information2">Armario: <%= armarios %>
+            </p>
+            <p class="information2">Gaveta: <%= gavetas %>
+            </p>
+            <p class="information2">Compartimento: <%= compartimentos %>
+            </p>
           </div>
-          <div class="textoright">
-            <ul>
-              <li>Retirada por: <strong><%= EDV %></li></strong>
-              <li>Tipo: <strong><%= tipos %></li></strong>
-              <li>Subtipo: <strong><%= subtipos %></li></strong>
 
-            </ul>
+          <div class="control">
+            <form action="<%= acao == 1 ? '/devolver/' + EDV + '/' + ferramentas[0].IDFerramenta : '/retirar/' + EDV + '/' + ferramentas[0].IDFerramenta %>" method="post">
+              <button class="btn" type="submit">
+                <span>CONFIRMAR</span>
+              </button>
+            </form>
+
           </div>
         </div>
-      </div>
 
-    </div>
+        <div class="imagezinha">
+
+          <img
+            src="https://a-static.mlcdn.com.br/800x560/caixa-ferramenta-completa-27-pcs-dias-dos-pais-western/simaocomercial/6033298633/8f2bd20d7fbd55987622407ad984d9be.jpg"
+            alt="">
+          <div class="info">
+            <div class="textoright2">
+              <h2>Detalhes</h2>
+            </div>
+            <div class="textoright">
+              <ul>
+                <li>Retirada por: <strong>
+                    <%= EDV %>
+                </li></strong>
+                <li>Tipo: <strong>
+                    <%= tipos %>
+                </li></strong>
+                <li>Subtipo: <strong>
+                    <%= subtipos %>
+                </li></strong>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
   </main>
 
