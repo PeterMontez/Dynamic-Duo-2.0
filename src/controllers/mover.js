@@ -108,12 +108,18 @@ module.exports = {
 
         const acao = 1;
 
-        res.render('../views/confirmacao', {ferramentas, EDV, tipos, subtipos, armarios, gavetas, compartimentos, acao})
+        res.render('../views/confirmacao', {ferramentas, EDV, tipos, subtipos, armarios, gavetas, compartimentos, acao, pessoa})
     },
 
     async confirmaretirada(req, res) {
         const EDV = req.params.EDV;
         const id = req.params.ferramenta;
+
+        const pessoa = await colaborador.findAll({
+            raw: true,
+            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
+            where: {EDV: EDV},
+        });
 
         const ferramentas = await ferramenta.findAll({
             raw: true,
