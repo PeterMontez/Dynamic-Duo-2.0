@@ -11,6 +11,7 @@ module.exports = {
         });
 
         console.log(req.body);
+        
         res.render('../views/retirar', {pessoa});
     },
 }

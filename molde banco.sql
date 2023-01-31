@@ -97,3 +97,5 @@ SELECT * FROM Tipos_de_ferramentas
 SELECT * FROM Subtipos
 SELECT * FROM Ferramentas
 SELECT * FROM Colaboradores
+
+update Colaboradores set IDENTIFICACAO = 'DONATHAN RAMALHO' where edv = 92896232
