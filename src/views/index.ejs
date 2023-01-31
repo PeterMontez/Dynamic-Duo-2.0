@@ -59,8 +59,10 @@
         </div>
         <form class="Content formulario" action="/devolver" method="post">
             <div class="Content sendReceive">
-                <h2>EDV:</h2>
-                <input type="text" maxlength="8" minlength="8" <% if(devolver){ %> autofocus <%} %> name="edv" placeholder="EDV">
+                <!-- <h2>EDV:</h2>
+                <input type="text" maxlength="8" minlength="8" <% if(devolver){ %> autofocus <%} %> name="edv" placeholder="EDV"> -->
+                <h2>Card:</h2>
+                <input type="text" maxlength="6" minlength="6" id="cartao" <% if(devolver){ %> autofocus <%} %>  placeholder="Aproxime o crachá" name="cartao" required>
             </div>
 
             <button type="submit" class="submitButton">Enviar</button>

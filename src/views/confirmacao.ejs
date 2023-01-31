@@ -9,6 +9,8 @@
   <link rel="icon" href="img/Bosch-Logo2.png">
 
   <link href="/fonts/BoschSans-Black-v5_003.ttf">
+  
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/index.css">
 
   <link rel="stylesheet" href="/css/teste.css">
@@ -26,7 +28,11 @@
       alt="" class="BoschGradient">
     <form action="/" method="get">
       <div class="Content">
-        <img src="/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended">
+        <form action="/" method="get">
+          <button>
+            <img src="/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended">
+          </button>
+        </form>
       </div>
     </form>
 
@@ -35,55 +41,73 @@
 
 
   <main>
-    <h2>Devolver</h2>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <div id="container">
-
-      <div class="detalhes">
-
-        <h1><%= ferramentas[0].IDENTIFICACAO %></h1>
-
-        <p class="information"><%=ferramentas[0].DESCRICAO%></p>
-
-        <div class="local">
-          <p class="information2">Armario: <%= armarios %></p>
-          <p class="information2">Gaveta: <%= gavetas %></p>
-          <p class="information2">Compartimento: <%= compartimentos %></p>
-        </div>
-
-        <div class="control">
-          <form action="/devolver/<%= EDV %>/<%= ferramentas[0].IDFerramenta %>" method="post">
-            <button class="btn" type="submit">
-              <span>CONFIRMAR</span>
-            </button>
-          </form>
-
-        </div>
-      </div>
-
-      <div class="imagezinha">
-
-        <img
-          src="https://a-static.mlcdn.com.br/800x560/caixa-ferramenta-completa-27-pcs-dias-dos-pais-western/simaocomercial/6033298633/8f2bd20d7fbd55987622407ad984d9be.jpg"
-          alt="">
-        <div class="info">
-          <div class="textoright2">
-            <h2>Detalhes</h2>
-          </div>
-          <div class="textoright">
-            <ul>
-              <li>Retirada por: <strong><%= EDV %></li></strong>
-              <li>Tipo: <strong><%= tipos %></li></strong>
-              <li>Subtipo: <strong><%= subtipos %></li></strong>
-
-            </ul>
-          </div>
-        </div>
-      </div>
-
+    <div class="Main">
+      <div class="Title">
+        <h2>Devolver</h2>
     </div>
 
+
+      <h3><%= pessoa[0].IDENTIFICACAO %></h3>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <div id="container">
+
+        <div class="detalhes">
+
+          <h1>
+            <%= ferramentas[0].IDENTIFICACAO %>
+          </h1>
+
+          <p class="information">
+            <%=ferramentas[0].DESCRICAO%>
+          </p>
+
+          <div class="local">
+            <p class="information2">Armario: <%= armarios %>
+            </p>
+            <p class="information2">Gaveta: <%= gavetas %>
+            </p>
+            <p class="information2">Compartimento: <%= compartimentos %>
+            </p>
+          </div>
+
+          <div class="control">
+            <form action="/devolver/<%= EDV %>/<%= ferramentas[0].IDFerramenta %>" method="post">
+              <button class="btn" type="submit">
+                <span>CONFIRMAR</span>
+              </button>
+            </form>
+
+          </div>
+        </div>
+
+        <div class="imagezinha">
+
+          <img
+            src="https://a-static.mlcdn.com.br/800x560/caixa-ferramenta-completa-27-pcs-dias-dos-pais-western/simaocomercial/6033298633/8f2bd20d7fbd55987622407ad984d9be.jpg"
+            alt="">
+          <div class="info">
+            <div class="textoright2">
+              <h2>Detalhes</h2>
+            </div>
+            <div class="textoright">
+              <ul>
+                <li>Retirada por: <strong>
+                    <%= EDV %>
+                </li></strong>
+                <li>Tipo: <strong>
+                    <%= tipos %>
+                </li></strong>
+                <li>Subtipo: <strong>
+                    <%= subtipos %>
+                </li></strong>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </main>
 
   <footer>

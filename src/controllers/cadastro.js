@@ -10,6 +10,10 @@ const colaborador = require('../model/colaborador');
 module.exports = {
 
     async cadastraferramenta(req, res) {
+        
+        const dados = req.body;
+
+
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
@@ -43,14 +47,23 @@ module.exports = {
             raw: true,
             attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN']
         });
-        let edv = req.body.edv;
+        
+        let cartao = dados.cartao;
+
+        if (cartao == undefined) {
+            cartao = cartaozinho;
+        }
+        else {
+            const cartaozinho = cartao;
+        }
+
+        console.log(cartao);
+
         const pessoa = await colaborador.findAll({
             raw: true,
             attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
-            where: {EDV: edv}
+            where: {CARTAO: cartao}
         });
-        
-        const dados = req.body;
 
         // TODO: implementar opção do usuario colocar foto;
         let foto = 'upload_foto.jpg'
@@ -60,23 +73,38 @@ module.exports = {
         const compartimentoSelected = dados.compartimento;
         const condicao = dados.send
 
+        let cartaozinho = cartao;
+
         if ((armarioSelected==undefined || gavetaSelected==undefined || compartimentoSelected==undefined) || !condicao) {
-            res.render('cadastro', {colaboradores,pessoa,tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
+            res.render('cadastro', {colaboradores,cartaozinho,pessoa,tipos, subtipos, armarios, gavetas, compartimentos, ferramentas,
                 SelectedTipo: dados.tipo, SelectedSubtipo:dados.subtipo, SelectedArmario:dados.armario, SelectedGaveta:dados.gaveta,SelectedCompartimento:dados.compartimento,
                 SelectedIdentificacao: dados.identificacao,SelectedDescricao: dados.descricao,SelectedStatus: dados.status, condicao:false
             });
         }
         else{
-            await ferramenta.create({
-                IDENTIFICACAO: dados.identificacao,
-                DESCRICAO: dados.descricao,
-                IDTipo: dados.tipo,
-                IDSubtipo: dados.subtipo,
-                IDCompartimento: dados.compartimento,
-                IDGaveta: dados.gaveta,
-                IDArmario: dados.armario,
-                STATUS: dados.status
-            });
+            if (dados.subtipo != '') {
+                await ferramenta.create({
+                    IDENTIFICACAO: dados.identificacao,
+                    DESCRICAO: dados.descricao,
+                    IDTipo: dados.tipo,
+                    IDSubtipo: dados.subtipo,
+                    IDCompartimento: dados.compartimento,
+                    IDGaveta: dados.gaveta,
+                    IDArmario: dados.armario,
+                    STATUS: dados.status
+                });
+            }
+            else{
+                await ferramenta.create({
+                    IDENTIFICACAO: dados.identificacao,
+                    DESCRICAO: dados.descricao,
+                    IDTipo: dados.tipo,
+                    IDCompartimento: dados.compartimento,
+                    IDGaveta: dados.gaveta,
+                    IDArmario: dados.armario,
+                    STATUS: dados.status
+                });
+            }
     
             res.redirect('/');
         }

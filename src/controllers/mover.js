@@ -5,6 +5,7 @@ const gaveta = require('../model/gaveta');
 const compartimento = require('../model/compartimento');
 const tipo = require('../model/tipo');
 const subtipo = require('../model/subtipo');
+const colaborador = require('../model/colaborador');
 
 module.exports = {
     async retirar(req, res) {
@@ -56,6 +57,12 @@ module.exports = {
         const EDV = req.params.EDV;
         const id = req.params.ferramenta;
 
+        const pessoa = await colaborador.findAll({
+            raw: true,
+            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
+            where: {EDV: EDV},
+        });
+
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'IDTipo', 'IDSubtipo', 'IDArmario', 'IDGaveta', 'IDCompartimento'],
@@ -100,6 +107,6 @@ module.exports = {
         }))[0].IDENTIFICACAO;
 
 
-        res.render('../views/confirmacao', {ferramentas, EDV, tipos, subtipos, armarios, gavetas, compartimentos})
+        res.render('../views/confirmacao', {ferramentas, EDV, tipos, subtipos, armarios, gavetas, compartimentos, pessoa})
     }
 }
