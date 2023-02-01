@@ -11,6 +11,7 @@ const porfer = require('./src/controllers/porfer');
 const mover = require('./src/controllers/mover');
 const cadastro = require('./src/controllers/cadastro');
 const update = require('./src/controllers/update');
+const excluir = require('./src/controllers/excluir');
 
 // Iniciando as rotas
 route.get('/', home.pagInicialGet);
@@ -48,6 +49,10 @@ route.post('/cadastra/subtipo', cadastro.cadastrasubtipo);
 
 // Cadastro de colaborador
 route.post('/cadastra/colaborador', cadastro.cadastracolaborador);
+
+// Excluir items
+route.post('/pushExcluir/:EDV/:item/:id/:lastid/:idsub', excluir.openExcluir)
+route.post('/excluir/:EDV/:item/:id', excluir.excluir)
 
 //editar objetos
 route.post('/editar/ferramenta/:id', update.ferramenta)

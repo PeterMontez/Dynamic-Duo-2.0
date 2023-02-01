@@ -100,4 +100,86 @@ module.exports = {
         res.render('../views/index');
     },
 
+    async excluir(req, res){
+        const id = req.params.id;
+        const item = req.params.item;
+
+        if (item == 'Armários') {
+            await ferramenta.destroy({
+                where: { IDArmario: id },
+            });
+
+            await compartimento.destroy({
+                where: { IDArmario: id },
+            });
+
+            await gaveta.destroy({
+                where: { IDArmario: id },
+            });
+
+            await armario.destroy({
+                where: { IDArmario: id },
+            });
+        }
+
+        if (item == 'Gavetas') {
+            await ferramenta.destroy({
+                where: { IDGaveta: id },
+            });
+
+            await compartimento.destroy({
+                where: { IDGaveta: id },
+            });
+
+            await gaveta.destroy({
+                where: { IDGaveta: id },
+            });
+        }
+
+        if (item == 'Compartimentos') {
+            await ferramenta.destroy({
+                where: { IDCompartimento: id },
+            });
+
+            await compartimento.destroy({
+                where: { IDCompartimento: id },
+            });
+        }
+
+        if (item == 'Ferramentas') {
+            await ferramenta.destroy({
+                where: { IDFerramenta: id },
+            });
+        }
+
+        if (item == 'Tipos de Ferramenta') {
+            await ferramenta.destroy({
+                where: { IDTipo: id },
+            });
+
+            await subtipo.destroy({
+                where: { IDTipo: id },
+            });
+
+            await tipo.destroy({
+                where: { IDTipo: id },
+            });
+        }
+
+        if (item == 'Subtipos') {
+            await ferramenta.destroy({
+                where: { IDSubtipo: id },
+            });
+
+            await subtipo.destroy({
+                where: { IDSubtipo: id },
+            });
+
+            await tipo.destroy({
+                where: { IDSubtipo: id },
+            });
+        }
+
+    },
+
 }

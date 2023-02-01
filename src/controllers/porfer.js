@@ -6,16 +6,18 @@ const tipo = require('../model/tipo');
 
 module.exports = {
     async tipos(req, res) {
+        const excluirid = -1;
         const EDV = req.params.EDV;
         const SelectItem = await tipo.findAll({
                 raw: true,
                 attributes: ['IDTipo', 'IDENTIFICACAO']
             });
         const item = "Tipos de Ferramenta"
-        res.render('../views/ferramentas', {item, SelectItem, EDV});
+        res.render('../views/ferramentas', {item, SelectItem, EDV, id, excluirid, excluir:false});
     },
 
     async subtipos(req, res) {
+        const excluirid = -1;
         const EDV = req.params.EDV;
         const id = req.params.tipo;
         const SelectItem = await subtipo.findAll({
@@ -24,11 +26,11 @@ module.exports = {
                 where: { IDTipo: id }
             });
         const item = "Subtipos"
-        res.render('../views/ferramentas', {item, SelectItem, EDV});
+        res.render('../views/ferramentas', {item, SelectItem, EDV, id, excluirid, excluir:false});
     },
 
     async ferramentas(req, res) {
-
+        const excluirid = -1;
         const EDV = req.params.EDV;
         const idtipo = req.params.tipo;
         const idsubtipo = req.params.subtipo;
@@ -38,7 +40,7 @@ module.exports = {
                 where: { IDTipo: idtipo, IDSubtipo : idsubtipo}
             });
         const item = "Ferramentas"
-        res.render('../views/ferramentas', {item, SelectItem, EDV});
+        res.render('../views/ferramentas', {item, SelectItem, EDV, id, excluirid, excluir:false});
     },
 
 }

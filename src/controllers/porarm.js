@@ -9,16 +9,19 @@ const tipo = require('../model/tipo');
 
 module.exports = {
     async armarios(req, res) {
+        const excluirid = -1;
         const EDV = req.params.EDV;
+        const id = -1;
         const SelectItem = await armario.findAll({
                 raw: true,
                 attributes: ['IDArmario', 'IDENTIFICACAO']
             });
         const item = "Armários"
-        res.render('../views/armarios', {item, SelectItem, EDV});
+        res.render('../views/armarios', {item, SelectItem, EDV, id, excluirid, excluir:false});
     },
 
     async gavetas(req, res) {
+        const excluirid = -1;
         const EDV = req.params.EDV;
         const id = req.params.armario;
         const SelectItem = await gaveta.findAll({
@@ -27,10 +30,11 @@ module.exports = {
                 where: { IDArmario: id }
             });
         const item = "Gavetas"
-        res.render('../views/armarios', {item, SelectItem, EDV});
+        res.render('../views/armarios', {item, SelectItem, EDV, id, excluirid, excluir:false});
     },
 
     async compartimentos(req, res) {
+        const excluirid = -1;
         const EDV = req.params.EDV;
         const id = req.params.gaveta;
         const SelectItem = await compartimento.findAll({
@@ -39,10 +43,11 @@ module.exports = {
                 where: { IDGaveta: id }
             });
         const item = "Compartimentos"
-        res.render('../views/armarios', {item, SelectItem, EDV});
+        res.render('../views/armarios', {item, SelectItem, EDV, id, excluirid, excluir:false});
     },
 
     async ferramentas(req, res) {
+        const excluirid = -1;
         const EDV = req.params.EDV;
         const id = req.params.compartimento;
         const SelectItem = await ferramenta.findAll({
@@ -51,7 +56,7 @@ module.exports = {
                 where: { IDCompartimento: id }
             });
         const item = "Ferramentas"
-        res.render('../views/armarios', {item, SelectItem, EDV});
+        res.render('../views/armarios', {item, SelectItem, EDV, id, excluirid, excluir:false});
     },
 
 }
