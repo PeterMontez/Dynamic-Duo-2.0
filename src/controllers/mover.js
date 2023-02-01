@@ -23,7 +23,9 @@ module.exports = {
         });
 
 
-        res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
+        setTimeout(function(){
+            res.render('../views/index', {retirar:false, devolver:false, cadastrar:false,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
+        }, 1500);
     },
 
     async devolver(req, res) {
@@ -38,7 +40,11 @@ module.exports = {
             where: { IDFerramenta: id }
         });
 
-        res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
+        setTimeout(function(){
+            res.render('../views/index', {retirar:false, devolver:false, cadastrar:false,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
+        }, 1500);
+
+        
     },
 
     async exibir(req, res) {

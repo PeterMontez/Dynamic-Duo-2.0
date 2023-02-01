@@ -33,6 +33,10 @@
                 </button>
             </form>
         </div>
+        <!-- TODO:  cadastrar mensagem em todas as rotas -->
+        <div class="mensagem">
+            <h2><%= mensage %> </h2>
+        </div>
         <div class="MainContent">
             <form action="/pushRetirar" method="post">
                 <button
@@ -59,13 +63,16 @@
         </div>
         <form class="Content formulario" action="/devolver" method="post">
             <div class="Content sendReceive">
-                <!-- <h2>EDV:</h2>
-                <input type="text" maxlength="8" minlength="8" <% if(devolver){ %> autofocus <%} %> name="edv" placeholder="EDV"> -->
-                <h2>Card:</h2>
-                <input type="text" maxlength="6" minlength="6" id="cartao" <% if(devolver){ %> autofocus <%} %>  placeholder="Aproxime o crachá" name="cartao" required>
+                <h2 style="display: <%=!devolverEdv ? 'flex' : 'none' %>;">Card:</h2>
+                <input type="text" maxlength="6" minlength="6" id="cartao" style="display: <%=!devolverEdv ? 'flex' : 'none' %>;" <% if(devolver && !devolverEdv){ %> autofocus required <%} %>  placeholder="Aproxime o crachá" name="cartao">
+                <h2 style="display: <%=devolverEdv ? 'flex' : 'none' %>;">EDV:</h2>
+                <input type="text" maxlength="8" minlength="8" style="display: <%=devolverEdv ? 'flex' : 'none' %>;" <% if(devolverEdv){ %> autofocus required <% } %> placeholder="EDV" name="edv" >
             </div>
 
             <button type="submit" class="submitButton">Enviar</button>
+        </form>
+        <form action="/devolverPorEdv" method="post">
+            <button type="submit" class="submitButton">EDV</button>
         </form>
         <form action="/" method="get">
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
@@ -77,12 +84,15 @@
         </div>
         <form class="Content formulario" action="/retirar" method="post">
             <div class="Content sendReceive">
-                <!-- <h2>EDV:</h2>
-                <input type="text" maxlength="8" minlength="8" <% if(retirar){ %> autofocus <% } %> placeholder="EDV" name="edv" required> -->
-                <h2>Card:</h2>
-                <input type="text" maxlength="6" minlength="6" id="cartao" <% if(retirar){ %> autofocus <%} %>  placeholder="Aproxime o crachá" name="cartao" required>
+                <h2 style="display: <%=!retirarEdv ? 'flex' : 'none' %>;">Card:</h2>
+                <input type="text" maxlength="6" minlength="6" id="cartao" style="display: <%=!retirarEdv ? 'flex' : 'none' %>;" <% if(!retirarEdv && retirar){ %> autofocus required <%} %>  placeholder="Aproxime o crachá" name="cartao" >
+                <h2 style="display: <%=retirarEdv ? 'flex' : 'none' %>;">EDV:</h2>
+                <input type="text" maxlength="8" minlength="8" style="display: <%=retirarEdv ? 'flex' : 'none' %>;" <% if(retirarEdv){ %> autofocus required <% } %> placeholder="EDV" name="edv" >
             </div>
             <button type="submit" class="submitButton">Enviar</button>
+        </form>
+        <form action="/retirarPorEdv" method="post">
+            <button type="submit" class="submitButton">EDV</button>
         </form>
         <form action="/" method="get">
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
@@ -95,12 +105,15 @@
         </div>
         <form class="Content formulario" action="/Cadastro" method="post">
             <div class="Content sendReceive">
-                <!-- <h2>EDV:</h2>
-                <input type="text" maxlength="8" minlength="8"  placeholder="EDV" name="edv" required> -->
-                <h2>Card:</h2>
-                <input type="text" maxlength="6" minlength="6" id="cartao" <% if(cadastrar){ %> autofocus <%} %>  placeholder="Aproxime o crachá" name="cartao" required>
+                <h2 style="display: <%=!cadastrarEdv ? 'flex' : 'none' %>;">Card:</h2>
+                <input type="text" maxlength="6" minlength="6" id="cartao" style="display: <%=!cadastrarEdv ? 'flex' : 'none' %>;" <% if(cadastrar && !cadastrarEdv){ %> autofocus required <%} %>  placeholder="Aproxime o crachá" name="cartao">
+                <h2 style="display: <%=cadastrarEdv ? 'flex' : 'none' %>;">EDV:</h2>
+                <input type="text" maxlength="8" minlength="8" style="display: <%=cadastrarEdv ? 'flex' : 'none' %>;" <% if(cadastrarEdv){ %> autofocus required <% } %> placeholder="EDV" name="edv" >
             </div>
             <button type="submit" class="submitButton">Enviar</button>
+        </form>
+        <form action="/cadastrarPorEdv" method="post">
+            <button type="submit" class="submitButton">EDV</button>
         </form>
         <form action="/" method="get">
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>

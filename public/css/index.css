@@ -44,6 +44,14 @@ header .Content img{
     box-shadow: 0 0 5px black;
 }
 
+.mensagem{
+    text-align: center;
+}
+.mensagem h2{
+    text-transform: uppercase;
+    color: #ce0000;
+    font-family: 'Bosch Sans Black';
+}
 
 
 .Blur{

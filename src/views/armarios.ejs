@@ -38,6 +38,8 @@
         <div class="Main">
             <div class="Title">
                 <h2><%= item %></h2>
+                <p><%= pessoa[0].ADMIN == 1 ? 'ADMIN' : 'USER' %></p>
+                <p><%= pessoa[0].IDENTIFICACAO %> </p>
             </div>
             <div class="Cards">
                 <% for(let i = 0; i < SelectItem.length; i++){ %> 
@@ -54,6 +56,7 @@
                             <div class="Description">
                                 <p><h4><%= SelectItem[i].CONTEUDO != null ? SelectItem[i].CONTEUDO : 
                                        SelectItem[i].DESCRICAO != null ? SelectItem[i].DESCRICAO : '' %> </h4></p>
+                                <img src="" alt="">
                             </div>
                         </div>
                     </button>
