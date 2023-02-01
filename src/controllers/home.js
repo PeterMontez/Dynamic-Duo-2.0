@@ -8,7 +8,8 @@ const compartimento = require('../model/compartimento');
 
 module.exports = {
     async pagInicialGet(req, res) {
-        res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
+        res.render('../views/index', {retirar:false, devolver:false, cadastrar:false, 
+            retirarEdv:false, devolverEdv:false, cadastrarEdv:false,mensage:''});
     },
     async pagCadastroGet(req, res){
         
@@ -64,15 +65,27 @@ module.exports = {
             SelectedStatus:'', send:false})
     },
     
+    async openRetirar(req, res){
+        res.render('../views/index', {retirar:true, devolver:false, cadastrar:false,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
+    },
+    
     async openDevolver(req, res){
-        res.render('../views/index', {retirar:false, devolver:true, cadastrar:false});
+        res.render('../views/index', {retirar:false, devolver:true, cadastrar:false,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
     },
     
     async openCadastro(req, res){
-        res.render('../views/index', {retirar:false, devolver:false, cadastrar:true});
+        res.render('../views/index', {retirar:false, devolver:false, cadastrar:true,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
+    },
+
+    async openRetirarEdv(req, res){
+        res.render('../views/index', {retirar:true, devolver:false, cadastrar:false,retirarEdv:true, devolverEdv:false, cadastrarEdv:false, mensage:''});
     },
     
-    async openRetirar(req, res){
-        res.render('../views/index', {retirar:true, devolver:false, cadastrar:false});
+    async openDevolverEdv(req, res){
+        res.render('../views/index', {retirar:false, devolver:true, cadastrar:false,retirarEdv:false, devolverEdv:true, cadastrarEdv:false, mensage:''});
+    },
+    
+    async openCadastroEdv(req, res){
+        res.render('../views/index', {retirar:false, devolver:false, cadastrar:true,retirarEdv:false, devolverEdv:false, cadastrarEdv:true, mensage:''});
     },
 }

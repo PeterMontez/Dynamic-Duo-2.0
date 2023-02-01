@@ -24,7 +24,7 @@ module.exports = {
 
 
         setTimeout(function(){
-            res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
+            res.render('../views/index', {retirar:false, devolver:false, cadastrar:false,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
         }, 1500);
     },
 
@@ -41,7 +41,7 @@ module.exports = {
         });
 
         setTimeout(function(){
-            res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
+            res.render('../views/index', {retirar:false, devolver:false, cadastrar:false,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
         }, 1500);
 
         

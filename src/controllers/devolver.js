@@ -10,11 +10,13 @@ module.exports = {
     async pagDevolverGet(req, res){
         const EDV = req.body.edv
         const cartao = req.body.cartao
-        const pessoa = await colaborador.findAll({
-            raw: true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
-            where: {CARTAO: cartao},
-        });
+        if (cartao != '') {
+            const pessoa = await colaborador.findAll({
+                raw: true,
+                attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
+                where: {CARTAO: cartao},
+            });
+        }
 
         const ferramentas = await ferramenta.findAll({
             raw: true,
