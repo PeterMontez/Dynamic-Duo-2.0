@@ -92,6 +92,11 @@ main{
     box-shadow: -5px 5px 15px black;
 }
 
+.TitleEdit{
+    margin: 15px;
+    text-align: center;
+}
+
 .cadastro{
     background-color: rgb(247, 247, 247);
     top: 0;    bottom: 0;    left: 0;    right: 0;
@@ -149,10 +154,6 @@ main{
     border: 1px;
     border-style: groove;
     font-family: 'Bosch Sans Black';
-}
-
-#EDV{
-    /* display: none; */
 }
 
 

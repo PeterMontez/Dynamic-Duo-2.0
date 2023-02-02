@@ -7,104 +7,169 @@ const subtipo = require('../model/subtipo');
 const colaborador = require('../model/colaborador');
 
 module.exports = {
-    async ferramenta(req, res){
-
-        const id = req.params.id
+    async ferramenta(req, res) {
+        const ferramentas = await ferramenta.findAll({
+            raw: true,
+            attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
+        });
+        const tipos = await tipo.findAll({
+            raw: true,
+            attributes: ['IDTipo', 'IDENTIFICACAO']
+        });
+        const subtipos = await subtipo.findAll({
+            raw: true,
+            attributes: ['IDSubtipo', 'IDENTIFICACAO', 'IDTipo']
+        });
+        const armarios = await armario.findAll({
+            raw: true,
+            attributes: ['IDArmario', 'IDENTIFICACAO', 'TIPO', 'DIVISOES']
+        });
+        const gavetas = await gaveta.findAll({
+            raw: true,
+            attributes: ['IDGaveta', 'IDENTIFICACAO', 'CONTEUDO', 'IDArmario']
+        });
+        const compartimentos = await compartimento.findAll({
+            raw: true,
+            attributes: ['IDCompartimento', 'IDENTIFICACAO', 'IDGaveta']
+        });
+        const colaboradores = await colaborador.findAll({
+            raw: true,
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO', 'ADMIN']
+        });
+        const item = 'Ferramenta'
         const dados = req.body
+        const armarioSelected = dados.armario;
+        const gavetaSelected = dados.gaveta;
+        const compartimentoSelected = dados.compartimento;
+        const condicao = dados.send
+        const id = req.params.id
+        
+        let edv = req.params.EDV
+        console.log(edv)
 
-        await ferramenta.update({
-            IDENTIFICACAO: dados.IDENTIFICACAO,
-            STATUS: dados.STATUS,
-            DESCRICAO: dados.DESCRICAO,
-            IDTipo: dados.IDTipo,
-            IDSubtipo: dados.IDSubtipo,
-            IDArmario: dados.IDArmario,
-            IDGaveta: dados.IDGaveta,
-            IDCompartimento: dados.IDCompartimento,
-        },
-        {
+        if (edv==undefined) {
+            edv = EDV
+        }
+        else{
+            const EDV = edv
+        }
+        const EDV = edv
+
+        const EditItem = await ferramenta.findAll({
+            raw: true,
+            attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV', 'IDTipo', 'IDSubtipo', 'IDCompartimento', 'IDGaveta', 'IDArmario'],
             where: { IDFerramenta: id }
         });
+        const pessoa = await colaborador.findAll({
+            raw: true,
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO'],
+            where: { EDV: edv }
+        });
 
-        res.render('../views/index');
+        if ((armarioSelected == undefined || gavetaSelected == undefined || compartimentoSelected == undefined) || !condicao) {
+
+
+            res.render('../views/editar.ejs', {
+                id, item,edv,EDV, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores,
+                SelectedTipo: dados.tipo, SelectedSubtipo: dados.subtipo, SelectedArmario: dados.armario, SelectedGaveta: dados.gaveta, SelectedCompartimento: dados.compartimento,
+                SelectedIdentificacao: dados.identificacao, SelectedDescricao: dados.descricao, SelectedStatus: dados.status, condicao: false
+            });
+        }
+        else{
+
+            // await ferramenta.update({
+            //     IDENTIFICACAO: dados.identificacao,
+            //     STATUS: dados.status,
+            //     DESCRICAO: dados.descricao,
+            //     IDTipo: dados.tipo,
+            //     IDSubtipo: dados.subtipo,
+            //     IDArmario: dados.armario,
+            //     IDGaveta: dados.gaveta,
+            //     IDCompartimento: dados.compartimento,
+            // },
+            //     {
+            //         where: { IDFerramenta: id }
+            //     });
+            // res.render('../views/index', { retirar: false, devolver: false, cadastrar: false, retirarEdv: false, devolverEdv: false, cadastrarEdv: false, mensage: '' });
+        }
     },
 
-    async armario(req, res){
+    async armario(req, res) {
         const id = req.params.id
         const dados = req.body
 
         await armario.update({
-            IDENTIFICACAO: dados.IDENTIFICACAO,
+            IDENTIFICACAO: dados.identificacao,
             DIVISOES: dados.DIVISOES,
             TIPO: dados.TIPO,
         },
-        {
-            where: { IDArmario: id }
-        });
+            {
+                where: { IDArmario: id }
+            });
 
-        res.render('../views/index');
+        res.render('../views/index', { retirar: false, devolver: false, cadastrar: false, retirarEdv: false, devolverEdv: false, cadastrarEdv: false, mensage: '' });
     },
 
-    async gaveta(req, res){
+    async gaveta(req, res) {
         const id = req.params.id
         const dados = req.body
 
         console.log('entrou');
 
         await gaveta.update({
-            IDENTIFICACAO: dados.IDENTIFICACAO,
-            CONTEUDO: dados.CONTEUDO,
+            IDENTIFICACAO: dados.identificacao,
+            CONTEUDO: dados.conteudo,
         },
-        {
-            where: { IDGaveta: id }
-        });
+            {
+                where: { IDGaveta: id }
+            });
 
-        res.render('../views/index');
+        res.render('../views/index', { retirar: false, devolver: false, cadastrar: false, retirarEdv: false, devolverEdv: false, cadastrarEdv: false, mensage: '' });
     },
 
-    async compartimento(req, res){
+    async compartimento(req, res) {
         const id = req.params.id
         const dados = req.body
 
         await compartimento.update({
-            IDENTIFICACAO: dados.IDENTIFICACAO,
+            IDENTIFICACAO: dados.identificacao,
         },
-        {
-            where: { IDCompartimento: id }
-        });
+            {
+                where: { IDCompartimento: id }
+            });
 
-        res.render('../views/index');
+        res.render('../views/index', { retirar: false, devolver: false, cadastrar: false, retirarEdv: false, devolverEdv: false, cadastrarEdv: false, mensage: '' });
     },
 
-    async tipo(req, res){
+    async tipo(req, res) {
         const id = req.params.id
         const dados = req.body
 
         await tipo.update({
-            IDENTIFICACAO: dados.IDENTIFICACAO,
+            IDENTIFICACAO: dados.identificacao,
         },
-        {
-            where: { IDTipo: id }
-        });
+            {
+                where: { IDTipo: id }
+            });
 
-        res.render('../views/index');
+        res.render('../views/index', { retirar: false, devolver: false, cadastrar: false, retirarEdv: false, devolverEdv: false, cadastrarEdv: false, mensage: '' });
     },
 
-    async subtipo(req, res){
+    async subtipo(req, res) {
         const id = req.params.id
         const dados = req.body
 
         await subtipo.update({
-            IDENTIFICACAO: dados.IDENTIFICACAO,
+            IDENTIFICACAO: dados.identificacao,
         },
-        {
-            where: { IDSubtipo: id }
-        });
+            {
+                where: { IDSubtipo: id }
+            });
 
-        res.render('../views/index');
+        res.render('../views/index', { retirar: false, devolver: false, cadastrar: false, retirarEdv: false, devolverEdv: false, cadastrarEdv: false, mensage: '' });
     },
 
-    async excluir(req, res){
+    async excluir(req, res) {
         const id = req.params.id;
         const item = req.params.item;
 
@@ -187,7 +252,7 @@ module.exports = {
     },
 
 
-    async pusharmario(req, res){
+    async pusharmario(req, res) {
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
@@ -214,27 +279,27 @@ module.exports = {
         });
         const colaboradores = await colaborador.findAll({
             raw: true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN']
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO', 'ADMIN']
         });
 
         const id = req.params.id
         const edv = req.params.EDV
         const item = 'Armario'
         const pessoa = await colaborador.findAll({
-            raw:true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO'],
-            where: {EDV: edv}
+            raw: true,
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO'],
+            where: { EDV: edv }
         });
         const EditItem = await armario.findAll({
-            raw:true,
-            attributes: ['IDArmario','IDENTIFICACAO','TIPO','DIVISOES'],
-            where: {IDArmario: id}
+            raw: true,
+            attributes: ['IDArmario', 'IDENTIFICACAO', 'TIPO', 'DIVISOES'],
+            where: { IDArmario: id }
         });
         console.log(pessoa);
-        res.render('../views/editar.ejs', {id, item, pessoa,EditItem, ferramentas, tipos, subtipos,armarios,gavetas,compartimentos,colaboradores})
+        res.render('../views/editar.ejs', { id, item, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores })
     },
-    async pushgaveta(req, res){
-        
+    async pushgaveta(req, res) {
+
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
@@ -261,27 +326,27 @@ module.exports = {
         });
         const colaboradores = await colaborador.findAll({
             raw: true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN']
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO', 'ADMIN']
         });
 
         const id = req.params.id
         const edv = req.params.EDV
         const item = 'Gaveta'
         const pessoa = await colaborador.findAll({
-            raw:true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO'],
-            where: {EDV: edv}
+            raw: true,
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO'],
+            where: { EDV: edv }
         });
         const EditItem = await gaveta.findAll({
-            raw:true,
-            attributes: ['IDGaveta','IDENTIFICACAO','CONTEUDO'],
-            where: {IDGaveta: id}
+            raw: true,
+            attributes: ['IDGaveta', 'IDENTIFICACAO', 'CONTEUDO'],
+            where: { IDGaveta: id }
         });
         console.log(pessoa);
-        res.render('../views/editar.ejs', {id, item, pessoa,EditItem, ferramentas, tipos, subtipos,armarios,gavetas,compartimentos,colaboradores})
+        res.render('../views/editar.ejs', { id, item, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores })
     },
-    async pushcompartimento(req, res){
-        
+    async pushcompartimento(req, res) {
+
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
@@ -308,27 +373,27 @@ module.exports = {
         });
         const colaboradores = await colaborador.findAll({
             raw: true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN']
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO', 'ADMIN']
         });
 
         const id = req.params.id
         const edv = req.params.EDV
         const item = 'Compartimento'
         const pessoa = await colaborador.findAll({
-            raw:true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO'],
-            where: {EDV: edv}
+            raw: true,
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO'],
+            where: { EDV: edv }
         });
         const EditItem = await compartimento.findAll({
-            raw:true,
-            attributes: ['IDCompartimento','IDENTIFICACAO'],
-            where: {IDCompartimento: id}
+            raw: true,
+            attributes: ['IDCompartimento', 'IDENTIFICACAO'],
+            where: { IDCompartimento: id }
         });
         console.log(pessoa);
-        res.render('../views/editar.ejs', {id, item, pessoa,EditItem, ferramentas, tipos, subtipos,armarios,gavetas,compartimentos,colaboradores})
+        res.render('../views/editar.ejs', { id, item, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores })
     },
-    async pushtipo(req, res){
-        
+    async pushtipo(req, res) {
+
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
@@ -355,27 +420,27 @@ module.exports = {
         });
         const colaboradores = await colaborador.findAll({
             raw: true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN']
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO', 'ADMIN']
         });
 
         const id = req.params.id
         const edv = req.params.EDV
         const item = 'Tipo'
         const pessoa = await colaborador.findAll({
-            raw:true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO'],
-            where: {EDV: edv}
+            raw: true,
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO'],
+            where: { EDV: edv }
         });
         const EditItem = await tipo.findAll({
-            raw:true,
-            attributes: ['IDTipo','IDENTIFICACAO'],
-            where: {IDTipo: id}
+            raw: true,
+            attributes: ['IDTipo', 'IDENTIFICACAO'],
+            where: { IDTipo: id }
         });
         console.log(pessoa);
-        res.render('../views/editar.ejs', {id, item, pessoa,EditItem, ferramentas, tipos, subtipos,armarios,gavetas,compartimentos,colaboradores})
+        res.render('../views/editar.ejs', { id, item, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores })
     },
-    async pushsubtipo(req, res){
-        
+    async pushsubtipo(req, res) {
+
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
@@ -402,27 +467,27 @@ module.exports = {
         });
         const colaboradores = await colaborador.findAll({
             raw: true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN']
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO', 'ADMIN']
         });
 
         const id = req.params.id
         const edv = req.params.EDV
         const item = 'Subtipo'
         const pessoa = await colaborador.findAll({
-            raw:true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO'],
-            where: {EDV: edv}
+            raw: true,
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO'],
+            where: { EDV: edv }
         });
         const EditItem = await armario.findAll({
-            raw:true,
-            attributes: ['IDSubtipo','IDENTIFICACAO'],
-            where: {IDSubtipo: id}
+            raw: true,
+            attributes: ['IDSubtipo', 'IDENTIFICACAO'],
+            where: { IDSubtipo: id }
         });
         console.log(pessoa);
-        res.render('../views/editar.ejs', {id, item, pessoa,EditItem, ferramentas, tipos, subtipos,armarios,gavetas,compartimentos,colaboradores})
+        res.render('../views/editar.ejs', { id, item, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores })
     },
-    async pushferramenta(req, res){
-        
+    async pushferramenta(req, res) {
+
         const ferramentas = await ferramenta.findAll({
             raw: true,
             attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV']
@@ -449,24 +514,23 @@ module.exports = {
         });
         const colaboradores = await colaborador.findAll({
             raw: true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN']
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO', 'ADMIN']
         });
 
         const id = req.params.id
         const edv = req.params.EDV
         const item = 'Ferramenta'
         const pessoa = await colaborador.findAll({
-            raw:true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO'],
-            where: {EDV: edv}
+            raw: true,
+            attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO'],
+            where: { EDV: edv }
         });
-        const EditItem = await armario.findAll({
-            raw:true,
-            attributes: ['IDFerramenta','IDENTIFICACAO','DESCRICAO','STATUS','EDV','IDTipo','IDSubtipo','IDCompartimetno','IDGaveta','IDArmario'],
-            where: {IDFerramenta: id}
+        const EditItem = await ferramenta.findAll({
+            raw: true,
+            attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV', 'IDTipo', 'IDSubtipo', 'IDCompartimento', 'IDGaveta', 'IDArmario'],
+            where: { IDFerramenta: id }
         });
         console.log(pessoa);
-        res.render('../views/editar.ejs', {id, item, pessoa,EditItem, ferramentas, tipos, subtipos,armarios,gavetas,compartimentos,colaboradores})
-    },  
-
+        res.render('../views/editar.ejs', { id, item, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, edv, colaboradores })
+    },
 }

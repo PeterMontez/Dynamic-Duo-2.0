@@ -99,3 +99,5 @@ SELECT * FROM Ferramentas
 SELECT * FROM Colaboradores
 
 update Colaboradores set IDENTIFICACAO = 'DONATHAN RAMALHO' where edv = 92896232
+
+select * from  ferramentas where IDENTIFICACAO = 'pedrinha'

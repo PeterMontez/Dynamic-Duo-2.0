@@ -57,8 +57,6 @@ module.exports = {
             const cartaozinho = cartao;
         }
 
-        console.log(cartao);
-
         const pessoa = await colaborador.findAll({
             raw: true,
             attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
