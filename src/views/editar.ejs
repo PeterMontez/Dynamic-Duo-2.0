@@ -39,7 +39,7 @@
             <% if (item=='Armario' ){ %>
 
                 <div class="formulario" id="Armario">
-                    <form action="" method="post">
+                    <form action="/editar/armario/<%=EditItem[0].IDArmario%>" method="post">
                         <h3 class="TitleEdit">Armario</h3>
                         <h4>Identificacao:</h4>
                         <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -49,7 +49,7 @@
 
                 <% } else if (item=='Gaveta' ){ %>
                     <div class="formulario" id="Gaveta">
-                        <form action="" method="post">
+                        <form action="/editar/gaveta/<%= EditItem[0].IDGaveta %> " method="post">
                             <h3 class="TitleEdit">Gaveta</h3>
                             <h4>Identificacao:</h4>
                             <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -60,7 +60,7 @@
                     </div>
                     <% } else if (item=='Compartimento' ){ %>
                         <div class="formulario" id="compartimetno">
-                            <form action="" method="post">
+                            <form action="/editar/compartimento/<%= EditItem[0].IDCompartimeto %> " method="post">
                                 <h3 class="TitleEdit">Compartimetno</h3>
                                 <h4>Identificacao:</h4>
                                 <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -71,7 +71,7 @@
                         </div>
                         <% }else if(item=='Tipo' ){ %>
                             <div class="formulario" id="tipo">
-                                <form action="" method="post">
+                                <form action="/editar/tipo/<%=EditItem[0].IDTipo%> " method="post">
                                     <h3 class="TitleEdit">Tipo</h3>
                                     <h4>Identificacao:</h4>
                                     <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -81,7 +81,7 @@
 
                             <% }else if(item=='Subtipo' ){ %>
                                 <div class="formulario" id="tipo">
-                                    <form action="" method="post">
+                                    <form action="/editar/subtipo/<%=EditItem[0].IDSubtipo%>" method="post">
                                         <h3 class="TitleEdit">Subtipo</h3>
                                         <h4>Identificacao:</h4>
                                         <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -89,10 +89,9 @@
                                     </form>
                                 </div>
 
-
                                 <%}else if(item=='Ferramenta' ){ %>
                                     <div class="formulario" id="tipo">
-                                        <form action="/editar/ferramenta/<%=EditItem[0].IDFerramenta  %> "
+                                        <form action="/editar/<%=edv%>/ferramenta/<%=EditItem[0].IDFerramenta%> "
                                             method="post">
                                             <h3 class="TitleEdit">Ferramenta</h3>
                                             <div id="SeparacaoConteudo">
@@ -119,7 +118,7 @@
                                                         </option>
                                                     </select>
                                                     <h4>Tipo:</h4>
-                                                    <select name="tipo" id="Tipo">
+                                                    <select name="tipo" id="Tipo" onchange="this.form.submit()">
                                                         <% for( let i=0; i < tipos.length; i++ ) { %>
                                                             <option value="<%= tipos[i].IDTipo %>">
                                                                 <%=tipos[i].IDENTIFICACAO%>
@@ -130,6 +129,7 @@
                                                 <div>
                                                     <h4>Subtipo:</h4>
                                                     <select name="subtipo" id="subtipo">
+                                                        <option value="">Sem Subtipo</option>
                                                         <% for( let i=0; i < subtipos.length; i++ ) { %>
                                                             <option value="<%= subtipos[i].IDSubtipo %>">
                                                                 <%=subtipos[i].IDENTIFICACAO%>
@@ -137,7 +137,7 @@
                                                             <% } %>
                                                     </select>
                                                     <h4>Armario:</h4>
-                                                    <select name="armario" id="armario">
+                                                    <select name="armario" id="armario" onchange="this.form.submit()">
                                                         <% for( let i=0; i < armarios.length; i++ ) { %>
                                                             <option value="<%= armarios[i].IDArmario %>">
                                                                 <%=armarios[i].IDENTIFICACAO%>
@@ -145,7 +145,7 @@
                                                             <% } %>
                                                     </select>
                                                     <h4>Gaveta:</h4>
-                                                    <select name="gaveta" id="gaveta">
+                                                    <select name="gaveta" id="gaveta" onchange="this.form.submit()">
                                                         <% for( let i=0; i < gavetas.length; i++ ) { %>
                                                             <option value="<%= gavetas[i].IDGaveta %>">
                                                                 <%=gavetas[i].IDENTIFICACAO%>
@@ -153,7 +153,7 @@
                                                             <% } %>
                                                     </select>
                                                     <h4>Compartimento:</h4>
-                                                    <select name="compartimento" id="compartimento">
+                                                    <select name="compartimento" id="compartimento" >
                                                         <% for( let i=0; i < compartimentos.length; i++ ) { %>
                                                             <option value="<%= compartimentos[i].IDCompartimento %>">
                                                                 <%=compartimentos[i].IDENTIFICACAO%>
@@ -162,7 +162,9 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <button class="submitButton" type="submit">Submit</button>
+                                            <button name="send" class="submitButton" value="false" onclick="this.value = 'true'; this.form.submit()" type="submit">
+                                                Submit
+                                            </button>
                                         </form>
                                     </div>
                                     <% } %>
