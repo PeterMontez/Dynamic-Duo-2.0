@@ -80,25 +80,27 @@
                                 </div>
                             </button>
                         </form>
-                        <div class="excluir-editar">
-                            <form
-                                action="<%= item == 'Armários' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDArmario+'/-1/-1' : 
-                                    item == 'Gavetas' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDGaveta+'/'+id+'/-1'  : 
-                                    item == 'Compartimentos' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDCompartimento+'/'+id+'/-1' : 
-                                    item == 'Ferramentas' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDFerramenta+'/'+id+'/-1' : '' %> "
-                                method="post">
-                                <button class="btn" style="background-color: #ff7e7e;">excluir</button>
-                            </form>
-                            <form 
-                                action="
-                                    <%= item == 'Armários' ? '/editar/'+EDV+'/armario/'+SelectItem[i].IDArmario :
-                                    item == 'Gavetas' ? '/editar/'+EDV+'/gaveta/'+SelectItem[i].IDGaveta  : 
-                                    item == 'Compartimentos' ? '/editar/'+EDV+'/compartimento/'+SelectItem[i].IDCompartimento : 
-                                    item == 'Ferramentas' ? '/editar/'+EDV+'/Ferramenta/'+SelectItem[i].IDFerramenta : '' %>"
-                                method="get">
-                                <button class="btn" style="background-color: #98ff7e;" type="submit">Editar</button>
-                            </form>
-                        </div>
+                        <% if (pessoa[0].ADMIN==1) { %>
+                            <div class="excluir-editar">
+                                <form
+                                    action="<%= item == 'Armários' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDArmario+'/-1/-1' : 
+                                        item == 'Gavetas' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDGaveta+'/'+id+'/-1'  : 
+                                        item == 'Compartimentos' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDCompartimento+'/'+id+'/-1' : 
+                                        item == 'Ferramentas' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDFerramenta+'/'+id+'/-1' : '' %> "
+                                    method="post">
+                                    <button class="btn" style="background-color: #ff7e7e;">excluir</button>
+                                </form>
+                                <form 
+                                    action="
+                                        <%= item == 'Armários' ? '/editar/'+EDV+'/armario/'+SelectItem[i].IDArmario :
+                                        item == 'Gavetas' ? '/editar/'+EDV+'/gaveta/'+SelectItem[i].IDGaveta  : 
+                                        item == 'Compartimentos' ? '/editar/'+EDV+'/compartimento/'+SelectItem[i].IDCompartimento : 
+                                        item == 'Ferramentas' ? '/editar/'+EDV+'/Ferramenta/'+SelectItem[i].IDFerramenta : '' %>"
+                                    method="get">
+                                    <button class="btn" style="background-color: #98ff7e;" type="submit">Editar</button>
+                                </form>
+                            </div>
+                        <% } %>
                     </div>
                     <% } %>
             </div>
