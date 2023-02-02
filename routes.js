@@ -58,13 +58,19 @@ route.post('/pushExcluir/:EDV/:item/:id/:lastid/:idsub', excluir.openExcluir)
 route.post('/closeExcluir/:EDV/:item/:id/:lastid/:idsub', excluir.closeExcluir)
 route.post('/excluir/:EDV/:item/:id', excluir.excluir)
 
-//editar objetos
-route.post('/editar/ferramenta/:id', update.ferramenta)
-route.post('/editar/armario/:id', update.armario)
-route.post('/editar/gaveta/:id', update.gaveta)
-route.post('/editar/compartimento/:id', update.compartimento)
-route.post('/editar/tipo/:id', update.tipo)
-route.post('/editar/subtipo/:id', update.subtipo)
+// Editar Objetos
+route.get('/editar/:EDV/ferramenta/:id', update.pushferramenta)
+route.get('/editar/:EDV/armario/:id', update.pusharmario)
+route.get('/editar/:EDV/gaveta/:id', update.pushgaveta)
+route.get('/editar/:EDV/compartimento/:id', update.pushcompartimento)
+route.get('/editar/:EDV/tipo/:id', update.pushtipo)
+route.get('/editar/:EDV/subtipo/:id', update.pushsubtipo)
+// route.post('/editar/ferramenta/:id', update.ferramenta)
+// route.post('/editar/armario/:id', update.armario)
+// route.post('/editar/gaveta/:id', update.gaveta)
+// route.post('/editar/compartimento/:id', update.compartimento)
+// route.post('/editar/tipo/:id', update.tipo)
+// route.post('/editar/subtipo/:id', update.subtipo)
 
 // TODO
 //Cadastrar Armario 
