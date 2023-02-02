@@ -51,6 +51,7 @@
                     <button class="Card" onclick="this.form.submit()">
                         <div class="Content">
                             <div class="img">
+                                <h4><%= item=='Armários'?"Armario" : item=='Gavetas'?'Gaveta': item=='Compartimentos'?'Compartimento' : item=='Ferramentas'?'Ferramenta':'' %></h4>
                                 <h1><%= SelectItem[i].IDENTIFICACAO %></h1>
                             </div>
                             <div class="Description">
@@ -72,28 +73,30 @@
         </div>
     </main>
 
+
+
+    
     <div class="conteudoOculto" id="Excluir" style="<%= excluir ? 'display: flex;' : 'display: none' %>">
         <div class="Title">
             <h1><strong>ATENÇÃO</strong></h1>
             <br><br>
             <h2>Excluir esse item irá excluir todos os items relacionados! <br><br><strong>Prossiga com cautela!</strong></h2>
         </div>
-        <form class="Content formulario" action="/retirar" method="post">
+        <form class="Content formulario" action="<%= item == 'Armários' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
+        item == 'Gavetas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid  : 
+        item == 'Compartimentos' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
+        item == 'Ferramentas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="post">
             <div class="Content sendReceive">
-                <!-- <h2>EDV:</h2>
-                <input type="text" maxlength="8" minlength="8" <% if(excluir){ %> autofocus <% } %> placeholder="EDV" name="edv" required> -->
-                <h2>Card:</h2>
-                <input type="text" maxlength="6" minlength="6" id="cartao" <% if(excluir){ %> autofocus <%} %>  placeholder="Aproxime o crachá" name="cartao" required>
+                <p><%= item %></p>
+                <% for(let i = 0; i<SelectItem.length; i++){SelectItem[i]} %> 
+                <p><%= item.IDENTIFICACAO %></p>
             </div>
-            <button type="submit" class="submitButton">Enviar</button>
-        </form>
-        <form action="<%= item == 'Armários' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
-                            item == 'Gavetas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid  : 
-                            item == 'Compartimentos' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
-                            item == 'Ferramentas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="post" >
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Excluir</button>
         </form>
-        <form action="/" method="get">
+        <form action="Content formulario" action="<%= item == 'Armários' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : 
+        item == 'Gavetas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid  : 
+        item == 'Compartimentos' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : 
+        item == 'Ferramentas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="get">
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
         </form>
     </div>
