@@ -7,6 +7,7 @@ const tipo = require('../model/tipo');
 module.exports = {
     async tipos(req, res) {
         const excluirid = -1;
+        const id = -1;
         const EDV = req.params.EDV;
         const SelectItem = await tipo.findAll({
                 raw: true,
@@ -31,6 +32,7 @@ module.exports = {
 
     async ferramentas(req, res) {
         const excluirid = -1;
+        const id = -1;
         const EDV = req.params.EDV;
         const idtipo = req.params.tipo;
         const idsubtipo = req.params.subtipo;

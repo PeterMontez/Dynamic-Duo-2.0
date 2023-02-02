@@ -61,7 +61,7 @@ module.exports = {
                 raw: true,
                 attributes: ['IDTipo', 'IDENTIFICACAO']
             });
-            res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
+            res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
 
         }
 
@@ -72,7 +72,7 @@ module.exports = {
                 where: { IDTipo: id }
             });
         const item = "Subtipos"
-                        res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
+                        res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
 
         }
         
@@ -82,7 +82,7 @@ module.exports = {
                 attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
                 where: { IDTipo: id, IDSubtipo : idsub}
             });
-                        res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
+                        res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
 
         }
 
@@ -172,6 +172,8 @@ module.exports = {
         const id = req.params.id;
         const item = req.params.item;
 
+        console.log('ENTROU NA FUNCAO')
+
         if (item == 'Armários') {
             await ferramenta.destroy({
                 where: { IDArmario: id },
@@ -242,13 +244,9 @@ module.exports = {
             await subtipo.destroy({
                 where: { IDSubtipo: id },
             });
-
-            await tipo.destroy({
-                where: { IDSubtipo: id },
-            });
         }
 
-        res.render('../views/index', {retirar:false, devolver:false, cadastrar:false});
+        res.render('../views/index', {retirar:false, devolver:false, mensage:'', devolverEdv:false, retirarEdv:false, cadastrarEdv:false, cadastrar:false});
 
     },
 

@@ -83,9 +83,9 @@
             <h2>Excluir esse item irá excluir todos os items relacionados! <br><br><strong>Prossiga com cautela!</strong></h2>
         </div>
         <form class="Content formulario" action="<%= item == 'Armários' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
-        item == 'Gavetas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid  : 
-        item == 'Compartimentos' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
-        item == 'Ferramentas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="post">
+                                                        item == 'Gavetas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid  : 
+                                                        item == 'Compartimentos' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
+                                                        item == 'Ferramentas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="post">
             <div class="Content sendReceive">
                 <p><%= item %></p>
                 <% for(let i = 0; i<SelectItem.length; i++){SelectItem[i]} %> 
@@ -94,9 +94,9 @@
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Excluir</button>
         </form>
         <form action="Content formulario" action="<%= item == 'Armários' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : 
-        item == 'Gavetas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid  : 
-        item == 'Compartimentos' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : 
-        item == 'Ferramentas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="get">
+                                                        item == 'Gavetas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid  : 
+                                                        item == 'Compartimentos' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : 
+                                                        item == 'Ferramentas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="get">
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
         </form>
     </div>
