@@ -90,9 +90,9 @@ module.exports = {
     async closeExcluir(req, res){
         const EDV = req.params.EDV;
         const item = req.params.item;
-        // const excluirid = req.params.id;
-        // const id = req.params.lastid;
-        // const idsub = req.params.idsub;
+        const excluirid = req.params.id;
+        const id = req.params.lastid;
+        const idsub = req.params.idsub;
 
         const pessoa = await colaboradores.findAll({
             raw:true,

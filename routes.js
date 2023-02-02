@@ -59,7 +59,7 @@ route.post('/closeExcluir/:EDV/:item/:id/:lastid/:idsub', excluir.closeExcluir)
 route.post('/excluir/:EDV/:item/:id', excluir.excluir)
 
 // Editar Objetos
-route.get('/editar/:EDV/ferramenta/:id', update.pushferramenta)
+route.get('/editar/:EDV/ferramenta/:id/:tema', update.pushferramenta)
 route.get('/editar/:EDV/armario/:id', update.pusharmario)
 route.get('/editar/:EDV/gaveta/:id', update.pushgaveta)
 route.get('/editar/:EDV/compartimento/:id', update.pushcompartimento)
