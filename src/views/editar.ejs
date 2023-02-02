@@ -32,147 +32,73 @@
         <div class="cadastro" id="Cadastrar" style="display: flex;">
             <h3><%= pessoa[0].IDENTIFICACAO %> </h3><br>
             <div class="formulario" id="Ferramentas" onchange="MudarFormulario()">
-                <form action="/editar/ferramenta/<%= id %>" method="post">
-                <div id="SeparacaoConteudo">
-                    <div>
-                        <input type="text" name="cartao" style="display: none;" value="<%= pessoa[0].CARTAO %> ">
-                        <h4>Nome:</h4>
-                        <input type="text" name="identificacao" value="<%= ferramenta.IDENTIFICACAO %>" >
-                        <h4>Descrição</h4>
-                        <input type="text" name="descricao" value="<%= ferramenta.DESCRICAO %> ">
-                        <h4>Status</h4>
-                        <input type="text" name="status" value="<%= ferramenta.STATUS %> " >
-                        <h4>Tipo</h4>
-                        <select name="tipo" id="tipoSelect"  onchange="this.form.submit()">
-                            <% for(let i=0; i < tipos.length; i++){ %>
-                                <% if(tipos[i].IDTipo == SelectedTipo) {%> 
-                                <option value="<%=tipos[i].IDTipo%> " selected><%= tipos[i].IDENTIFICACAO %></option>
-                                <% } %>
-                                <option value="<%=tipos[i].IDTipo%> "><%= tipos[i].IDENTIFICACAO %></option>
-                                <% } %>
-                        </select>
-                    </div>
-                    <div>
-                        <h4>Subtipo</h4>
-                        <select name="subtipo" id="">
-                            <option value="" selected>Selecione</option>
-                            <% for(let i=0; i < subtipos.length; i++){ %>
-                                <% if(subtipos[i].IDTipo == SelectedTipo) {%> 
-                                    <% if(subtipos[i].IDSubtipo == SelectedSubtipo){ %> 
-                                        <option value="<%= subtipos[i].IDSubtipo %> " selected><%= subtipos[i].IDENTIFICACAO %></option>
-                                    <% } else{ %>
-                                        <option value="<%= subtipos[i].IDSubtipo %> "><%= subtipos[i].IDENTIFICACAO %></option>
-                                    <% } %>
-                                <% } %>
-                            <% } %>
-                        </select>
-                        <h4>Armario</h4>
-                        <select name="armario" id="" onchange="this.form.submit()" >
-                            <option value="" disabled selected>Selecione</option>
-                            <% for(let i=0; i < armarios.length; i++){ %>
-                                <% if(armarios[i].IDArmario == SelectedArmario){%> 
-                                    <option value="<%= armarios[i].IDArmario%>" selected><%= armarios[i].IDENTIFICACAO %></option>
-                                <% } else{ %> 
-                                <option value="<%= armarios[i].IDArmario %> "><%= armarios[i].IDENTIFICACAO %></option>
-                                <% } %>
-                            <% } %>
-                        </select>
-                        <h4>Gaveta</h4>
-                        <select name="gaveta" id="" onchange="this.form.submit()">
-                            <option value="" disabled selected>Selecione</option>
-                            <% for(let i=0; i < gavetas.length; i++){ %>
-                                <% if(gavetas[i].IDArmario == SelectedArmario){ %> 
-                                    <% if(gavetas[i].IDGaveta == SelectedGaveta) {%> 
-                                        <option value="<%= gavetas[i].IDGaveta %>" selected><%= gavetas[i].IDENTIFICACAO %></option>
-                                    <% } else{ %> 
-                                        <option value="<%= gavetas[i].IDGaveta %> "><%= gavetas[i].IDENTIFICACAO %></option>
-                                    <% } %> 
-                                <% } %>
-                            <% } %>
-                        </select>
-                        <h4>Compartimento</h4>
-                        <select name="compartimento" id="" >
-                            <option value="" disabled selected>Selecione</option>
-                            <% for(let i=0; i < compartimentos.length; i++){ %>
-                                <% if(compartimentos[i].IDGaveta == SelectedGaveta){ %> 
-                                    <% if(SelectedCompartimento){ %> 
-                                        <option value="<%= compartimentos[i].IDCompartimento %>" selected><%= compartimentos[i].IDENTIFICACAO %></option>
-                                    <% } else{ %> 
-                                        <option value="<%= compartimentos[i].IDCompartimento %>" ><%= compartimentos[i].IDENTIFICACAO %></option>
-                                    <% } %>
-                                <% } %>
-                            <% } %>
-                        </select>
-                    </div>
-                </div>
-                <button name="send" class="submitButton" value="false" onclick="this.value = 'true'; this.form.submit()">Enviar</button>
+            <div class="formulario" id="Armario" style="display:<%= item=='Armario'?'flex':'none'%>;" >
+                <form action="" method="post">
+                    <h3>Armario</h3>
+                    <h4>Identificacao:</h4>
+                    <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
+                    <button class="submitButton">Submit</button>
                 </form>
+            </div>
 
+            <div class="formulario" id="Gaveta" style="display:<%= item=='Gaveta'?'flex':'none'%>;">
+                <form action="" method="post">
+                    <h3>Gaveta</h3>
+                    <h4>Identificacao:</h4>
+                    <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
+                    <h4>Conteudo:</h4>
+                    <input type="text" name="conteudo" value="<%=EditItem[0].CONTEUDO%>">
+                    <button class="submitButton">Submit</button>
+                </form>
             </div>
-            <div class="formulario" style="display:none;" id='Armario'>
-                <form action="/cadastrar/armario" method="post">
-                    <h4>Tipo:</h4>
-                    <select name="tipo" id="" required>
-                        <option value="" selected disabled>Selecione</option>
-                        <option value="Gavetas">Gavetas</option>
-                        <option value="Portas">Portas</option>
+                
+            <div class="formulario" id="compartimetno" style="display:<%= item=='Compartimento'?'flex':'none'%>;" >
+                <form action="" method="post">
+                    <h3>Compartimetno</h3>
+                    <h4>Identificacao:</h4>
+                    <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
+                    <h4>Conteudo:</h4>
+                    <input type="text" name="conteudo" value="<%=EditItem[0].CONTEUDO%>">
+                    <button class="submitButton">Submit</button>
+                </form>
+            </div>
+
+            <div class="formulario" id="tipo" style="display:<%= item=='Tipo'?'flex':'none'%>;" >
+                <form action="" method="post">
+                    <h3>Tipo</h3>
+                    <h4>Identificacao:</h4>
+                    <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
+                    <button class="submitButton">Submit</button>
+                </form>
+            </div>
+
+            <div class="formulario" id="tipo" style="display:<%= item=='Subtipo'?'flex':'none'%>;" >
+                <form action="" method="post">
+                    <h3>Subtipo</h3>
+                    <h4>Identificacao:</h4>
+                    <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
+                    <button class="submitButton">Submit</button>
+                </form>
+            </div>
+            
+            <div class="formulario" id="tipo" style="display:<%= item=='Ferramenta'?'flex':'none'%>;" >
+                <form action="" method="post">
+                    <h3>Ferramenta</h3>
+                    <h4>Identificacao:</h4>
+                    <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
+                    <h4>Descricao</h4>
+                    <input type="text" name="descricao" value="<%=EditItem[0].DESCRICAO%>">
+                    <h4>Status:</h4>
+                    <select name="status" id="StatusFerramenta">
+                        <option value="Disponivel"<%if(EditItem[0].STATUS==''){ %> selected <% } %>  >Disponivel</option>
+                        <option value="Manutencao"<%if(EditItem[0].STATUS==''){ %> selected <% } %>  >Manutencao</option>
+                        <option value="Retirada"  <%if(EditItem[0].STATUS==''){ %> selected <% } %>  >Retirada</option>
                     </select>
-                    <h4>Divisões:</h4>
-                    <input type="number" name="divisoes" id="" required>
-                    <h4>Nome / numero:</h4>
-                    <input type="text" name="identificacao" required>
-                    <button type="submit" class="submitButton">Enviar</button>
+                    
+                    <button class="submitButton">Submit</button>
                 </form>
             </div>
-            <div class="formulario" style="display: none;" id="Gavetas">
-                <form action="/cadastrar/gaveta" method="post">
-                    <h4>identificação</h4>
-                    <input type="text" name="identificacao" required>
-                    <h4>Conteudo</h4>
-                    <input type="text" name="conteudo" required>
-                    <h4>Armario</h4>
-                    <select name="armario" id="SlctArmario" required>
-                        <% for(let i = 0; i < armarios.length; i++){ %> 
-                            <option value="<%= armarios[i].IDArmario %> "><%= armarios[i].IDENTIFICACAO %> </option>
-                        <% } %> 
-                    </select>
-                    <h4>Compartimentos</h4>
-                    <input type="number" name="qtdcompartimentos" required>
-                    <button type="submit" class="submitButton">Enviar</button>
-                </form>
-            </div>
-            <div class="formulario" style="display: none;" id="TipoFerramenta">
-                <form action="/cadastra/tipo" method="post">
-                    <h4>Nome:</h4>
-                    <input type="text" name="identificacao" required>
-                    <button type="submit" class="submitButton">Enviar</button>
-                </form>
-            </div>
-            <div class="formulario" style="display: none;" id="SubtipoFerramenta">
-                <form action="/cadastra/subtipo" method="post">
-                    <h4>Nome:</h4>
-                    <input type="text" name="identificacao" required>
-                    <h4>Tipo</h4>
-                    <select name="tipo" id="" required>
-                        <option value="" disabled selected>Selecione</option>
-                        <% for(let i = 0; i < tipos.length; i++ ) {%>
-                            <option value="<%= tipos[i].IDTipo %>"><%= tipos[i].IDENTIFICACAO %></option>
-                        <% } %> 
-                    </select>
-                    <button type="submit" class="submitButton">Enviar</button>
-                </form>
-            </div>
-            <div class="formulario" style="display: none;" id="Colaborador">
-                <form action="/cadastra/colaborador" method="post">
-                    <h4>Nome:</h4>
-                    <input type="text" name="identificacao" required>
-                    <h4>EDV:</h4>
-                    <input type="text" name="edv" required>
-                    <h4>Cartao:</h4>
-                    <input type="text" name="cartao" required>
-                    <button type="submit" class="submitButton">Enviar</button>
-                </form>
-            </div>
+
             <form action="/" method="get">
                 <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
             </form>
