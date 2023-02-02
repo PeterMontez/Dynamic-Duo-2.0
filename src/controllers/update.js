@@ -460,13 +460,12 @@ module.exports = {
             attributes: ['EDV','IDENTIFICACAO','CARTAO'],
             where: {EDV: edv}
         });
-        const EditItem = await armario.findAll({
+        const EditItem = await ferramenta.findAll({
             raw:true,
-            attributes: ['IDFerramenta','IDENTIFICACAO','DESCRICAO','STATUS','EDV','IDTipo','IDSubtipo','IDCompartimetno','IDGaveta','IDArmario'],
+            attributes: ['IDFerramenta','IDENTIFICACAO','DESCRICAO','STATUS','EDV','IDTipo','IDSubtipo','IDCompartimento','IDGaveta','IDArmario'],
             where: {IDFerramenta: id}
         });
         console.log(pessoa);
         res.render('../views/editar.ejs', {id, item, pessoa,EditItem, ferramentas, tipos, subtipos,armarios,gavetas,compartimentos,colaboradores})
     },  
-
 }
