@@ -72,9 +72,11 @@ main{
     width: 250px;
     height: 200px;
     border-radius: 25px 25px 0 25px;
-    background-color: #00CED1;
+    background: url(../img/bosch-palette.jpg);
+    background-size: 100% 100%;
     z-index: 3;
     box-shadow: 0 1px 10px black;
+    color: antiquewhite;
 }
 .Card:hover{
     cursor: pointer;
@@ -82,12 +84,13 @@ main{
 .Card:hover .img{
     height: 300px;
     border-radius: 25px;
-    opacity: 0.3;
+    opacity: 0.75;
 }
 .Card:hover .Description{
     position: relative;
     top: -100px;
     z-index: 5;
+    color: aliceblue;
 }
 
 .Content {
