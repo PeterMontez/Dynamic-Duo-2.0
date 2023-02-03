@@ -8,6 +8,7 @@ DROP TABLE Tipos_de_ferramentas
 DROP TABLE Compartimentos
 DROP TABLE Gavetas
 DROP TABLE Armarios
+DROP TABLE Colaboradores
 
 CREATE TABLE Armarios(
     ID INT IDENTITY(1,1) PRIMARY KEY,
@@ -88,6 +89,9 @@ INSERT Subtipos VALUES
 ('Pastilhas Torno Rosca', 12),
 ('Pastilhas Torno Bedame', 12),
 ('Pastilhas Torno T-MAX', 12);
+
+insert Colaboradores values (92900546, 'NYCOLLAS WENNDY SOBOLEVSKI', 506481, 1, GETDATE(),GETDATE())
+
 
 delete from Ferramentas where (IDENTIFICACAO='')
 SELECT * FROM Armarios
