@@ -56,10 +56,11 @@
                                     item == 'Compartimentos' ? '/pa-ferramentas/'+EDV+'/'+SelectItem[i].IDCompartimento : 
                                     item == 'Ferramentas' ? '/confirmaretirada/'+EDV+'/'+SelectItem[i].IDFerramenta : '' %> "
                             method="get">
-                            <button class="Card" onclick="this.form.submit()">
+                            <button class="Card" <%= item=='Ferramentas'&&SelectItem[i].EDV!=''? 'disabled' : '' %> 
+                                 onclick="this.form.submit()" >
                                 <div class="Content">
-                                    <div class="img">
-                                        <h4>
+                                    <div class="img" <% if(item=='Ferramentas'&&SelectItem[i].EDV!='') {%> style="background-color: #d2d5d5" <% } %> >
+                                        <h4 >
                                             <%= item=='Armários' ?"Armario" : item=='Gavetas' ?'Gaveta':
                                                 item=='Compartimentos' ?'Compartimento' : item=='Ferramentas'
                                                 ?'Ferramenta':'' %>
@@ -75,6 +76,13 @@
                                                 SelectItem[i].DESCRICAO !=null ? SelectItem[i].DESCRICAO : '' %>
                                         </h4>
                                         </p>
+                                        <% if (item=='Ferramentas') { %>
+                                            <% for( let j = 0; j < colaboradores.length; j++ ) { %>
+                                            <% if (colaboradores[j].EDV == SelectItem[i].EDV) { %>
+                                                <p>Retirada por:</p> <p></p><%= colaboradores[j].IDENTIFICACAO %> </p>
+                                            <% } %>
+                                         <% } %>
+                                        <% } %>
                                         <img src="" alt="">
                                     </div>
                                 </div>

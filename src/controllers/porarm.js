@@ -70,14 +70,18 @@ module.exports = {
             attributes:['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
             where: {EDV:EDV}
         })
+        const colaboradores = await colaborador.findAll({
+            raw: true,
+            attributes:['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
+        })
         const id = req.params.compartimento;
         const SelectItem = await ferramenta.findAll({
                 raw: true,
-                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
+                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS', 'EDV'],
                 where: { IDCompartimento: id }
             });
         const item = "Ferramentas"
-        res.render('../views/armarios', {item, SelectItem, EDV, id, pessoa, excluirid, excluir:false});
+        res.render('../views/armarios', {item, SelectItem, EDV, id, pessoa, excluirid, colaboradores, excluir:false});
     },
 
 }

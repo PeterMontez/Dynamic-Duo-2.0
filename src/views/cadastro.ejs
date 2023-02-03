@@ -51,6 +51,9 @@
                         <h4>Descrição</h4>
                         <input type="text" name="descricao" value="<%= SelectedDescricao %>">
                         <h4>Status</h4>
+                        <select name="status" id="selectStatus">
+                            <option value="Disponivel" selected>Disponivel</option>
+                        </select>
                         <input type="text" name="status" value="<%= SelectedStatus %>" >
                         <h4>Tipo</h4>
                         <select name="tipo" id="tipoSelect"  onchange="this.form.submit()">

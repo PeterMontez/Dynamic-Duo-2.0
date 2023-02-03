@@ -37,7 +37,16 @@
 
 
   <main>
-    <h2>Devolver</h2>
+    <div class="Title">
+      <h2>
+          Devolver
+      </h2>
+      <h4>
+          <%= pessoa[0].IDENTIFICACAO %>
+      </h4>
+  </div>
+
+
     <table>
 
       <thead>
@@ -59,7 +68,7 @@
           <tr>
             <form action="/confirmadevolucao/<%= pessoa[0].EDV %>/<%= ferramentas[i].IDFerramenta %>" method="get">
               <td><strong><%= ferramentas[i].IDENTIFICACAO %></strong></td>
-              <td><%= ferramentas[i].OBS %></td>
+              <td><%= ferramentas[i].DESCRICAO %></td>
               <td><%= ferramentas[i].STATUS %></td>
               <td><%= tipos[i] %></td>
               <td><%= subtipos[i] %></td>

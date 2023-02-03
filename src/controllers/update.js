@@ -81,20 +81,20 @@ module.exports = {
         }
         else{
 
-            // await ferramenta.update({
-            //     IDENTIFICACAO: dados.identificacao,
-            //     STATUS: dados.status,
-            //     DESCRICAO: dados.descricao,
-            //     IDTipo: dados.tipo,
-            //     IDSubtipo: dados.subtipo,
-            //     IDArmario: dados.armario,
-            //     IDGaveta: dados.gaveta,
-            //     IDCompartimento: dados.compartimento,
-            // },
-            //     {
-            //         where: { IDFerramenta: id }
-            //     });
-            // res.render('../views/index', { retirar: false, devolver: false, cadastrar: false, retirarEdv: false, devolverEdv: false, cadastrarEdv: false, mensage: '' });
+            await ferramenta.update({
+                IDENTIFICACAO: dados.identificacao,
+                STATUS: dados.status,
+                DESCRICAO: dados.descricao,
+                IDTipo: dados.tipo,
+                IDSubtipo: dados.subtipo,
+                IDArmario: dados.armario,
+                IDGaveta: dados.gaveta,
+                IDCompartimento: dados.compartimento,
+            },
+                {
+                    where: { IDFerramenta: id }
+                });
+            res.render('../views/index', { retirar: false, devolver: false, cadastrar: false, retirarEdv: false, devolverEdv: false, cadastrarEdv: false, mensage: '' });
         }
     },
 
