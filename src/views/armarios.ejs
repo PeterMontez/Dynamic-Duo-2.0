@@ -140,13 +140,7 @@
             </div>
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Excluir</button>
         </form>
-        <form action="<%= item == 'Armários' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid+'/'+id+'/-1' : 
-                            item == 'Gavetas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid+'/'+id+'/-1'  : 
-                            item == 'Compartimentos' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid+'/'+id+'/-1' : 
-                            item == 'Ferramentas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid+'/'+id+'/-1' : '' %> "
-    method="post">
-            <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
-        </form>
+        <button onclick="history.back()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
     </div>
 
 
