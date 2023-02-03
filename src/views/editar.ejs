@@ -39,7 +39,7 @@
             <% if (item=='Armario' ){ %>
 
                 <div class="formulario" id="Armario">
-                    <form action="/editar/armario/<%=EditItem[0].IDArmario%>" method="post">
+                    <form action="/editar/<%= pessoa[0].EDV %>/armario/<%=EditItem[0].IDArmario%>" method="post">
                         <h3 class="TitleEdit">Armario</h3>
                         <h4>Identificacao:</h4>
                         <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -49,7 +49,7 @@
 
                 <% } else if (item=='Gaveta' ){ %>
                     <div class="formulario" id="Gaveta">
-                        <form action="/editar/gaveta/<%= EditItem[0].IDGaveta %> " method="post">
+                        <form action="/editar/<%= pessoa[0].EDV %>/gaveta/<%= EditItem[0].IDGaveta %> " method="post">
                             <h3 class="TitleEdit">Gaveta</h3>
                             <h4>Identificacao:</h4>
                             <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -60,7 +60,7 @@
                     </div>
                     <% } else if (item=='Compartimento' ){ %>
                         <div class="formulario" id="compartimetno">
-                            <form action="/editar/compartimento/<%= EditItem[0].IDCompartimeto %> " method="post">
+                            <form action="/editar/<%= pessoa[0].EDV %>/compartimento/<%= EditItem[0].IDCompartimento %> " method="post">
                                 <h3 class="TitleEdit">Compartimetno</h3>
                                 <h4>Identificacao:</h4>
                                 <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -71,7 +71,7 @@
                         </div>
                         <% }else if(item=='Tipo' ){ %>
                             <div class="formulario" id="tipo">
-                                <form action="/editar/tipo/<%=EditItem[0].IDTipo%> " method="post">
+                                <form action="/editar/<%= pessoa[0].EDV %> /tipo/<%=EditItem[0].IDTipo%> " method="post">
                                     <h3 class="TitleEdit">Tipo</h3>
                                     <h4>Identificacao:</h4>
                                     <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -80,8 +80,8 @@
                             </div>
 
                             <% }else if(item=='Subtipo' ){ %>
-                                <div class="formulario" id="tipo">
-                                    <form action="/editar/subtipo/<%=EditItem[0].IDSubtipo%>" method="post">
+                                <div class="formulario" id="subtipo">
+                                    <form action="/editar/<%= pessoa[0].EDV %> /subtipo/<%=EditItem[0].IDSubtipo%>" method="post">
                                         <h3 class="TitleEdit">Subtipo</h3>
                                         <h4>Identificacao:</h4>
                                         <input type="text" name="identificacao" value="<%=EditItem[0].IDENTIFICACAO%>">
@@ -91,7 +91,7 @@
 
                                 <%}else if(item=='Ferramenta' ){ %>
                                     <div class="formulario" id="tipo">
-                                        <form action="/editar/<%=edv%>/ferramenta/<%=EditItem[0].IDFerramenta%> "
+                                        <form action="/editar/<%=pessoa[0].EDV%>/ferramenta/<%=EditItem[0].IDFerramenta%> "
                                             method="post">
                                             <h3 class="TitleEdit">Ferramenta</h3>
                                             <div id="SeparacaoConteudo">

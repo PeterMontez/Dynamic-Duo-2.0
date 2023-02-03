@@ -482,7 +482,7 @@ module.exports = {
             attributes: ['EDV', 'IDENTIFICACAO', 'CARTAO'],
             where: { EDV: edv }
         });
-        const EditItem = await armario.findAll({
+        const EditItem = await subtipo.findAll({
             raw: true,
             attributes: ['IDSubtipo', 'IDENTIFICACAO'],
             where: { IDSubtipo: id }
@@ -535,7 +535,7 @@ module.exports = {
             where: { IDFerramenta: id }
         });
         console.log(pessoa);
-        res.render('../views/editar.ejs', { id, item,edv, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores,
+        res.render('../views/editar.ejs', { id, item, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores,
             SelectedTipo: EditItem[0].IDTipo, SelectedSubtipo: EditItem[0].IDSubtipo, SelectedArmario: EditItem[0].IDArmario, SelectedGaveta: EditItem[0].IDGaveta, SelectedCompartimento: EditItem[0].IDCompartimento,
             SelectedIdentificacao: EditItem[0].IDENTIFICACAO, SelectedDescricao: EditItem[0].DESCRICAO, SelectedStatus: EditItem[0].STATUS, condicao: false })
     },
