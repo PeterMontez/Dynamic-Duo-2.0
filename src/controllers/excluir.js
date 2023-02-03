@@ -4,7 +4,7 @@ const gaveta = require('../model/gaveta');
 const compartimento = require('../model/compartimento');
 const tipo = require('../model/tipo');
 const subtipo = require('../model/subtipo');
-const colaboradores = require('../model/colaborador')
+const colaborador = require('../model/colaborador')
 
 module.exports = {
     async openExcluir(req, res){
@@ -14,7 +14,7 @@ module.exports = {
         const id = req.params.lastid;
         const idsub = req.params.idsub;
 
-        const pessoa = await colaboradores.findAll({
+        const pessoa = await colaborador.findAll({
             raw:true,
             attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
             where: {EDV: EDV}
@@ -52,7 +52,11 @@ module.exports = {
                 attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
                 where: { IDCompartimento: id }
             });
-            res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
+            const colaboradores = await colaborador.findAll({
+                raw: true,
+                attributes:['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
+            })
+            res.render('../views/armarios', {colaboradores, pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
 
         }
 
@@ -82,87 +86,11 @@ module.exports = {
                 attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
                 where: { IDTipo: id, IDSubtipo : idsub}
             });
-                        res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
-
-        }
-
-    },
-    async closeExcluir(req, res){
-        const EDV = req.params.EDV;
-        const item = req.params.item;
-        const excluirid = req.params.id;
-        const id = req.params.lastid;
-        const idsub = req.params.idsub;
-
-        const pessoa = await colaboradores.findAll({
-            raw:true,
-            attributes: ['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
-            where: {EDV: EDV}
-        })
-
-        if (item == 'Armários') {
-            const SelectItem = await armario.findAll({
+            const colaboradores = await colaborador.findAll({
                 raw: true,
-                attributes: ['IDArmario', 'IDENTIFICACAO']
-            });
-            res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
-        }
-
-        if (item == 'Gavetas') {
-            const SelectItem = await gaveta.findAll({
-                raw: true,
-                attributes: ['IDGaveta', 'IDENTIFICACAO', 'CONTEUDO'],
-                where: { IDArmario: id }
-            });
-            res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
-        }
-
-        if (item == 'Compartimentos') {
-            const SelectItem = await compartimento.findAll({
-                raw: true,
-                attributes: ['IDCompartimento', 'IDENTIFICACAO'],
-                where: { IDGaveta: id }
-            });
-            res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
-        }
-
-        if (item == 'Ferramentas' && idsub == -1) {
-            const SelectItem = await ferramenta.findAll({
-                raw: true,
-                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
-                where: { IDCompartimento: id }
-            });
-            res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
-
-        }
-
-        if (item == 'Tipos de Ferramenta') {
-            const SelectItem = await tipo.findAll({
-                raw: true,
-                attributes: ['IDTipo', 'IDENTIFICACAO']
-            });
-            res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
-
-        }
-
-        if (item == 'Subtipos') {
-            const SelectItem = await subtipo.findAll({
-                raw: true,
-                attributes: ['IDSubtipo', 'IDENTIFICACAO', 'IDTipo'],
-                where: { IDTipo: id }
-            });
-        const item = "Subtipos"
-                        res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
-
-        }
-        
-        if (item == 'Ferramentas' && idsub != -1) {
-            const SelectItem = await ferramenta.findAll({
-                raw: true,
-                attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
-                where: { IDTipo: id, IDSubtipo : idsub}
-            });
-                        res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
+                attributes:['EDV','IDENTIFICACAO','CARTAO','ADMIN'],
+            })
+                        res.render('../views/ferramentas', {colaboradores ,pessoa, item, SelectItem, EDV, id, excluirid, excluir:true});
 
         }
 

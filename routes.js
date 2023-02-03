@@ -55,7 +55,6 @@ route.post('/cadastra/colaborador', cadastro.cadastracolaborador);
 
 // Excluir items
 route.post('/pushExcluir/:EDV/:item/:id/:lastid/:idsub', excluir.openExcluir)
-route.post('/closeExcluir/:EDV/:item/:id/:lastid/:idsub', excluir.closeExcluir)
 route.post('/excluir/:EDV/:item/:id', excluir.excluir)
 
 
