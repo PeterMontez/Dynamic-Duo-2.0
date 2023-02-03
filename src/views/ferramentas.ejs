@@ -109,7 +109,8 @@
         <form class="Content formulario"
             action="<%= item == 'Tipos de Ferramenta' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
                         item == 'Subtipos' ? '/excluir/'+EDV+'/'+item+'/'+excluirid  : 
-                        item == 'Ferramentas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="post">
+                        item == 'Ferramentas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " 
+                        method="post">
             <div class="Content sendReceive">
                 <p>
                     <%= item %>
@@ -121,10 +122,12 @@
             </div>
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Excluir</button>
         </form>
-        <form action="Content formulario"
-            action="<%= item == 'Tipos de Ferramenta' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : 
-                        item == 'Subtipos' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid  : 
-                        item == 'Ferramentas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="get">
+        <form
+            action="<%= item == 'Tipos de Ferramenta' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid+'/'+id+'/-1' : 
+                        item == 'Subtipos' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid+'/'+id+'/-1' : 
+                        item == 'Ferramentas' ? '/closeExcluir/'+EDV+'/'+item+'/'+excluirid'/'+id+'/-1' : '' %> " 
+                        /closeExcluir/:EDV/:item/:id/:lastid/:idsub
+                        method="post">
             <button onclick="ClearDisplay()" class="submitButton" style="background-color: #fb4b4b;">Fechar</button>
         </form>
     </div>

@@ -141,7 +141,7 @@ module.exports = {
                 raw: true,
                 attributes: ['IDTipo', 'IDENTIFICACAO']
             });
-            res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
+            res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
 
         }
 
@@ -152,7 +152,7 @@ module.exports = {
                 where: { IDTipo: id }
             });
         const item = "Subtipos"
-                        res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
+                        res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
 
         }
         
@@ -162,7 +162,7 @@ module.exports = {
                 attributes: ['IDFerramenta', 'IDENTIFICACAO', 'DESCRICAO', 'STATUS'],
                 where: { IDTipo: id, IDSubtipo : idsub}
             });
-                        res.render('../views/armarios', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
+                        res.render('../views/ferramentas', {pessoa, item, SelectItem, EDV, id, excluirid, excluir:false});
 
         }
 
