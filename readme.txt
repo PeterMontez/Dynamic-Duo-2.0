@@ -12,3 +12,14 @@ figma: https://www.figma.com/team_invite/redeem/patGnVXl5zNCoO3CgYEPqQ
 - Desenhar objetos
 - Desenhar telas
 
+
+descricao na tela de devolver
+
+select em cadastro ferramenta
+
+mostrar quem retirou ferramenta
+
+botoes de fechar 
+
+
+excluir/editar por ferramenta/tipo/subtipo

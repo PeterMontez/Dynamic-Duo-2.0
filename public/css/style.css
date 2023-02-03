@@ -38,6 +38,10 @@ main{
     box-shadow: -8px 8px 15px #616161;
     display: flex;
 }
+.Card:disabled{
+    filter: none;
+
+}
 .btn
 {
     height: 25px;
@@ -98,8 +102,7 @@ main{
     z-index: 1;
 }
 .Cards .img h1{
-    font-size: 40
-    px;
+    font-size: 40px;
     font-family: 'Solitreo', cursive;
 }
 
