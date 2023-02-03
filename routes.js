@@ -60,12 +60,12 @@ route.post('/excluir/:EDV/:item/:id', excluir.excluir)
 
 
 // Editar Objetos
-route.get('/editar/:EDV/ferramenta/:id/:tema', update.pushferramenta)
-route.get('/editar/:EDV/armario/:id', update.pusharmario)
-route.get('/editar/:EDV/gaveta/:id', update.pushgaveta)
-route.get('/editar/:EDV/compartimento/:id', update.pushcompartimento)
-route.get('/editar/:EDV/tipo/:id', update.pushtipo)
-route.get('/editar/:EDV/subtipo/:id', update.pushsubtipo)
+route.get('/pushEditar/:EDV/ferramenta/:id/', update.pushferramenta)
+route.get('/pushEditar/:EDV/armario/:id', update.pusharmario)
+route.get('/pushEditar/:EDV/gaveta/:id', update.pushgaveta)
+route.get('/pushEditar/:EDV/compartimento/:id', update.pushcompartimento)
+route.get('/pushEditar/:EDV/tipo/:id', update.pushtipo)
+route.get('/pushEditar/:EDV/subtipo/:id', update.pushsubtipo)
 route.post('/editar/:EDV/ferramenta/:id', update.ferramenta)
 route.post('/editar/:EDV/armario/:id', update.armario)
 route.post('/editar/:EDV/gaveta/:id', update.gaveta)

@@ -92,10 +92,10 @@
                                 </form>
                                 <form 
                                     action="
-                                        <%= item == 'Armários' ? '/editar/'+EDV+'/armario/'+SelectItem[i].IDArmario :
-                                        item == 'Gavetas' ? '/editar/'+EDV+'/gaveta/'+SelectItem[i].IDGaveta  : 
-                                        item == 'Compartimentos' ? '/editar/'+EDV+'/compartimento/'+SelectItem[i].IDCompartimento : 
-                                        item == 'Ferramentas' ? '/editar/'+EDV+'/Ferramenta/'+SelectItem[i].IDFerramenta : '' %>"
+                                        <%= item == 'Armários' ? '/pushEditar/'+EDV+'/armario/'+SelectItem[i].IDArmario :
+                                        item == 'Gavetas' ? '/pushEditar/'+EDV+'/gaveta/'+SelectItem[i].IDGaveta  : 
+                                        item == 'Compartimentos' ? '/pushEditar/'+EDV+'/compartimento/'+SelectItem[i].IDCompartimento : 
+                                        item == 'Ferramentas' ? '/pushEditar/'+EDV+'/Ferramenta/'+SelectItem[i].IDFerramenta : '' %>"
                                     method="get">
                                     <button class="btn" style="background-color: #98ff7e;" type="submit">Editar</button>
                                 </form>

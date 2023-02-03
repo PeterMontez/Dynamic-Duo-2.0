@@ -43,7 +43,11 @@ module.exports = {
         const compartimentoSelected = dados.compartimento;
         const condicao = dados.send
         const id = req.params.id
-        
+        console.log(dados.tipo);
+        console.log(dados.subtipo);
+        console.log(dados.armario);
+        console.log(dados.gaveta);
+        console.log(dados.compartimento);
         let edv = req.params.EDV
         console.log(edv)
 
@@ -531,6 +535,8 @@ module.exports = {
             where: { IDFerramenta: id }
         });
         console.log(pessoa);
-        res.render('../views/editar.ejs', { id, item, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, edv, colaboradores })
+        res.render('../views/editar.ejs', { id, item,edv, pessoa, EditItem, ferramentas, tipos, subtipos, armarios, gavetas, compartimentos, colaboradores,
+            SelectedTipo: EditItem[0].IDTipo, SelectedSubtipo: EditItem[0].IDSubtipo, SelectedArmario: EditItem[0].IDArmario, SelectedGaveta: EditItem[0].IDGaveta, SelectedCompartimento: EditItem[0].IDCompartimento,
+            SelectedIdentificacao: EditItem[0].IDENTIFICACAO, SelectedDescricao: EditItem[0].DESCRICAO, SelectedStatus: EditItem[0].STATUS, condicao: false })
     },
 }
