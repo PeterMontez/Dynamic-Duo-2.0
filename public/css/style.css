@@ -40,7 +40,11 @@ main{
 }
 .Card:disabled{
     filter: none;
-
+    cursor: not-allowed;
+}
+.Card:disabled:hover{
+    filter: none;
+    cursor: not-allowed;
 }
 .btn
 {

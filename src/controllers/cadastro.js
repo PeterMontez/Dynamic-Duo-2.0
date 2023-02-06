@@ -84,6 +84,7 @@ module.exports = {
                 await ferramenta.create({
                     IDENTIFICACAO: dados.identificacao,
                     DESCRICAO: dados.descricao,
+                    EDV:'',
                     IDTipo: dados.tipo,
                     IDSubtipo: dados.subtipo,
                     IDCompartimento: dados.compartimento,
@@ -96,6 +97,7 @@ module.exports = {
                 await ferramenta.create({
                     IDENTIFICACAO: dados.identificacao,
                     DESCRICAO: dados.descricao,
+                    EDV:'',
                     IDTipo: dados.tipo,
                     IDCompartimento: dados.compartimento,
                     IDGaveta: dados.gaveta,
@@ -168,12 +170,19 @@ module.exports = {
 
     async cadastracolaborador(req, res){
         const dados = req.body;
+
+        if (dados.selectAdmin == "true") {
+           var administrador = 1; 
+        } 
+        else{
+            var administrador = 0;
+        }
         
         await colaborador.create({
             EDV: dados.edv,
             IDENTIFICACAO: dados.identificacao,
             CARTAO: dados.cartao,
-            ADMIN: 0
+            ADMIN: administrador
         });
         
         res.redirect('/')
