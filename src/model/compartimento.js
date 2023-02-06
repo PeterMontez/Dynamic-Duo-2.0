@@ -17,6 +17,11 @@ const compartimento = database.define('Compartimentos', {
         allowNull: false
     },
 
+    CONTEUDO: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+    },
+
 });
 
 // Exportando essa tabela
