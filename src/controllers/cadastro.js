@@ -134,6 +134,7 @@ module.exports = {
         for (let i = 0; i < dados.qtdcompartimentos; i++) {
             await compartimento.create({
                 IDENTIFICACAO: i+1,
+                CONTEUDO: '',
                 IDGaveta: gavetinha.IDGaveta
             });
 
