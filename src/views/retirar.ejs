@@ -20,9 +20,14 @@
       alt="" class="BoschGradient">
     <div class="Content">
       <form action="/" method="get">
-        <button>
-          <img src="/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended" >
+        <button id="returnButton" type="submit">
+          <img src="https://cdn-icons-png.flaticon.com/512/13/13964.png" alt="">
         </button>
+      </form>
+      <button>
+        <form action="/" method="get">
+          <img src="/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended">
+      </button>
       </form>
     </div>
   </header>
@@ -36,21 +41,21 @@
           <div class="card_img"></div>
           <button class="card_img--hover"></button>
           <div class="card_info">
-              <span class="card_category"> Pesquisar por Armario</span>
-              <h3 class="card_title">Armarios</h3>
+            <span class="card_category"> Pesquisar por Armario</span>
+            <h3 class="card_title">Armarios</h3>
           </div>
         </form>
       </article>
 
       <article class="card card--2">
         <form action="/tipo/<%=pessoa[0].EDV%>" method="get">
-        <div class="card_img"></div>
-        <button class="card_img--hover"></button>
-        <div class="card_info">
-          <span class="card_category"> Pesquisar por Ferramenta</span>
-          <h3 class="card_title">Ferramentas</h3>
-        </div>
-      </form>
+          <div class="card_img"></div>
+          <button class="card_img--hover"></button>
+          <div class="card_info">
+            <span class="card_category"> Pesquisar por Ferramenta</span>
+            <h3 class="card_title">Ferramentas</h3>
+          </div>
+        </form>
       </article>
 
 
