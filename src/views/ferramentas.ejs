@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Armarios</title>
-    <link rel="icon" href="img/Bosch-Logo2.png">
+    <link rel="icon" href="/ToolManagerimg/Bosch-Logo2.png">
 
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/script/index.js"></script>
+    <link rel="stylesheet" href="/ToolManager/css/index.css">
+    <link rel="stylesheet" href="/ToolManager/css/style.css">
+    <script src="/ToolManager/script/index.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="/fonts/BoschSans-Black-v5_003.ttf" rel="stylesheet">
+    <link href="/ToolManager/fonts/BoschSans-Black-v5_003.ttf" rel="stylesheet">
 </head>
 
 
@@ -26,9 +26,9 @@
             <button id="returnButton" onclick="history.back()">
                 <img src="https://cdn-icons-png.flaticon.com/512/13/13964.png" alt="">
             </button>
-            <form action="/" method="get">
+            <form action="/ToolManager" method="get">
                 <button>
-                    <img src="/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended">
+                    <img src="/ToolManager/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended">
                 </button>
             </form>
         </div>
@@ -53,9 +53,9 @@
                 <% for(let i=0; i < SelectItem.length; i++){ %>
                     <div>
                         <form
-                            action="<%= item == 'Tipos de Ferramenta' ? '/subtipo/'+EDV+'/'+SelectItem[i].IDTipo : 
-                                            item == 'Subtipos' ? '/pf-ferramentas/'+ EDV +'/'+ SelectItem[i].IDTipo +'/'+ SelectItem[i].IDSubtipo :
-                                            item == 'Ferramentas' ? '/confirmaretirada/'+EDV+'/'+SelectItem[i].IDFerramenta : '' %> "
+                            action="<%= item == 'Tipos de Ferramenta' ? '/ToolManager/subtipo/'+EDV+'/'+SelectItem[i].IDTipo : 
+                                            item == 'Subtipos' ? '/ToolManager/pf-ferramentas/'+ EDV +'/'+ SelectItem[i].IDTipo +'/'+ SelectItem[i].IDSubtipo :
+                                            item == 'Ferramentas' ? '/ToolManager/confirmaretirada/'+EDV+'/'+SelectItem[i].IDFerramenta : '' %> "
                             method="get">
                             <button class="Card" onclick="this.form.submit()">
                                 <div class="Content">
@@ -78,17 +78,17 @@
                         <% if (pessoa[0].ADMIN==1) { %>
                             <div class="excluir-editar">
                                 <form
-                                    action="<%= item == 'Tipos de Ferramenta' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDTipo+'/-1/-1' : 
-                                                item == 'Subtipos' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDSubtipo+'/'+id+'/-1'  : 
-                                                item == 'Ferramentas' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDFerramenta+'/'+id+'/-1' : '' %> "
+                                    action="<%= item == 'Tipos de Ferramenta' ? '/ToolManager/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDTipo+'/-1/-1' : 
+                                                item == 'Subtipos' ? '/ToolManager/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDSubtipo+'/'+id+'/-1'  : 
+                                                item == 'Ferramentas' ? '/ToolManager/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDFerramenta+'/'+id+'/-1' : '' %> "
                                     method="post">
                                     <button class="btn" style="background-color: #ff7e7e;">excluir</button>
                                 </form>
                                 <form
                                     action="
-                                        <%= item == 'Tipos de Ferramenta' ? '/pushEditar/'+EDV+'/tipo/'+SelectItem[i].IDTipo :
-                                            item == 'Subtipos' ? '/pushEditar/'+EDV+'/subtipo/'+SelectItem[i].IDSubtipo  : 
-                                            item == 'Ferramentas' ? '/pushEditar/'+EDV+'/Ferramenta/'+SelectItem[i].IDFerramenta : '' %>"
+                                        <%= item == 'Tipos de Ferramenta' ? '/ToolManager/pushEditar/'+EDV+'/tipo/'+SelectItem[i].IDTipo :
+                                            item == 'Subtipos' ? '/ToolManager/pushEditar/'+EDV+'/subtipo/'+SelectItem[i].IDSubtipo  : 
+                                            item == 'Ferramentas' ? '/ToolManager/pushEditar/'+EDV+'/Ferramenta/'+SelectItem[i].IDFerramenta : '' %>"
                                     method="get">
                                     <button class="btn" style="background-color: #98ff7e;" type="submit">Editar</button>
                                 </form>
@@ -109,9 +109,9 @@
                     cautela!</strong></h2>
         </div>
         <form class="Content formulario"
-            action="<%= item == 'Tipos de Ferramenta' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
-                        item == 'Subtipos' ? '/excluir/'+EDV+'/'+item+'/'+excluirid  : 
-                        item == 'Ferramentas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " 
+            action="<%= item == 'Tipos de Ferramenta' ? '/ToolManager/excluir/'+EDV+'/'+item+'/'+excluirid : 
+                        item == 'Subtipos' ? '/ToolManager/excluir/'+EDV+'/'+item+'/'+excluirid  : 
+                        item == 'Ferramentas' ? '/ToolManager/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " 
                         method="post">
             <div class="Content sendReceive">
                 <p>

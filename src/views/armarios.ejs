@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Armarios</title>
-    <link rel="icon" href="img/Bosch-Logo2.png">
+    <link rel="icon" href="/ToolManager/img/Bosch-Logo2.png">
 
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/script/index.js"></script>
+    <link rel="stylesheet" href="/ToolManager/css/index.css">
+    <link rel="stylesheet" href="/ToolManager/css/style.css">
+    <script src="/ToolManager/script/index.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="/fonts/BoschSans-Black-v5_003.ttf" rel="stylesheet">
+    <link href="/ToolManager/fonts/BoschSans-Black-v5_003.ttf" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -27,9 +27,9 @@
             <button id="returnButton" onclick="history.back()">
                 <img src="https://cdn-icons-png.flaticon.com/512/13/13964.png" alt="">
             </button>
-            <form action="/" method="get">
+            <form action="/ToolManager" method="get">
                 <button>
-                    <img src="/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended">
+                    <img src="/ToolManager/img/Bosch-Logo-Extended.png" style="height: 50px;" alt="Bosch-Logo-Extended">
                 </button>
             </form>
         </div>
@@ -54,10 +54,10 @@
                 <% for(let i=0; i < SelectItem.length; i++){ %>
                     <div>
                         <form
-                            action="<%= item == 'Armários' ? '/gavetas/'+EDV+'/'+SelectItem[i].IDArmario : 
-                                    item == 'Gavetas' ? '/compartimentos/'+EDV+'/'+SelectItem[i].IDGaveta  : 
-                                    item == 'Compartimentos' ? '/pa-ferramentas/'+EDV+'/'+SelectItem[i].IDCompartimento : 
-                                    item == 'Ferramentas' ? '/confirmaretirada/'+EDV+'/'+SelectItem[i].IDFerramenta : '' %> "
+                            action="<%= item == 'Armários' ? '/ToolManager/gavetas/'+EDV+'/'+SelectItem[i].IDArmario : 
+                                    item == 'Gavetas' ? '/ToolManager/compartimentos/'+EDV+'/'+SelectItem[i].IDGaveta  : 
+                                    item == 'Compartimentos' ? '/ToolManager/pa-ferramentas/'+EDV+'/'+SelectItem[i].IDCompartimento : 
+                                    item == 'Ferramentas' ? '/ToolManager/confirmaretirada/'+EDV+'/'+SelectItem[i].IDFerramenta : '' %> "
                             method="get">
                             <button class="Card" <%= item=='Ferramentas'&&SelectItem[i].EDV!=''? 'disabled' : '' %> 
                                  onclick="this.form.submit()" >
@@ -94,19 +94,19 @@
                         <% if (pessoa[0].ADMIN==1) { %>
                             <div class="excluir-editar">
                                 <form
-                                    action="<%= item == 'Armários' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDArmario+'/-1/-1' : 
-                                        item == 'Gavetas' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDGaveta+'/'+id+'/-1'  : 
-                                        item == 'Compartimentos' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDCompartimento+'/'+id+'/-1' : 
-                                        item == 'Ferramentas' ? '/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDFerramenta+'/'+id+'/-1' : '' %> "
+                                    action="<%= item == 'Armários' ? '/ToolManager/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDArmario+'/-1/-1' : 
+                                        item == 'Gavetas' ? '/ToolManager/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDGaveta+'/'+id+'/-1'  : 
+                                        item == 'Compartimentos' ? '/ToolManager/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDCompartimento+'/'+id+'/-1' : 
+                                        item == 'Ferramentas' ? '/ToolManager/pushExcluir/'+EDV+'/'+item+'/'+SelectItem[i].IDFerramenta+'/'+id+'/-1' : '' %> "
                                     method="post">
                                     <button class="btn" style="background-color: #ff7e7e;">excluir</button>
                                 </form>
                                 <form 
                                     action="
-                                        <%= item == 'Armários' ? '/pushEditar/'+EDV+'/armario/'+SelectItem[i].IDArmario :
-                                        item == 'Gavetas' ? '/pushEditar/'+EDV+'/gaveta/'+SelectItem[i].IDGaveta  : 
-                                        item == 'Compartimentos' ? '/pushEditar/'+EDV+'/compartimento/'+SelectItem[i].IDCompartimento : 
-                                        item == 'Ferramentas' ? '/pushEditar/'+EDV+'/Ferramenta/'+SelectItem[i].IDFerramenta : '' %>"
+                                        <%= item == 'Armários' ? '/ToolManager/pushEditar/'+EDV+'/armario/'+SelectItem[i].IDArmario :
+                                        item == 'Gavetas' ? '/ToolManager/pushEditar/'+EDV+'/gaveta/'+SelectItem[i].IDGaveta  : 
+                                        item == 'Compartimentos' ? '/ToolManager/pushEditar/'+EDV+'/compartimento/'+SelectItem[i].IDCompartimento : 
+                                        item == 'Ferramentas' ? '/ToolManager/pushEditar/'+EDV+'/Ferramenta/'+SelectItem[i].IDFerramenta : '' %>"
                                     method="get">
                                     <button class="btn" style="background-color: #98ff7e;" type="submit">Editar</button>
                                 </form>
@@ -128,10 +128,10 @@
             <h2>Excluir esse item irá excluir todos os items relacionados! <br><br><strong>Prossiga com
                     cautela!</strong></h2>
         </div>
-        <form class="Content formulario" action="<%= item == 'Armários' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
-                                                        item == 'Gavetas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid  : 
-                                                        item == 'Compartimentos' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : 
-                                                        item == 'Ferramentas' ? '/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="post">
+        <form class="Content formulario" action="<%= item == 'Armários' ? '/ToolManager/excluir/'+EDV+'/'+item+'/'+excluirid : 
+                                                        item == 'Gavetas' ? '/ToolManager/excluir/'+EDV+'/'+item+'/'+excluirid  : 
+                                                        item == 'Compartimentos' ? '/ToolManager/excluir/'+EDV+'/'+item+'/'+excluirid : 
+                                                        item == 'Ferramentas' ? '/ToolManager/excluir/'+EDV+'/'+item+'/'+excluirid : '' %> " method="post">
             <div class="Content sendReceive">
                 <p>
                     <%= item %>

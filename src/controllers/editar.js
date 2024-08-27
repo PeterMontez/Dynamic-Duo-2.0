@@ -8,7 +8,6 @@ const compartimento = require('../model/compartimento');
 module.exports = {
     async ferramenta(req, res){
         const cartao = req.body.cartao;
-        console.log(cartao);
 
         const colaboradores = await colaborador.findAll({
             raw: true,

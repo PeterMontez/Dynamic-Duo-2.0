@@ -7,6 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Static files
 app.use(express.static('public'));
+app.use('/ToolManager', express.static('public'));
 
 // EJS
 app.set('views', './src/views');
@@ -14,4 +15,7 @@ app.set('view engine', 'ejs');
 
 app.use(routes);
 
-app.listen(3000, () => console.log('Acesse: http://localhost:3000/'));
+const PORT = 20031;
+const HOST = '10.234.192.30'
+
+app.listen(PORT, HOST, () => console.log(`Acesse: http://${HOST}:${PORT}/`));

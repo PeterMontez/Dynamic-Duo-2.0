@@ -106,7 +106,7 @@ module.exports = {
                 });
             }
     
-            res.redirect('/');
+            res.redirect('/ToolManager');
         }
     },
 
@@ -119,7 +119,7 @@ module.exports = {
             IDENTIFICACAO: dados.identificacao
         });
 
-        res.redirect('/');
+        res.redirect('/ToolManager');
     },
 
     async cadastragaveta(req, res) {
@@ -142,7 +142,7 @@ module.exports = {
 
         }
 
-        res.redirect('/');
+        res.redirect('/ToolManager');
     },
 
     async cadastratipo(req, res) {
@@ -153,7 +153,7 @@ module.exports = {
 
         });
 
-        res.redirect('/');
+        res.redirect('/ToolManager');
     },
 
     async cadastrasubtipo(req, res) {
@@ -165,7 +165,7 @@ module.exports = {
 
         });
 
-        res.redirect('/');
+        res.redirect('/ToolManager');
     },
 
     async cadastracolaborador(req, res){
@@ -185,7 +185,7 @@ module.exports = {
             ADMIN: administrador
         });
         
-        res.redirect('/')
+        res.redirect('/ToolManager')
     }
 
 }
