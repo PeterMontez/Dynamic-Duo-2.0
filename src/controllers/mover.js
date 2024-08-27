@@ -7,6 +7,9 @@ const tipo = require('../model/tipo');
 const subtipo = require('../model/subtipo');
 const colaborador = require('../model/colaborador');
 
+const database = require('../config/firebase');
+const { ref, set } = require('firebase/database')
+
 module.exports = {
     async retirar(req, res) {
         const EDV = req.params.EDV;
@@ -22,6 +25,10 @@ module.exports = {
             where: { IDFerramenta: id }
         });
 
+        const fbRef = ref(database, '01');
+        await set(fbRef, { key: true })
+        
+        console.log("ferramenta retirada");
 
         setTimeout(function(){
             res.render('../views/index', {retirar:false, devolver:false, cadastrar:false,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
@@ -39,6 +46,10 @@ module.exports = {
         {
             where: { IDFerramenta: id }
         });
+
+
+        console.log("ferramenta devolvida");
+
 
         setTimeout(function(){
             res.render('../views/index', {retirar:false, devolver:false, cadastrar:false,retirarEdv:false, devolverEdv:false, cadastrarEdv:false, mensage:''});
