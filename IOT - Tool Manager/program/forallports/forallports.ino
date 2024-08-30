@@ -23,7 +23,9 @@ AsyncResult result;
 NoAuth noAuth;
 
 int builtinLed = 2;
-int pins[15] = { 4, 16, 17, 5, 8, 19, 21, 3, 1, 22, 23, 36, 39, 34, 35 };
+const int portsLength = 15;
+//                         A   B   C   D   E   F   G   H   I   J   K    L   M   N   O
+int pins[portsLength] = {  4, 16, 17,  5, 18, 19, 21, 22, 23, 32, 33, 25, 26, 27, 14 };
 char cabinet[5] = "46";
 
 void printError(int code, const String &msg){
@@ -31,8 +33,8 @@ void printError(int code, const String &msg){
 }
 
 void open(char drawer, int pin){
-  String path;
-  path = '/' + cabinet + '/' + drawer;
+  String bar = "/";
+  String path = bar + cabinet + bar + drawer;
   digitalWrite(pin, LOW);
   delay(5000);
   bool status = Database.set<bool>(client, path, false);
@@ -78,29 +80,36 @@ void setup()
   // In sync functions, we have to set the operating result for the client that works with the function.
   client.setAsyncResult(result);
 
-  Serial.println("Testando portas");
+  Serial.print("Testando portas (");
+  Serial.print(portsLength);
+  Serial.println(" conectadas)");
 
-  for(int i = 0; i < sizeof(pins); i++) {
+  for(int i = 0; i < portsLength; i++) {
     int crrPin = pins[i];
-    Serial.println("    Testando porta " + crrPin);
+    Serial.print("    Testando porta: ");
+    Serial.print(crrPin);
     pinMode(crrPin, OUTPUT);
     digitalWrite(crrPin, LOW);
     delay(500);
     digitalWrite(crrPin, HIGH);
+    Serial.println(" - OK");
   }
 
   Serial.println("Trancando todos as gavetas");
 
   for(char drawer = 'A'; drawer <= 'O'; drawer++) {
-    String path;
-    path = '/' + cabinet + '/' + drawer;
+    String bar = "/";
+    String path = bar + cabinet + bar + drawer;
     // snprintf(path, sizeof(path), "/%s/%c", cabinet, drawer);
-
+    Serial.print("Trancando ");
+    Serial.print(path);
     bool status = Database.set<bool>(client, path, false);
-    if (status)
-      Serial.println( drawer + " chave fechada");
-    else
+    if (status){
+      Serial.println(" - OK");
+    }
+    else{
       printError(client.lastError().code(), client.lastError().message());
+    }
   }
 
   Serial.println("Configuração concluida");
@@ -116,15 +125,19 @@ void loop()
   for(char drawer = 'A' ; drawer <= 'O'; drawer++){
     Serial.println("");
 
-    String path;
-    path = '/' + cabinet + '/' + drawer;
+    String bar = "/";
+    String path = bar + cabinet + bar + drawer;
+
     // snprintf(path, sizeof(path), "/%s/%c", cabinet, drawer);
-    Serial.print("Status of " + drawer);
+    Serial.print("Status of ");
+    Serial.print(path);
+    Serial.print(": ");
     bool status = Database.get<bool>(client, path);
     if (status)
       Serial.println(status);
     else
-      printError(client.lastError().code(), client.lastError().message());
+      if(client.lastError().code() != 0 )
+        printError(client.lastError().code(), client.lastError().message());
 
     if(status){ 
       open(drawer, pins[port]);
@@ -146,5 +159,4 @@ void loop()
   //  open();
   //}
 
-  delay(500);
 }
