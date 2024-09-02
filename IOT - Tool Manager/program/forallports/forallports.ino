@@ -24,7 +24,7 @@ NoAuth noAuth;
 
 int builtinLed = 2;
 const int portsLength = 15;
-//                         A   B   C   D   E   F   G   H   I   J   K    L   M   N   O
+//                         A   B   C   D   E   F   G   H   I   J   K   L   M   N   O
 int pins[portsLength] = {  4, 16, 17,  5, 18, 19, 21, 22, 23, 32, 33, 25, 26, 27, 14 };
 char cabinet[5] = "46";
 
