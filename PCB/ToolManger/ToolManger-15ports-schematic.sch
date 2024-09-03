@@ -5472,6 +5472,12 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 <text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
 <pin name="+3V3" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
+<symbol name="+5V" urn="urn:adsk.eagle:symbol:26929/1" library_version="1">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="+5V" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="GND" urn="urn:adsk.eagle:component:26954/1" prefix="GND" library_version="1">
@@ -5500,6 +5506,19 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="+5V" urn="urn:adsk.eagle:component:26963/1" prefix="P+" library_version="1">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="+5V" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -5510,7 +5529,7 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 <classes>
 <class number="0" name="default" width="0" drill="0">
 </class>
-<class number="1" name="Supply" width="0.3" drill="0.8">
+<class number="1" name="Supply" width="0.5" drill="0.8">
 <clearance class="1" value="0.3"/>
 </class>
 <class number="2" name="Signal" width="0.4" drill="0.8">
@@ -5578,6 +5597,10 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 <part name="IC3" library="40xx" library_urn="urn:adsk.eagle:library:80" deviceset="4049" device="N" package3d_urn="urn:adsk.eagle:package:922/2"/>
 <part name="IC4" library="40xx" library_urn="urn:adsk.eagle:library:80" deviceset="4049" device="N" package3d_urn="urn:adsk.eagle:package:922/2"/>
 <part name="IC5" library="40xx" library_urn="urn:adsk.eagle:library:80" deviceset="4049" device="N" package3d_urn="urn:adsk.eagle:package:922/2"/>
+<part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5902,6 +5925,18 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 </instance>
 <instance part="IC3" gate="P" x="66.04" y="68.58" smashed="yes">
 <attribute name="NAME" x="64.77" y="67.945" size="1.778" layer="95"/>
+</instance>
+<instance part="GND6" gate="1" x="27.94" y="121.92" smashed="yes" rot="R270">
+<attribute name="VALUE" x="25.4" y="124.46" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="P+1" gate="1" x="22.86" y="111.76" smashed="yes" rot="R90">
+<attribute name="VALUE" x="27.94" y="109.22" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="P+2" gate="1" x="22.86" y="5.08" smashed="yes" rot="R90">
+<attribute name="VALUE" x="25.4" y="2.54" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="GND7" gate="1" x="22.86" y="7.62" smashed="yes" rot="R270">
+<attribute name="VALUE" x="20.32" y="10.16" size="1.778" layer="96" rot="R270"/>
 </instance>
 </instances>
 <busses>
@@ -6505,6 +6540,16 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 <wire x1="50.8" y1="60.96" x2="50.8" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="IC5" gate="P" pin="VSS"/>
 </segment>
+<segment>
+<pinref part="GND6" gate="1" pin="GND"/>
+<pinref part="JP1" gate="A" pin="10"/>
+<wire x1="30.48" y1="121.92" x2="38.1" y2="121.92" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND7" gate="1" pin="GND"/>
+<pinref part="ESP_LEFT" gate="A" pin="14"/>
+<wire x1="25.4" y1="7.62" x2="30.48" y2="7.62" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="+3V3" class="1">
 <segment>
@@ -6569,6 +6614,18 @@ Source: http://www.molex.com/pdm_docs/sd/026604100_sd.pdf</description>
 <pinref part="X5" gate="-1" pin="S"/>
 <pinref part="R18" gate="G$1" pin="1"/>
 <wire x1="-27.94" y1="45.72" x2="-25.4" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="+5V" class="1">
+<segment>
+<pinref part="P+2" gate="1" pin="+5V"/>
+<pinref part="ESP_LEFT" gate="A" pin="15"/>
+<wire x1="25.4" y1="5.08" x2="30.48" y2="5.08" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="P+1" gate="1" pin="+5V"/>
+<pinref part="JP4" gate="A" pin="1"/>
+<wire x1="25.4" y1="111.76" x2="38.1" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
