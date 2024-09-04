@@ -7,15 +7,11 @@ const tipo = require('../model/tipo');
 const subtipo = require('../model/subtipo');
 const colaborador = require('../model/colaborador');
 
-const database = require('../config/firebase');
-const { ref, set } = require('firebase/database')
-
+const Conection = require('../config/firebase');
 module.exports = {
     async retirar(req, res) {
         const EDV = req.params.EDV;
         const id = req.params.ferramenta;
-
-        console.log(EDV)
 
         await ferramenta.update({
             EDV: EDV,
@@ -25,9 +21,33 @@ module.exports = {
             where: { IDFerramenta: id }
         });
 
-        const fbRef = ref(database, '01');
-        await set(fbRef, { key: true })
-        
+        const tool = await ferramenta.findAll({
+            raw: true,
+            attributes: ['IDGaveta','IDFerramenta','IDArmario']
+        },{
+            where: { IDFerramenta: id }
+        });
+        const armarinho = await armario.findAll({
+            raw:true,
+            attributes: ['IDArmario', 'IDENTIFICACAO']
+        },
+        {
+            where: { IDArmario: tool.IDArmario }
+        });
+        const gavetinha = await gaveta.findAll({
+            raw:true,
+            attributes: ['IDGaveta', 'IDENTIFICACAO']
+        },
+        {
+            where: { IDGaveta: tool.IDGaveta }
+        })
+
+        await Conection.open(armarinho[0].IDENTIFICACAO, gavetinha[0].IDENTIFICACAO);
+
+        console.log(`ferramenta devolvida (${armarinho[0].IDENTIFICACAO} - ${gavetinha[0].IDENTIFICACAO} - ${tool[0].IDENTIFICACAO})`);
+
+        await Conection.open('01','key');
+
         console.log("ferramenta retirada");
 
         setTimeout(function(){
@@ -47,8 +67,30 @@ module.exports = {
             where: { IDFerramenta: id }
         });
 
+        const tool = await ferramenta.findAll({
+            raw: true,
+            attributes: ['IDGaveta','IDFerramenta','IDArmario']
+        },{
+            where: { IDFerramenta: id }
+        });
+        const armarinho = await armario.findAll({
+            raw:true,
+            attributes: ['IDArmario', 'IDENTIFICACAO']
+        },
+        {
+            where: { IDArmario: tool.IDArmario }
+        });
+        const gavetinha = await gaveta.findAll({
+            raw:true,
+            attributes: ['IDGaveta', 'IDENTIFICACAO']
+        },
+        {
+            where: { IDGaveta: tool.IDGaveta }
+        })
 
-        console.log("ferramenta devolvida");
+        await Conection.open(armarinho[0].IDENTIFICACAO, gavetinha[0].IDENTIFICACAO);
+
+        console.log(`ferramenta devolvida (${armarinho[0].IDENTIFICACAO} - ${gavetinha[0].IDENTIFICACAO} - ${tool[0].IDENTIFICACAO})`);
 
 
         setTimeout(function(){

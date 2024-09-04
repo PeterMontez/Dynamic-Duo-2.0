@@ -1,8 +1,5 @@
-require('global-agent/bootstrap')
 const express = require('express');
 const routes = require('./routes');
-
-process.env.GLOBAL_AGENT_HTTP_PROXY = 'http://son5ct:PASSWORD@10.224.200.26:8080';
 
 const app = express();
 

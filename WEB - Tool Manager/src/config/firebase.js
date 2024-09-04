@@ -1,25 +1,49 @@
-// import { initializeApp } from "firebase/app";
-// import { getDatabase } from "firebase/database";
+const https = require('https');
+const {HttpsProxyAgent} = require('https-proxy-agent');
 
-const { initializeApp } = require("firebase/app");
-const { getDatabase } = require("firebase/database");
+const Conection = {};
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBV_kzhbRUpzOOY2NhpCt3uXF2jppCiFvI",
-  authDomain: "toolmanager-b1304.firebaseapp.com",
-  databaseURL: "https://toolmanager-b1304-default-rtdb.firebaseio.com",
-  projectId: "toolmanager-b1304",
-  storageBucket: "toolmanager-b1304.appspot.com",
-  messagingSenderId: "263660581169",
-  appId: "1:263660581169:web:8fdec971d3355d3d028010"
-};
+Conection.open = async ( cabinet, drawer ) => {
+    (async () => {
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+        const proxy = 'http://disrct:etsps2024401@10.224.200.26:8080'; 
+    
+        // Crie um agente de proxy
+        const agent = new HttpsProxyAgent(proxy);
+        
+        const postData = `true`; 
+        
+        const req = https.request({
+                hostname:'toolmanager-b1304-default-rtdb.firebaseio.com',
+                path:`/${cabinet}/${drawer}.json`,
+                agent:agent,
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json', // Define o tipo de conteúdo como JSON
+                    'Content-Length': Buffer.byteLength(postData)
+                }    
+            },(res) => {
+            let data = '';
+    
+    
+            res.on('data', (chunk) => {
+                data += chunk;
+            })  ;
+    
+            res.on('end', () => {
+                console.log(JSON.parse(data));
+            })  ;
+        });
+    
+        req.on('error', (e) => {
+            console.log('errinho'+ e);
+        })
+    
+        req.write(postData);
+        req.end()
+    
+    })()
+}
 
-module.exports = database;
+module.exports = Conection;
