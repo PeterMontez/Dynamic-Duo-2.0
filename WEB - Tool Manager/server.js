@@ -15,9 +15,9 @@ app.set('view engine', 'ejs');
 
 app.use(routes);
 
-// const PORT = 20031;
-// const HOST = '10.234.192.30'
-const PORT = 3001;
-const HOST = 'localhost'
+const PORT = 20031;
+const HOST = '10.234.192.30'
+// const PORT = 3001;
+// const HOST = 'localhost'
 
 app.listen(PORT, HOST, () => console.log(`Acesse: http://${HOST}:${PORT}/`));
